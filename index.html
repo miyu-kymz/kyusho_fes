@@ -11,7 +11,7 @@
   <!-- Google Fonts (Zen Maru Gothic) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght=400;500;700;900&display=swap" rel="stylesheet">
   
   <!-- FontAwesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -467,7 +467,7 @@
           <span class="text-xl">🚩</span>
           <h3 class="text-sm font-black text-slate-800">【投票】ブロック旗 部門</h3>
         </div>
-        <p class="text-[11.5px] text-slate-500 font-bold leading-relaxed">各ブロックのこだわりを詰め込んだ巨大シンボル旗！感動した作品に投票してください。</p>
+        <p class="text-[11.5px] text-slate-500 font-bold leading-relaxed">各ブロックのこだわりを詰め込んだシンボル旗！感動した作品に投票してください。</p>
         
         <!-- 投票前 -->
         <div id="flag-vote-form" class="space-y-2">
@@ -506,42 +506,11 @@
           </button>
         </div>
 
-        <!-- 投票後 -->
-        <div id="flag-vote-results" class="hidden space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-150">
-          <div class="flex justify-between items-center">
-            <span class="text-[10.5px] font-black text-emerald-600"><i class="fa-solid fa-circle-check"></i> ブロック旗投票完了！</span>
-            <span class="text-[9px] text-slate-400 font-bold">全員の投票結果</span>
-          </div>
-          <!-- 赤 -->
-          <div class="space-y-1">
-            <div class="flex justify-between text-[10px] font-black text-slate-700">
-              <span>🟥 赤ブロック</span>
-              <span id="flag-res-red-pct" class="font-mono">0%</span>
-            </div>
-            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-              <div id="flag-res-red-bar" class="bg-red-500 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
-            </div>
-          </div>
-          <!-- 青 -->
-          <div class="space-y-1">
-            <div class="flex justify-between text-[10px] font-black text-slate-700">
-              <span>🟦 青ブロック</span>
-              <span id="flag-res-blue-pct" class="font-mono">0%</span>
-            </div>
-            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-              <div id="flag-res-blue-bar" class="bg-blue-500 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
-            </div>
-          </div>
-          <!-- 黄 -->
-          <div class="space-y-1">
-            <div class="flex justify-between text-[10px] font-black text-slate-700">
-              <span>🟨 黄ブロック</span>
-              <span id="flag-res-yellow-pct" class="font-mono">0%</span>
-            </div>
-            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-              <div id="flag-res-yellow-bar" class="bg-amber-400 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
-            </div>
-          </div>
+        <!-- 投票後（一般ユーザーには結果を非表示にし、お礼メッセージのみ表示） -->
+        <div id="flag-vote-results" class="hidden text-center p-6 bg-emerald-50/70 border border-emerald-200 rounded-3xl space-y-2">
+          <span class="text-3xl">🎉</span>
+          <h4 class="text-xs font-black text-emerald-850">ブロック旗の投票が完了しました！</h4>
+          <p class="text-[10px] text-emerald-700 leading-relaxed font-bold">投票のご協力ありがとうございました！<br>集計結果は、久商祭終了後の公式発表をどうぞお楽しみに！📢</p>
         </div>
       </div>
 
@@ -590,42 +559,11 @@
           </button>
         </div>
 
-        <!-- 投票後 -->
-        <div id="art-vote-results" class="hidden space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-150">
-          <div class="flex justify-between items-center">
-            <span class="text-[10.5px] font-black text-emerald-600"><i class="fa-solid fa-circle-check"></i> つまようじ投票完了！</span>
-            <span class="text-[9px] text-slate-400 font-bold">全員の投票結果</span>
-          </div>
-          <!-- 赤 -->
-          <div class="space-y-1">
-            <div class="flex justify-between text-[10px] font-black text-slate-700">
-              <span>🟥 赤ブロック</span>
-              <span id="art-res-red-pct" class="font-mono">0%</span>
-            </div>
-            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-              <div id="art-res-red-bar" class="bg-red-500 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
-            </div>
-          </div>
-          <!-- 青 -->
-          <div class="space-y-1">
-            <div class="flex justify-between text-[10px] font-black text-slate-700">
-              <span>🟦 青ブロック</span>
-              <span id="art-res-blue-pct" class="font-mono">0%</span>
-            </div>
-            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-              <div id="art-res-blue-bar" class="bg-blue-500 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
-            </div>
-          </div>
-          <!-- 黄 -->
-          <div class="space-y-1">
-            <div class="flex justify-between text-[10px] font-black text-slate-700">
-              <span>🟨 黄ブロック</span>
-              <span id="art-res-yellow-pct" class="font-mono">0%</span>
-            </div>
-            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-              <div id="art-res-yellow-bar" class="bg-amber-400 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
-            </div>
-          </div>
+        <!-- 投票後（一般ユーザーには結果を非表示にし、お礼メッセージのみ表示） -->
+        <div id="art-vote-results" class="hidden text-center p-6 bg-emerald-50/70 border border-emerald-200 rounded-3xl space-y-2">
+          <span class="text-3xl">🎉</span>
+          <h4 class="text-xs font-black text-emerald-850">つまようじアートの投票が完了しました！</h4>
+          <p class="text-[10px] text-emerald-700 leading-relaxed font-bold">投票のご協力ありがとうございました！<br>集計結果は、久商祭終了後の公式発表をどうぞお楽しみに！📢</p>
         </div>
       </div>
 
@@ -896,6 +834,83 @@
 
     <!-- Live Administration Controls Grid -->
     <div class="space-y-4 pt-3 border-t">
+
+      <!-- 📊 【管理者限定】リアルタイム投票結果集計ボード -->
+      <div class="bg-indigo-50 border border-indigo-150 p-3.5 rounded-2xl space-y-3">
+        <span class="text-[10px] font-black text-indigo-700 block flex items-center gap-1">
+          <i class="fa-solid fa-chart-simple text-sm"></i> 【開票ダッシュボード】リアルタイム投票結果
+        </span>
+        
+        <!-- ブロック旗集計 -->
+        <div class="space-y-2 bg-white p-2.5 rounded-xl border border-slate-150">
+          <span class="text-[9.5px] font-black text-slate-500 block">🚩 ブロック旗 部門</span>
+          <!-- 赤 -->
+          <div class="space-y-0.5">
+            <div class="flex justify-between text-[9px] font-black text-slate-700">
+              <span>🟥 赤ブロック</span>
+              <span id="admin-flag-red" class="font-mono">0票 (0%)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+              <div id="admin-flag-red-bar" class="bg-red-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+          <!-- 青 -->
+          <div class="space-y-0.5">
+            <div class="flex justify-between text-[9px] font-black text-slate-700">
+              <span>🟦 青ブロック</span>
+              <span id="admin-flag-blue" class="font-mono">0票 (0%)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+              <div id="admin-flag-blue-bar" class="bg-blue-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+          <!-- 黄 -->
+          <div class="space-y-0.5">
+            <div class="flex justify-between text-[9px] font-black text-slate-700">
+              <span>🟨 黄ブロック</span>
+              <span id="admin-flag-yellow" class="font-mono">0票 (0%)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+              <div id="admin-flag-yellow-bar" class="bg-amber-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- つまようじ集計 -->
+        <div class="space-y-2 bg-white p-2.5 rounded-xl border border-slate-150">
+          <span class="text-[9.5px] font-black text-slate-500 block">📍 つまようじアート 部門</span>
+          <!-- 赤 -->
+          <div class="space-y-0.5">
+            <div class="flex justify-between text-[9px] font-black text-slate-700">
+              <span>🟥 赤ブロック</span>
+              <span id="admin-art-red" class="font-mono">0票 (0%)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+              <div id="admin-art-red-bar" class="bg-red-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+          <!-- 青 -->
+          <div class="space-y-0.5">
+            <div class="flex justify-between text-[9px] font-black text-slate-700">
+              <span>🟦 青ブロック</span>
+              <span id="admin-art-blue" class="font-mono">0票 (0%)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+              <div id="admin-art-blue-bar" class="bg-blue-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+          <!-- 黄 -->
+          <div class="space-y-0.5">
+            <div class="flex justify-between text-[9px] font-black text-slate-700">
+              <span>🟨 黄ブロック</span>
+              <span id="admin-art-yellow" class="font-mono">0票 (0%)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+              <div id="admin-art-yellow-bar" class="bg-amber-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <!-- 📢 模擬店ごとのお知らせ ＆ 待ち時間のリアルタイム編集 -->
       <div class="bg-rose-50/50 border border-rose-100 p-3 rounded-2xl space-y-2.5">
@@ -987,8 +1002,8 @@
       { id: 9, class: "2-2", name: "肉包", category: "food", location: "中庭特設テント", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る中華肉まんです。🐼", mascotTip: "中庭のベンチでハフハフしながら食べてみてね！", status: "待ちなし" },
       { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "南西校舎 2F", desc: "【遊戯】手に汗握る面白さ！慎重にボールをゴールへ運ぶ特製ボール転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分" },
       { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
-      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "東駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "10分" },
-      { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
+      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "東駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメン of 神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "10分" },
+      { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサ跨サ跨＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
       { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュです！🥐", mascotTip: "食堂内のおしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし" },
       { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "西駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お腹がすいたら迷わず西駐車場へ向かおう！", status: "10分" },
       { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "西駐車場 テント4", desc: "【協力店舗: BELLE CURRY】スパイスの香りが駐車場中に漂う！じっくり煮込まれた本格旨口カレーライス🍛", mascotTip: "辛すぎずコクがあって、どんどんスプーンが進む絶品カレー！", status: "待ちなし" },
@@ -1002,7 +1017,7 @@
     const stageProgram = [
       { time: "10:15", duration: "30分", title: "🎺 吹奏楽部", detail: "体育館中を圧倒する、伝統の美しさと迫力を兼ね備えた大迫力吹奏楽メドレー！" },
       { time: "10:45", duration: "35分", title: "💡 【Quest発表】", detail: "「総合的な探究の時間」で各クラスが地域・社会の課題解決のために練り上げた、感動のプレゼン発表！" },
-      { time: "11:20", duration: "10分", title: "🥋 【演武部門】", detail: "臨時練習 of 演武！気迫と統一された美しさに満ちた迫真のパフォーマンス！" },
+      { time: "11:20", duration: "10分", title: "🥋 【演武部門】", detail: "臨時練習 of 演武！気迫と統一された美しさに満ちた迫真 of パフォーマンス！" },
       { time: "11:30", duration: "10分", title: "💃 【ダンス部門】", detail: "流行のトレンド曲に合わせた一糸乱れぬキレキレダンスステージ！会場を一気に盛り上げます！" },
       { time: "11:40", duration: "35分", title: "🎤 【有志部門】", detail: "事前オーディションを実力で突破した5つの精鋭有志による、音楽・バンド・歌唱の夢の競演！" },
       { time: "12:25", duration: "30分", title: "🖌️ 書道部", detail: "音楽に合わせて巨大な紙に想いを力強く書き紡ぐ、久商祭クライマックスの大感動書道パフォーマンス！" }
@@ -1572,7 +1587,6 @@
       syncModalHeartButton();
     }
 
-    // お気に入りボタンの文字の崩れを防ぐため、安全に文字だけを切り替えるようにしています。
     function closeShopModal() {
       const modal = document.getElementById('shop-detail-modal');
       const inner = modal.querySelector('div');
@@ -1731,12 +1745,15 @@
         grid.appendChild(card);
       });
 
-      document.getElementById('rally-progress-text').innerText = `${checkedCount} / 5`;
+      const progText = document.getElementById('rally-progress-text');
+      if (progText) progText.innerText = `${checkedCount} / 5`;
       const badge = document.getElementById('rally-badge');
-      if (checkedCount === 5) {
-        badge.className = "absolute top-1 right-1 bg-rose-500 w-3 h-3 rounded-full border border-white animate-bounce";
-      } else {
-        badge.className = "absolute top-1 right-1 bg-amber-500 w-2.5 h-2.5 rounded-full border border-white";
+      if (badge) {
+        if (checkedCount === 5) {
+          badge.className = "absolute top-1 right-1 bg-rose-500 w-3 h-3 rounded-full border border-white animate-bounce";
+        } else {
+          badge.className = "absolute top-1 right-1 bg-amber-500 w-2.5 h-2.5 rounded-full border border-white";
+        }
       }
     }
 
@@ -1878,3 +1895,443 @@
     }
 
     function showVoteToast(message) {
+      const toast = document.getElementById('vote-toast');
+      document.getElementById('vote-toast-text').innerText = message;
+      toast.classList.remove('translate-y-[-150px]', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-[-150px]', 'opacity-0');
+      }, 3000);
+    }
+
+    function updateVoteNotificationBadge() {
+      const badge = document.getElementById('vote-badge');
+      if (!badge) return;
+      if (!userVoteFlag || !userVoteArt) {
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    function renderVoteSection() {
+      const flagForm = document.getElementById('flag-vote-form');
+      const flagResults = document.getElementById('flag-vote-results');
+
+      if (userVoteFlag) {
+        if (flagForm) flagForm.classList.add('hidden');
+        if (flagResults) flagResults.classList.remove('hidden');
+      } else {
+        if (flagForm) flagForm.classList.remove('hidden');
+        if (flagResults) flagResults.classList.add('hidden');
+      }
+
+      const artForm = document.getElementById('art-vote-form');
+      const artResults = document.getElementById('art-vote-results');
+
+      if (userVoteArt) {
+        if (artForm) artForm.classList.add('hidden');
+        if (artResults) artResults.classList.remove('hidden');
+      } else {
+        if (artForm) artForm.classList.remove('hidden');
+        if (artResults) artResults.classList.add('hidden');
+      }
+
+      // 管理者パネル用の投票結果を裏側で静かに集計・反映
+      renderAdminVoteResults();
+    }
+
+    function renderAdminVoteResults() {
+      // 1. ブロック旗
+      const flagTotal = votesFlagSummary.red + votesFlagSummary.blue + votesFlagSummary.yellow;
+      const fRedPct = flagTotal > 0 ? Math.round((votesFlagSummary.red / flagTotal) * 100) : 0;
+      const fBluePct = flagTotal > 0 ? Math.round((votesFlagSummary.blue / flagTotal) * 100) : 0;
+      const fYellowPct = flagTotal > 0 ? (100 - fRedPct - fBluePct) : 0;
+
+      const flagRedEl = document.getElementById('admin-flag-red');
+      if (flagRedEl) flagRedEl.innerText = `${votesFlagSummary.red}票 (${fRedPct}%)`;
+      const flagBlueEl = document.getElementById('admin-flag-blue');
+      if (flagBlueEl) flagBlueEl.innerText = `${votesFlagSummary.blue}票 (${fBluePct}%)`;
+      const flagYellowEl = document.getElementById('admin-flag-yellow');
+      if (flagYellowEl) flagYellowEl.innerText = `${votesFlagSummary.yellow}票 (${fYellowPct}%)`;
+
+      const flagRedBar = document.getElementById('admin-flag-red-bar');
+      if (flagRedBar) flagRedBar.style.width = `${fRedPct}%`;
+      const flagBlueBar = document.getElementById('admin-flag-blue-bar');
+      if (flagBlueBar) flagBlueBar.style.width = `${fBluePct}%`;
+      const flagYellowBar = document.getElementById('admin-flag-yellow-bar');
+      if (flagYellowBar) flagYellowBar.style.width = `${fYellowPct}%`;
+
+      // 2. つまようじアート
+      const artTotal = votesArtSummary.red + votesArtSummary.blue + votesArtSummary.yellow;
+      const aRedPct = artTotal > 0 ? Math.round((votesArtSummary.red / artTotal) * 100) : 0;
+      const aBluePct = artTotal > 0 ? Math.round((votesArtSummary.blue / artTotal) * 100) : 0;
+      const aYellowPct = artTotal > 0 ? (100 - aRedPct - aBluePct) : 0;
+
+      const artRedEl = document.getElementById('admin-art-red');
+      if (artRedEl) artRedEl.innerText = `${votesArtSummary.red}票 (${aRedPct}%)`;
+      const artBlueEl = document.getElementById('admin-art-blue');
+      if (artBlueEl) artBlueEl.innerText = `${votesArtSummary.blue}票 (${aBluePct}%)`;
+      const artYellowEl = document.getElementById('admin-art-yellow');
+      if (artYellowEl) artYellowEl.innerText = `${votesArtSummary.yellow}票 (${aYellowPct}%)`;
+
+      const artRedBar = document.getElementById('admin-art-red-bar');
+      if (artRedBar) artRedBar.style.width = `${aRedPct}%`;
+      const artBlueBar = document.getElementById('admin-art-blue-bar');
+      if (artBlueBar) artBlueBar.style.width = `${aBluePct}%`;
+      const artYellowBar = document.getElementById('admin-art-yellow-bar');
+      if (artYellowBar) artYellowBar.style.width = `${aYellowPct}%`;
+    }
+
+    function resetVotes() {
+      localStorage.removeItem(LS_VOTE_FLAG_KEY);
+      localStorage.removeItem(LS_VOTE_ART_KEY);
+      userVoteFlag = null;
+      userVoteArt = null;
+
+      if (isFirebaseReady) {
+        db.ref('votes').set({
+          flag: { red: 142, blue: 158, yellow: 119 },
+          art: { red: 125, blue: 111, yellow: 148 }
+        });
+      } else {
+        votesFlagSummary = { red: 142, blue: 158, yellow: 119 };
+        votesArtSummary = { red: 125, blue: 111, yellow: 148 };
+        renderVoteSection();
+      }
+      
+      updateVoteNotificationBadge();
+      showVoteToast("投票データを初期状態にリセットしました！");
+    }
+
+    // ----------------------------------------------------
+    // 📢 NEWS & REALTIME BULLETIN SYSTEM
+    // ----------------------------------------------------
+    function openNewsModal() {
+      const modal = document.getElementById('news-board-modal');
+      const inner = modal.querySelector('div');
+      modal.classList.remove('hidden');
+      
+      renderNewsTabContents();
+
+      setTimeout(() => {
+        modal.classList.add('opacity-100');
+        inner.classList.remove('translate-y-full');
+      }, 50);
+    }
+
+    function closeNewsModal() {
+      const modal = document.getElementById('news-board-modal');
+      const inner = modal.querySelector('div');
+      inner.classList.add('translate-y-full');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 250);
+    }
+
+    function switchNewsTab(tabId) {
+      currentNewsTab = tabId;
+      const noticeBtn = document.getElementById('news-tab-notices');
+      const bulletinBtn = document.getElementById('news-tab-bulletin');
+      const noticeContent = document.getElementById('news-tab-content-notices');
+      const bulletinContent = document.getElementById('news-tab-content-bulletin');
+
+      if (tabId === 'notices') {
+        noticeBtn.className = "py-1.5 rounded-lg text-center bg-white text-slate-800 shadow-sm";
+        bulletinBtn.className = "py-1.5 rounded-lg text-center text-white/90 hover:bg-white/10";
+        noticeContent.classList.remove('hidden');
+        bulletinContent.classList.add('hidden');
+      } else {
+        bulletinBtn.className = "py-1.5 rounded-lg text-center bg-white text-slate-800 shadow-sm";
+        noticeBtn.className = "py-1.5 rounded-lg text-center text-white/90 hover:bg-white/10";
+        bulletinContent.classList.remove('hidden');
+        noticeContent.classList.add('hidden');
+      }
+      
+      document.getElementById('news-modal-scroll-area').scrollTop = 0;
+    }
+
+    function renderNewsTabContents() {
+      const announceContainer = document.getElementById('announcements-container');
+      if (announceContainer) {
+        announceContainer.innerHTML = '';
+        
+        // 1. 各店舗のリアルタイムお知らせ（shopAnnouncements）をマージする
+        const customAlerts = [];
+        Object.keys(shopAnnouncements).forEach(shopId => {
+          const shop = shops.find(s => s.id == shopId);
+          const txt = shopAnnouncements[shopId];
+          if (shop && txt && txt.trim() !== "") {
+            customAlerts.push({
+              id: "shop-" + shopId,
+              time: "配信中",
+              badge: `${shop.class} 速報`,
+              text: `【${shop.name}】${txt}`,
+              isUrgent: true
+            });
+          }
+        });
+
+        const allAnnounces = [...customAlerts, ...announcements];
+
+        if (allAnnounces.length === 0) {
+          announceContainer.innerHTML = `
+            <div class="text-center py-8 text-slate-400 text-[11px]">
+               現在、店舗や本部からのニュースはありません。
+            </div>
+          `;
+        } else {
+          allAnnounces.forEach(a => {
+            const isUrgent = a.isUrgent;
+            const cardBg = isUrgent ? 'bg-rose-50 border-rose-200' : 'bg-white border-slate-200';
+            const badgeColor = isUrgent ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-300';
+            
+            const card = document.createElement('div');
+            card.className = `p-3 rounded-2xl border shadow-sm ${cardBg} space-y-1`;
+            card.innerHTML = `
+              <div class="flex justify-between items-center">
+                <span class="text-[9px] font-black font-mono text-slate-400">${a.time}</span>
+                <span class="text-[8px] font-black px-1.5 py-0.5 rounded-md ${badgeColor}">${a.badge}</span>
+              </div>
+              <p class="text-[11px] text-slate-700 leading-relaxed font-semibold">${a.text}</p>
+            `;
+            announceContainer.appendChild(card);
+          });
+        }
+      }
+
+      const bulletinContainer = document.getElementById('bulletin-posts-container');
+      if (!bulletinContainer) return;
+      bulletinContainer.innerHTML = '';
+
+      if (bulletinPosts.length === 0) {
+        bulletinContainer.innerHTML = `
+          <div class="text-center py-8 text-slate-400 text-[11px]">
+             まだ掲示板にメッセージはありません。<br>最初の一言を書き込んでみよう！💬
+          </div>
+        `;
+        return;
+      }
+
+      bulletinPosts.forEach((post) => {
+        const card = document.createElement('div');
+        card.className = "bg-white p-3 rounded-2xl border border-slate-150 shadow-sm space-y-1.5";
+        let avatarEmoji = "👤";
+        if (post.sender.includes("久商生")) avatarEmoji = "🏫";
+        if (post.sender.includes("きゅうちゃん") || post.sender.includes("キュウちゃん")) avatarEmoji = "🐹";
+        if (post.sender.includes("PTA")) avatarEmoji = "👪";
+        if (post.sender.includes("卒業生") || post.sender.includes("OB")) avatarEmoji = "🎓";
+
+        card.innerHTML = `
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] font-black text-rose-600 flex items-center gap-1">
+              <span>${avatarEmoji}</span> ${post.sender}
+            </span>
+            <span class="text-[8.5px] font-mono text-slate-400 font-bold">${post.time}</span>
+          </div>
+          <p class="text-[11px] text-slate-700 font-bold leading-relaxed">${post.text}</p>
+        `;
+        bulletinContainer.appendChild(card);
+      });
+    }
+
+    function postToBulletin() {
+      const msgInput = document.getElementById('bulletin-message-input');
+      const senderSelect = document.getElementById('bulletin-sender-select');
+
+      const messageText = msgInput.value.trim();
+      if (!messageText) return;
+
+      const now = getAppTime();
+      const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+      const newPost = {
+        id: "post-" + Date.now(),
+        sender: senderSelect.value,
+        time: timeStr,
+        text: messageText,
+        timestamp: Date.now()
+      };
+
+      if (isFirebaseReady) {
+        db.ref(`bulletin/${newPost.id}`).set(newPost);
+      } else {
+        bulletinPosts.unshift(newPost);
+        localStorage.setItem(LS_BULLETIN_KEY, JSON.stringify(bulletinPosts));
+        renderNewsTabContents();
+      }
+
+      msgInput.value = '';
+      showVoteToast("掲示板にメッセージを投稿しました！💬");
+    }
+
+    // ----------------------------------------------------
+    // 🔑 ADMIN PASSCODE GATE
+    // ----------------------------------------------------
+    function openAdminGate() {
+      const isAdminLoggedIn = sessionStorage.getItem('kyushofes_admin_logged_in');
+      if (isAdminLoggedIn === 'true') {
+        openAdminPanel();
+      } else {
+        document.getElementById('admin-lock-error').innerText = "";
+        document.getElementById('admin-passcode-input').value = "";
+        document.getElementById('admin-lock-screen').classList.remove('hidden');
+      }
+    }
+
+    function closeAdminGate() {
+      document.getElementById('admin-lock-screen').classList.add('hidden');
+    }
+
+    function verifyAdminPasscode() {
+      const input = document.getElementById('admin-passcode-input').value;
+      const errorMsg = document.getElementById('admin-lock-error');
+      
+      if (input === "2026") {
+        sessionStorage.setItem('kyushofes_admin_logged_in', 'true');
+        closeAdminGate();
+        openAdminPanel();
+        showVoteToast("ログインしました 🔓");
+      } else {
+        errorMsg.innerText = "❌ パスコードが正しくありません。";
+      }
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('kyushofes_admin_logged_in');
+      closeAdminPanel();
+      showVoteToast("ログアウトしました 🔒");
+    }
+
+    // ----------------------------------------------------
+    // 🛠️ ADMIN DRAWER PANEL ACTIONS
+    // ----------------------------------------------------
+    function openAdminPanel() {
+      const panel = document.getElementById('admin-panel');
+      panel.classList.remove('hidden');
+      loadSelectedShopAdminData();
+    }
+
+    function closeAdminPanel() {
+      const panel = document.getElementById('admin-panel');
+      panel.classList.add('hidden');
+    }
+
+    function populateAdminShopDropdown() {
+      const select = document.getElementById('admin-shop-select');
+      if (!select) return;
+      select.innerHTML = '';
+      
+      shops.forEach(shop => {
+        const opt = document.createElement('option');
+        opt.value = shop.id;
+        opt.innerText = `${shop.class} ${shop.name}`;
+        select.appendChild(opt);
+      });
+    }
+
+    function loadSelectedShopAdminData() {
+      const shopId = parseInt(document.getElementById('admin-shop-select').value);
+      const shop = shops.find(s => s.id === shopId);
+      if (!shop) return;
+
+      document.getElementById('admin-shop-status').value = shop.status;
+      document.getElementById('admin-shop-announce-text').value = shopAnnouncements[shopId] || "";
+    }
+
+    function updateShopDetailsFromAdmin() {
+      const shopId = parseInt(document.getElementById('admin-shop-select').value);
+      const status = document.getElementById('admin-shop-status').value;
+      const announcementText = document.getElementById('admin-shop-announce-text').value;
+
+      // クラウド同期
+      if (isFirebaseReady) {
+        db.ref(`shops/${shopId}`).set({
+          status: status,
+          announcement: announcementText.trim()
+        });
+      } else {
+        const shop = shops.find(s => s.id === shopId);
+        if (shop) shop.status = status;
+
+        if (announcementText.trim() !== "") {
+          shopAnnouncements[shopId] = announcementText.trim();
+        } else {
+          delete shopAnnouncements[shopId];
+        }
+        saveShopsToLocal();
+        renderShopList();
+        updateMapHearts();
+        updateMapAnnouncementIndicators();
+      }
+
+      showVoteToast(`「模擬店番号 ${shopId}」の情報を同期しました！📢`);
+      
+      if (activeShopModalId === shopId) {
+        closeShopModal();
+      }
+    }
+
+    function clearAllAppStatusData() {
+      localStorage.clear();
+      if (isFirebaseReady) {
+        db.ref().remove();
+      }
+      location.reload();
+    }
+
+    // ----------------------------------------------------
+    // 🚀 BOOTSTRAP INITIALIZATION ON LOAD
+    // ----------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSavedStates();
+      initFirebase(); // Firebaseのリアルタイムバインドを開始します
+      populateAdminShopDropdown();
+      
+      setInterval(updateClock, 1000);
+      updateClock();
+
+      renderShopList();
+      renderStageTimeline();
+      renderRallySpots();
+      renderVoteSection();
+      updateMapHearts();
+      updateMapAnnouncementIndicators();
+      checkActiveStageProgress();
+      updateVoteNotificationBadge();
+    });
+
+    // Expose functions globally to bypass module scope restrictions
+    window.switchTab = switchTab;
+    window.openNewsModal = openNewsModal;
+    window.closeNewsModal = closeNewsModal;
+    window.switchNewsTab = switchNewsTab;
+    window.postToBulletin = postToBulletin;
+    window.clickMapShop = clickMapShop;
+    window.closeShopModal = closeShopModal;
+    window.toggleFavoriteFromModal = toggleFavoriteFromModal;
+    window.toggleFavorite = toggleFavorite;
+    window.openQuizModal = openQuizModal;
+    window.submitQuizAnswer = submitQuizAnswer;
+    window.closeQuizModal = closeQuizModal;
+    window.castVote = castVote;
+    window.openAdminGate = openAdminGate;
+    window.closeAdminGate = closeAdminGate;
+    window.verifyAdminPasscode = verifyAdminPasscode;
+    window.logoutAdmin = logoutAdmin;
+    window.loadSelectedShopAdminData = loadSelectedShopAdminData;
+    window.updateShopDetailsFromAdmin = updateShopDetailsFromAdmin;
+    window.simSolveQuiz = simSolveQuiz;
+    window.resetRally = resetRally;
+    window.resetVotes = resetVotes;
+    window.clearAllAppStatusData = clearAllAppStatusData;
+    window.setClockMode = setClockMode;
+    window.changeDemoTime = changeDemoTime;
+    window.setShopCategoryFilter = setShopCategoryFilter;
+    window.filterShops = filterShops;
+  </script>
+</body>
+</html>
