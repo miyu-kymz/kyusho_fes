@@ -47,6 +47,14 @@
     .tab-content {
       transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
     }
+    /* Blinking effect for urgent messages */
+    @keyframes subtle-blink {
+      0%, 100% { border-color: rgba(244, 63, 94, 0.4); background-color: rgba(254, 242, 242, 0.7); }
+      50% { border-color: rgba(244, 63, 94, 1); background-color: rgba(254, 242, 242, 1); }
+    }
+    .shop-announce-blink {
+      animation: subtle-blink 2.5s infinite ease-in-out;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-b from-rose-50 via-amber-50 to-emerald-50 min-h-screen text-slate-800 pb-24">
@@ -79,7 +87,7 @@
         <div class="text-right flex flex-col items-end">
           <span id="real-time-badge" class="bg-emerald-100 text-emerald-800 text-[8px] font-black px-1.5 py-0.5 rounded-full flex items-center mb-0.5">
             <span class="w-1 h-1 bg-emerald-500 rounded-full mr-1 animate-ping"></span>
-            自動時計連動中
+            クラウド同期中
           </span>
           <span id="header-time-string" class="text-xs font-black text-slate-700 font-mono tracking-wider">10:15:00</span>
         </div>
@@ -169,14 +177,14 @@
                 <div onclick="clickMapShop(11)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div class="text-left">
                     <span class="text-[8px] text-orange-600 block font-bold">2-4 イートウェル</span>
-                    <span class="text-[11px] font-black text-slate-700">プリン屋さんだゾ🍮</span>
+                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">プリン屋さんだゾ🍮 <span id="map-announce-indicator-11" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="11"></span>
                 </div>
                 <div onclick="clickMapShop(14)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div class="text-left">
                     <span class="text-[8px] text-orange-600 block font-bold">2-7 デニッシュ</span>
-                    <span class="text-[11px] font-black text-slate-700">カワセミ養殖場🥐</span>
+                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">カワセミ養殖場🥐 <span id="map-announce-indicator-14" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="14"></span>
                 </div>
@@ -190,11 +198,11 @@
                 <span class="text-[9.5px] font-black text-orange-600 block text-left">⛺ 中庭特設テント</span>
                 <div class="grid grid-cols-1 gap-1.5 mt-1">
                   <div onclick="clickMapShop(13)" class="bg-orange-50 hover:bg-orange-100 p-1.5 rounded-lg border border-slate-200 cursor-pointer transition flex justify-between items-center relative">
-                    <span class="text-[10px] font-black text-slate-700">2-6 パリパリ🍰</span>
+                    <span class="text-[10px] font-black text-slate-700 flex items-center gap-1">2-6 パリパリ🍰 <span id="map-announce-indicator-13" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                     <span class="map-fav-heart-indicator" data-shop-id="13"></span>
                   </div>
                   <div onclick="clickMapShop(9)" class="bg-orange-50 hover:bg-orange-100 p-1.5 rounded-lg border border-slate-200 cursor-pointer transition flex justify-between items-center relative">
-                    <span class="text-[10px] font-black text-slate-700">2-2 肉包🐼</span>
+                    <span class="text-[10px] font-black text-slate-700 flex items-center gap-1">2-2 肉包🐼 <span id="map-announce-indicator-9" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                     <span class="map-fav-heart-indicator" data-shop-id="9"></span>
                   </div>
                 </div>
@@ -219,28 +227,28 @@
                 <div onclick="clickMapShop(15)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div>
                     <span class="text-[8px] text-slate-400 block font-bold">テント3 (3-1)</span>
-                    <span class="text-[11px] font-black text-slate-700">元祖池田屋🍜</span>
+                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">元祖池田屋🍜 <span id="map-announce-indicator-15" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="15"></span>
                 </div>
                 <div onclick="clickMapShop(16)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div>
                     <span class="text-[8px] text-slate-400 block font-bold">テント4 (3-2)</span>
-                    <span class="text-[11px] font-black text-slate-700">スパイスでナイス🍛</span>
+                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">スパイスでナイス🍛 <span id="map-announce-indicator-16" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="16"></span>
                 </div>
                 <div onclick="clickMapShop(17)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div>
                     <span class="text-[8px] text-slate-400 block font-bold">テント5 (3-3)</span>
-                    <span class="text-[11px] font-black text-slate-700">今日タピいいじゃん🧋</span>
+                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">今日タピいいじゃん🧋 <span id="map-announce-indicator-17" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="17"></span>
                 </div>
                 <div onclick="clickMapShop(18)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div>
                     <span class="text-[8px] text-slate-400 block font-bold">テント6 (3-4)</span>
-                    <span class="text-[11px] font-black text-slate-700">ISOROKUお好み焼き🥢</span>
+                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">ISOROKUお好み焼き🥢 <span id="map-announce-indicator-18" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="18"></span>
                 </div>
@@ -261,28 +269,28 @@
                 <div onclick="clickMapShop(21)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div>
                     <span class="text-[8px] text-slate-400 block font-bold">テント9 (3-7)</span>
-                    <span class="text-[11px] font-black text-slate-700">焼鳥友子🍡</span>
+                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">焼鳥友子🍡 <span id="map-announce-indicator-21" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="21"></span>
                 </div>
                 <div onclick="clickMapShop(19)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div>
                     <span class="text-[8px] text-slate-400 block font-bold">テント7 (3-5)</span>
-                    <span class="text-[11px] font-black text-indigo-700">UDON販売作戦🥢</span>
+                    <span class="text-[11px] font-black text-indigo-700 flex items-center gap-1">UDON販売作戦🥢 <span id="map-announce-indicator-19" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="19"></span>
                 </div>
                 <div onclick="clickMapShop(20)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div>
                     <span class="text-[8px] text-slate-400 block font-bold">テント8 (3-6)</span>
-                    <span class="text-[11px] font-black text-slate-700">よしゆきッチン🍗</span>
+                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">よしゆきッチン🍗 <span id="map-announce-indicator-20" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="20"></span>
                 </div>
                 <div onclick="clickMapShop(12)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative">
                   <div>
                     <span class="text-[8px] text-slate-400 block font-bold">テント1 (2-5)</span>
-                    <span class="text-[11px] font-black text-rose-700">志あわせラーメン🍜</span>
+                    <span class="text-[11px] font-black text-rose-700 flex items-center gap-1">志あわせラーメン🍜 <span id="map-announce-indicator-12" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
                   </div>
                   <span class="map-fav-heart-indicator" data-shop-id="12"></span>
                 </div>
@@ -312,19 +320,19 @@
             <!-- Quick Link to Classroom Games -->
             <div class="grid grid-cols-2 gap-1.5 mt-2">
               <div onclick="clickMapShop(2)" class="bg-white hover:bg-purple-100 p-1.5 rounded-lg border border-purple-200 cursor-pointer text-center text-[10px] font-bold relative">
-                <span class="block text-[8px] text-purple-600">1-2</span>キミの実力🎯
+                <span class="block text-[8px] text-purple-600">1-2</span>キミの実力🎯 <span id="map-announce-indicator-2" class="hidden text-rose-500 animate-pulse text-[9px]">📢</span>
                 <span class="map-fav-heart-indicator" data-shop-id="2"></span>
               </div>
               <div onclick="clickMapShop(7)" class="bg-white hover:bg-purple-100 p-1.5 rounded-lg border border-purple-200 cursor-pointer text-center text-[10px] font-bold relative">
-                <span class="block text-[8px] text-purple-600">1-7</span>セブン遊戯堂👾
+                <span class="block text-[8px] text-purple-600">1-7</span>セブン遊戯堂👾 <span id="map-announce-indicator-7" class="hidden text-rose-500 animate-pulse text-[9px]">📢</span>
                 <span class="map-fav-heart-indicator" data-shop-id="7"></span>
               </div>
               <div onclick="clickMapShop(8)" class="bg-white hover:bg-purple-100 p-1.5 rounded-lg border border-purple-200 cursor-pointer text-center text-[10px] font-bold relative">
-                <span class="block text-[8px] text-purple-600">2-1</span>池口商店🏮
+                <span class="block text-[8px] text-purple-600">2-1</span>池口商店🏮 <span id="map-announce-indicator-8" class="hidden text-rose-500 animate-pulse text-[9px]">📢</span>
                 <span class="map-fav-heart-indicator" data-shop-id="8"></span>
               </div>
               <div onclick="clickMapShop(10)" class="bg-white hover:bg-purple-100 p-1.5 rounded-lg border border-purple-200 cursor-pointer text-center text-[10px] font-bold relative">
-                <span class="block text-[8px] text-purple-600">2-3</span>あつシー🎳
+                <span class="block text-[8px] text-purple-600">2-3</span>あつシー🎳 <span id="map-announce-indicator-10" class="hidden text-rose-500 animate-pulse text-[9px]">📢</span>
                 <span class="map-fav-heart-indicator" data-shop-id="10"></span>
               </div>
             </div>
@@ -502,7 +510,7 @@
         <div id="flag-vote-results" class="hidden space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-150">
           <div class="flex justify-between items-center">
             <span class="text-[10.5px] font-black text-emerald-600"><i class="fa-solid fa-circle-check"></i> ブロック旗投票完了！</span>
-            <span class="text-[9px] text-slate-400 font-bold">中間結果（割合）</span>
+            <span class="text-[9px] text-slate-400 font-bold">全員の投票結果</span>
           </div>
           <!-- 赤 -->
           <div class="space-y-1">
@@ -586,7 +594,7 @@
         <div id="art-vote-results" class="hidden space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-150">
           <div class="flex justify-between items-center">
             <span class="text-[10.5px] font-black text-emerald-600"><i class="fa-solid fa-circle-check"></i> つまようじ投票完了！</span>
-            <span class="text-[9px] text-slate-400 font-bold">中間結果（割合）</span>
+            <span class="text-[9px] text-slate-400 font-bold">全員の投票結果</span>
           </div>
           <!-- 赤 -->
           <div class="space-y-1">
@@ -656,7 +664,7 @@
           
           <!-- Live Tickets Status Widget -->
           <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-            <span class="text-[10px] font-black text-rose-600 block"><i class="fa-solid fa-ticket"></i> 【当日配布中】整理券の残り状況</span>
+            <span class="text-[10px] font-black text-rose-600 block"><i class="fa-solid fa-ticket"></i> 【リアルタイム同期中】整理券状況</span>
             <div class="grid grid-cols-2 gap-2" id="ticket-status-container">
               <!-- Rendered Dynamically -->
             </div>
@@ -675,7 +683,7 @@
         <div id="news-tab-content-bulletin" class="hidden space-y-4">
           <!-- Submission Form -->
           <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm space-y-2.5">
-            <span class="text-[10px] font-black text-slate-500 block">掲示板にメッセージを書き込む</span>
+            <span class="text-[10px] font-black text-slate-500 block">掲示板にメッセージを書き込む（全員に同期されます）</span>
             
             <div class="flex space-x-2">
               <select id="bulletin-sender-select" class="bg-slate-100 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-black text-slate-700 outline-none">
@@ -710,7 +718,7 @@
     </div>
   </div>
 
-  <!-- MODAL: SHOP DETAILS -->
+  <!-- ================== MODAL: SHOP DETAILS ================== -->
   <div id="shop-detail-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 hidden transition-opacity duration-300">
     <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl shadow-xl overflow-hidden transform translate-y-full transition-transform duration-300">
       
@@ -720,7 +728,7 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
         <span id="modal-class-badge" class="bg-white/25 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider inline-block">2-4</span>
-        <h3 id="modal-shop-name" class="text-xl font-black mt-2 leading-tight">プリプリームンプリプリームンオラ プリン屋さんだゾ</h3>
+        <h3 id="modal-shop-name" class="text-xl font-black mt-2 leading-tight">プリン屋さんだゾ</h3>
         <p id="modal-location-text" class="text-xs text-white/90 mt-1 flex items-center gap-1">
           <i class="fa-solid fa-location-dot"></i> 同窓会館 1F 食堂
         </p>
@@ -728,6 +736,16 @@
 
       <!-- Modal Content Body -->
       <div class="p-5 space-y-4">
+        
+        <!-- Shop-specific Announcement box (Pulsing Urgent Box if present) -->
+        <div id="modal-shop-announcement-box" class="hidden shop-announce-blink border-2 border-rose-500 p-3.5 rounded-2xl flex items-start space-x-2.5 text-xs text-rose-800">
+          <span class="text-xl">📢</span>
+          <div>
+            <span class="font-black text-rose-600 block text-[10px]">お店からの最新ニュース！</span>
+            <p id="modal-shop-announcement-text" class="font-extrabold text-slate-800 leading-normal mt-0.5">お知らせがここに表示されます。</p>
+          </div>
+        </div>
+
         <div>
           <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-1">お店のしょうかい / メニュー</span>
           <p id="modal-shop-desc" class="text-xs text-slate-600 leading-relaxed font-medium">なめらかプリン！</p>
@@ -819,18 +837,42 @@
 
   <!-- DEVELOPER/ADMIN CONTROL FLOATING SWITCH -->
   <div class="fixed bottom-4 right-4 z-50">
-    <button onclick="toggleAdminPanel()" class="bg-slate-800/90 text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition flex items-center justify-center border-2 border-white/20">
+    <button onclick="openAdminGate()" class="bg-slate-800/90 text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition flex items-center justify-center border-2 border-white/20">
       <i class="fa-solid fa-gears text-lg"></i>
     </button>
   </div>
 
+  <!-- ADMIN PASSCODE LOCK SCREEN OVERLAY -->
+  <div id="admin-lock-screen" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl space-y-4 text-center">
+      <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto text-xl">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <div>
+        <h3 class="text-sm font-black text-slate-800">管理者用ログインロック</h3>
+        <p class="text-[10px] text-slate-400 mt-1">模擬店お知らせや待ち時間を更新できます。<br>（デモパスコード: <span class="font-bold text-rose-500">2026</span>）</p>
+      </div>
+      <div class="space-y-2">
+        <input type="password" id="admin-passcode-input" placeholder="パスコードを入力..." class="w-full text-center tracking-widest px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm font-black">
+        <span id="admin-lock-error" class="text-[9px] text-rose-500 font-bold block h-4"></span>
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <button onclick="closeAdminGate()" class="bg-slate-100 hover:bg-slate-200 text-slate-500 py-2.5 rounded-2xl text-xs font-black transition">キャンセル</button>
+        <button onclick="verifyAdminPasscode()" class="bg-rose-500 hover:bg-rose-600 text-white py-2.5 rounded-2xl text-xs font-black transition">ログイン 🔓</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ADMIN PANEL DRAWER -->
-  <div id="admin-panel" class="fixed inset-x-0 bottom-0 bg-white border-t-2 border-slate-200 shadow-2xl z-50 max-w-md mx-auto p-4 rounded-t-3xl hidden">
-    <div class="flex justify-between items-center mb-3">
+  <div id="admin-panel" class="fixed inset-x-0 bottom-0 bg-white border-t-2 border-slate-200 shadow-2xl z-50 max-w-md mx-auto p-4 rounded-t-3xl hidden max-h-[85vh] overflow-y-auto">
+    <div class="flex justify-between items-center border-b pb-2 mb-3">
       <h3 class="text-xs font-black text-slate-800 flex items-center gap-1">
-        <i class="fa-solid fa-screwdriver-wrench text-rose-500"></i> 管理者・デモ用制御パネル
+        <i class="fa-solid fa-screwdriver-wrench text-rose-500"></i> 管理者・デモ用制御センター
       </h3>
-      <button onclick="toggleAdminPanel()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      <div class="flex items-center space-x-2">
+        <button onclick="logoutAdmin()" class="text-slate-400 hover:text-rose-500 text-[10px] font-bold border border-slate-200 rounded px-1.5 py-0.5">ログアウト</button>
+        <button onclick="closeAdminPanel()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
     </div>
 
     <!-- Mode Select Toggle -->
@@ -854,236 +896,363 @@
         <div class="flex justify-between text-[8px] font-bold text-slate-400">
           <span>10:15 (開演)</span>
           <span>11:00</span>
-          <span>11:40 (有志)</span>
-          <span>12:25 (書道)</span>
-          <span>13:00 (終了)</span>
-        </div>
-      </div>
-
-      <!-- Quick Spot Stamp simulation buttons -->
-      <div class="border-t border-slate-100 pt-3 space-y-3">
-        <!-- Ticket Admin controls -->
-        <div>
-          <span class="text-[9.5px] font-black text-slate-400 block mb-1">【整理券シミュレータ】残数の編集</span>
-          <div class="grid grid-cols-2 gap-1.5 text-[9px] font-black">
-            <button onclick="adjustAdminTicket(1, 5)" class="p-1.5 bg-slate-50 border rounded-xl">+5 ラーメン</button>
-            <button onclick="adjustAdminTicket(1, -5)" class="p-1.5 bg-slate-50 border rounded-xl">-5 ラーメン</button>
-            <button onclick="adjustAdminTicket(2, 2)" class="p-1.5 bg-slate-50 border rounded-xl">+2 クレープ</button>
-            <button onclick="adjustAdminTicket(2, -2)" class="p-1.5 bg-slate-50 border rounded-xl">-2 クレープ</button>
-          </div>
-        </div>
-
-        <div>
-          <span class="text-[9.5px] font-black text-slate-400 block mb-1.5">クイズ回答の強制クリアシミュレータ</span>
-          <div class="grid grid-cols-5 gap-1 text-[8px] font-bold">
-            <button onclick="simSolveQuiz(1)" class="p-1.5 bg-slate-50 hover:bg-slate-100 border rounded-lg">1.正門</button>
-            <button onclick="simSolveQuiz(2)" class="p-1.5 bg-slate-50 hover:bg-slate-100 border rounded-lg">2.体育館</button>
-            <button onclick="simSolveQuiz(3)" class="p-1.5 bg-slate-50 hover:bg-slate-100 border rounded-lg">3.同窓会</button>
-            <button onclick="simSolveQuiz(4)" class="p-1.5 bg-slate-50 hover:bg-slate-100 border rounded-lg">4.中庭</button>
-            <button onclick="simSolveQuiz(5)" class="p-1.5 bg-slate-50 hover:bg-slate-100 border rounded-lg">5.東駐</button>
-          </div>
-        </div>
-
-        <div>
-          <span class="text-[9.5px] font-black text-slate-400 block mb-1.5">データの初期化</span>
-          <div class="grid grid-cols-3 gap-1.5 text-[8.5px] font-black">
-            <button onclick="resetRally()" class="p-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-250 rounded-xl flex items-center justify-center">
-               クイズリセット
-            </button>
-            <button onclick="resetVotes()" class="p-2 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-250 rounded-xl flex items-center justify-center">
-               投票リセット
-            </button>
-            <button onclick="clearBulletinBoard()" class="p-2 bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-250 rounded-xl flex items-center justify-center">
-               掲示板リセット
-            </button>
-          </div>
+          <span>11:40</span>
+          <span>12:25</span>
+          <span>13:00</span>
         </div>
       </div>
     </div>
+
+    <!-- Live Administration Controls Grid -->
+    <div class="space-y-4 pt-3 border-t">
+      
+      <!-- 📢 模擬店ごとのお知らせ ＆ 待ち時間のリアルタイム編集 -->
+      <div class="bg-rose-50/50 border border-rose-100 p-3 rounded-2xl space-y-2.5">
+        <span class="text-[10px] font-black text-rose-600 block"><i class="fa-solid fa-store"></i> 模擬店ごとのお知らせと混雑度の編集（全体同期）</span>
+        
+        <div class="space-y-2">
+          <!-- Select Shop -->
+          <div>
+            <label class="text-[8.5px] font-black text-slate-400 block mb-1">対象の模擬店クラス</label>
+            <select id="admin-shop-select" onchange="loadSelectedShopAdminData()" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-black text-slate-700 outline-none">
+              <!-- Dynamically populated in js -->
+            </select>
+          </div>
+
+          <!-- Select Status -->
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-[8.5px] font-black text-slate-400 block mb-1">待ち時間・状況</label>
+              <select id="admin-shop-status" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-black text-slate-700 outline-none">
+                <option value="待ちなし">待ちなし</option>
+                <option value="５分">５分</option>
+                <option value="10分">10分</option>
+                <option value="20分">20分</option>
+                <option value="30分以上">30分以上</option>
+                <option value="完売">完売</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-[8.5px] font-black text-slate-400 block mb-1">整理券配布部</label>
+              <input type="text" id="admin-shop-limit" placeholder="例: 11:30の部" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-700 focus:outline-none">
+            </div>
+          </div>
+
+          <!-- Shop Announcement text -->
+          <div>
+            <label class="text-[8.5px] font-black text-slate-400 block mb-1">お店からのお知らせメッセージ（個別配信）</label>
+            <input type="text" id="admin-shop-announce-text" placeholder="例: 大好評につき13時より再販売します！" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-400">
+            <p class="text-[8px] text-slate-400 font-bold mt-1">※空欄にして更新すると個別お知らせを削除できます。</p>
+          </div>
+
+          <!-- Update Button -->
+          <button onclick="updateShopDetailsFromAdmin()" class="w-full bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black py-2 rounded-xl text-xs shadow-sm active:scale-95 transition-all flex items-center justify-center gap-1">
+            <i class="fa-solid fa-circle-check"></i> この模擬店の情報を即時反映する
+          </button>
+        </div>
+      </div>
+
+      <!-- Ticket Admin controls -->
+      <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-2">
+        <span class="text-[10px] font-black text-slate-500 block"><i class="fa-solid fa-ticket"></i> 【整理券シミュレータ】残数の編集</span>
+        <div class="grid grid-cols-2 gap-1.5 text-[9px] font-black">
+          <button onclick="adjustAdminTicket(1, 5)" class="p-1.5 bg-white border rounded-xl">+5 ラーメン</button>
+          <button onclick="adjustAdminTicket(1, -5)" class="p-1.5 bg-white border rounded-xl">-5 ラーメン</button>
+          <button onclick="adjustAdminTicket(2, 2)" class="p-1.5 bg-white border rounded-xl">+2 クレープ</button>
+          <button onclick="adjustAdminTicket(2, -2)" class="p-1.5 bg-white border rounded-xl">-2 クレープ</button>
+        </div>
+      </div>
+
+      <!-- Quick Stamp Simulation -->
+      <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-2">
+        <span class="text-[10px] font-black text-slate-500 block"><i class="fa-solid fa-stamp"></i> クイズ回答の強制クリアシミュレータ</span>
+        <div class="grid grid-cols-5 gap-1 text-[8px] font-bold">
+          <button onclick="simSolveQuiz(1)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">1.正門</button>
+          <button onclick="simSolveQuiz(2)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">2.体育館</button>
+          <button onclick="simSolveQuiz(3)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">3.同窓会</button>
+          <button onclick="simSolveQuiz(4)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">4.中庭</button>
+          <button onclick="simSolveQuiz(5)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">5.東駐</button>
+        </div>
+      </div>
+
+      <!-- Database Wipe buttons -->
+      <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-2">
+        <span class="text-[10px] font-black text-slate-500 block"><i class="fa-solid fa-trash-can"></i> データの初期化</span>
+        <div class="grid grid-cols-3 gap-1.5 text-[8.5px] font-black">
+          <button onclick="resetRally()" class="p-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-250 rounded-xl flex items-center justify-center">
+             クイズリセット
+          </button>
+          <button onclick="resetVotes()" class="p-2 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-250 rounded-xl flex items-center justify-center">
+             投票リセット
+          </button>
+          <button onclick="clearAllAppStatusData()" class="p-2 bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-250 rounded-xl flex items-center justify-center">
+             全設定を初期化
+          </button>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <!-- JAVASCRIPT APP ENGINE -->
-  <script>
-    // ----------------------------------------------------
-    // 🏠 DATA ARCHITECTURE & DATABASE
-    // ----------------------------------------------------
-    const shops = [
-      // 1年生 (遊戯サービス・キーホルダー・ドリンク)
-      { id: 1, class: "1-1", name: "NTY〜あなたのとなりに〜", category: "goods", location: "2棟 1F", desc: "【協力店舗: Serenity】世界にひとつだけ！手作り感あふれる可愛いキーホルダーを販売します！🎒", mascotTip: "数量限定なのでお早めに寄ってみてね！", status: "待ちなし" },
-      { id: 2, class: "1-2", name: "キミの実力試してみる！？", category: "play", location: "2棟 1F", desc: "【遊戯・サービス】的を狙ってハイスコアを目指そう！大人気の体験型遊戯ゲームコーナー！🎯", mascotTip: "気軽に挑戦できて面白い景品も用意されているよ！", status: "10分" },
-      { id: 3, class: "1-3", name: "和宝", category: "food", location: "2棟 2F", desc: "【協力店舗: とらや】上品な甘さともちもちの食感がたまらない絶品の老舗和菓子を販売しています。🍡", mascotTip: "お茶と一緒に楽しむとさらに美味しいよ！", status: "５分" },
-      { id: 4, class: "1-4", name: "茶。-お茶の深みについて-", category: "goods", location: "2棟 2F", desc: "【協力店舗: 茶舗ふりゅう】お茶の深みについての展示や特別な日本茶の体験・販売スペースです。🍵", mascotTip: "ホッと一息つきたい時に最高の隠れ家スポットだよ！", status: "待ちなし" },
-      { id: 5, class: "1-5", name: "Drink Lab", category: "food", location: "2棟 3F", desc: "【ドリンク】冷たくて爽快なソフトドリンク各種が勢揃い！喉を潤してフェスを楽しもう！🥤", mascotTip: "お好みの冷たいジュースで疲れを吹き飛ばそう！", status: "10分" },
-      { id: 6, class: "1-6", name: "買ってクレープ", category: "food", location: "2棟 3F", desc: "【協力店舗: シュシュクレープ】もっちもちの皮にクリームとフルーツをたっぷり包んだ大人気クレープ！🧁", mascotTip: "甘党の人には絶対に見逃してほしくない一品だよ！", status: "待ちなし" },
-      { id: 7, class: "1-7", name: "球式会社 セブン遊戯堂", category: "play", location: "2棟 3F", desc: "【遊戯】セブン遊戯堂が提供する、みんなで盛り上がれるハラハラドキドキのゲームアトラクション！👾", mascotTip: "友達と一緒に遊ぶとさらにエキサイトすること間違いなし！", status: "30分以上" },
+  <!-- JAVASCRIPT CLOUD SYNC SYSTEM -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, onSnapshot, addDoc, query, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-      // 2年生 (南西校舎＆北エリアテント＆同窓会館)
-      { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "4棟 1F", desc: "【遊戯】昭和レトロでエモい雰囲気が漂う池口商店のおもしろゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "20分" },
-      { id: 9, class: "2-2", name: "肉包", category: "food", location: "中庭特設テント", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る中華肉まんです。🐼", mascotTip: "中庭のベンチでハフハフしながら食べてみてね！", status: "完売" },
-      { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "4棟 2F", desc: "【遊戯】手に汗握る面白さ！慎重にボールをゴールへ運ぶ特製ボール転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分" },
-      { id: 11, class: "2-4", name: "プリプリーンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "20分" },
-      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "東駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "30分以上" },
-      { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
-      { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュです！🥐", mascotTip: "食堂内のおしゃれなカフェ気分を味わいながらどうぞ！", status: "10分" },
+    // ----------------------------------------------------
+    // ⚙️ FIREBASE INITIALIZATION & SECURITY PATHS
+    // ----------------------------------------------------
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'kyusho-fes-2026-prod';
+    const firebaseConfig = JSON.parse(__firebase_config);
 
-      // 3年生 (駐車場特設テント)
-      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "西駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お昼時は一番並ぶから、時間を少しずらすのが賢いよ！", status: "５分" },
-      { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "西駐車場 テント4", desc: "【協力店舗: BELLE CURRY】スパイスの香りが駐車場中に漂う！じっくり煮込まれた本格旨口カレーライス🍛", mascotTip: "辛すぎずコクがあって、どんどんスプーンが進む絶品カレー！", status: "10分" },
-      { id: 17, class: "3-3", name: "今日タピいいじゃん", category: "food", location: "西駐車場 テント5", desc: "【協力店舗: DDDコーヒー】モチモチのタピオカと極上まろやかミルクティーが最高にマッチした一杯🧋", mascotTip: "ストローで吸い込む楽しさと贅沢な甘さに癒されよう！", status: "完売" },
-      { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "西駐車場 テント6", desc: "【協力店舗: 磯六】アツアツの鉄板で豪快に焼き上げる香ばしいソースお好み焼き！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われて、お腹がグーと鳴っちゃうね！", status: "20分" },
-      { id: 19, class: "3-5", name: "UDON販売作戦 〜立花のプライド〜", category: "food", location: "東駐車場 テント7", desc: "【協力店舗: 立花うどん】お出汁の香りがふんわり広がる！コシと喉越しにプライドをかけた究極の手打ちうどん🥢", mascotTip: "温かいおつゆが疲れた体にじんわり染み渡る極上の味！", status: "待ちなし" },
-      { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "food", location: "東駐車場 テント8", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "10分" },
-      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "東駐車場 テント9", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めたつくね串＆皮焼きコンボ！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて長蛇の列ができるよ！", status: "30分以上" }
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    let userId = crypto.randomUUID(); // Fallback before auth
+    let isUserAuthenticated = false;
+
+    // ----------------------------------------------------
+    // 🏠 MASTER LOCAL DATABASE (Synchronized with cloud)
+    // ----------------------------------------------------
+    const initialShops = [
+      { id: 1, class: "1-1", name: "NTY〜あなたのとなりに〜", category: "goods", location: "2棟 1F", desc: "【協力店舗: Serenity】世界にひとつだけ！手作り感あふれる可愛いキーホルダーを販売します！🎒", mascotTip: "数量限定なのでお早めに寄ってみてね！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 2, class: "1-2", name: "キミの実力試してみる！？", category: "play", location: "南西校舎 1F", desc: "【遊戯・サービス】的を狙ってハイスコアを目指そう！大人気の体験型遊戯ゲームコーナー！🎯", mascotTip: "気軽に挑戦できて面白い景品も用意されているよ！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 3, class: "1-3", name: "和宝", category: "food", location: "2棟 2F", desc: "【協力店舗: とらや】上品な甘さともちもちの食感がたまらない絶品の老舗和菓子を販売しています。🍡", mascotTip: "お茶と一緒に楽しむとさらに美味しいよ！", status: "５分", currentLimit: "先着順" },
+      { id: 4, class: "1-4", name: "茶。-お茶の深みについて-", category: "goods", location: "2棟 2F", desc: "【協力店舗: 茶舗ふりゅう】お茶の深みについての展示や特別な日本茶の体験・販売スペースです。🍵", mascotTip: "ホッと一息つきたい時に最高の隠れ家スポットだよ！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 5, class: "1-5", name: "Drink Lab", category: "food", location: "2棟 3F", desc: "【ドリンク】冷たくて爽快なソフトドリンク各種が勢揃い！喉を潤してフェスを楽しもう！🥤", mascotTip: "お好みの冷たいジュースで疲れを吹き飛ばそう！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 6, class: "1-6", name: "買ってクレープ", category: "food", location: "2棟 3F", desc: "【協力店舗: シュシュクレープ】もっちもちの皮にクリームとフルーツをたっぷり包んだ大人気クレープ！🧁", mascotTip: "甘党の人には絶対に見逃してほしくない一品だよ！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 7, class: "1-7", name: "球式会社 セブン遊戯堂", category: "play", location: "南西校舎 1F", desc: "【遊戯】セブン遊戯堂が提供する、みんなで盛り上がれるハラハラドキドキのゲームアトラクション！👾", mascotTip: "友達と一緒に遊ぶとさらにエキサイトすること間違いなし！", status: "20分", currentLimit: "先着順" },
+      { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "南西校舎 1F", desc: "【遊戯】昭和レトロでエモい雰囲気が漂う池口商店のおもしろゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 9, class: "2-2", name: "肉包", category: "food", location: "中庭特設テント", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る中華肉まんです。🐼", mascotTip: "中庭のベンチでハフハフしながら食べてみてね！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "南西校舎 2F", desc: "【遊戯】手に汗握る面白さ！慎重にボールをゴールへ運ぶ特製ボール転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分", currentLimit: "先着順" },
+      { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "東駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "10分", currentLimit: "11:30の部" },
+      { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュです！🥐", mascotTip: "食堂内のおしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "西駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お昼時は一番並ぶから、時間を少しずらすのが賢いよ！", status: "10分", currentLimit: "先着順" },
+      { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "西駐車場 テント4", desc: "【協力店舗: BELLE CURRY】スパイスの香りが駐車場中に漂う！じっくり煮込まれた本格旨口カレーライス🍛", mascotTip: "辛すぎずコクがあって、どんどんスプーンが進む絶品カレー！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 17, class: "3-3", name: "今日タピいいじゃん", category: "food", location: "西駐車場 テント5", desc: "【協力店舗: DDDコーヒー】モチモチのタピオカと極上まろやかミルクティーが最高にマッチした一杯🧋", mascotTip: "ストローで吸い込む楽しさと贅沢な甘さに癒されよう！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "西駐車場 テント6", desc: "【協力店舗: 磯六】アツアツの鉄板で豪快に焼き上げる香ばしいソースお好み焼き！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われて、お腹がグーと鳴っちゃうね！", status: "10分", currentLimit: "先着順" },
+      { id: 19, class: "3-5", name: "UDON販売作戦 〜立花のプライド〜", category: "food", location: "東駐車場 テント7", desc: "【協力店舗: 立花うどん】お出汁の香りがふんわり広がる！コシと喉越しにプライドをかけた究極の手打ちうどん🥢", mascotTip: "温かいおつゆが疲れた体にじんわり染み渡る極上の味！", status: "５分", currentLimit: "先着順" },
+      { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "food", location: "東駐車場 テント8", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "待ちなし", currentLimit: "先着順" },
+      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "東駐車場 テント9", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めたつくね串＆皮焼きコンボ！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて長蛇の列ができるよ！", status: "20分", currentLimit: "先着順" }
     ];
 
-    // STAGE TIMELINE (10月3日 体育館ステージ タイムスケジュール完全同期)
+    let shops = JSON.parse(JSON.stringify(initialShops));
+    let shopAnnouncements = {};
+
     const stageProgram = [
       { time: "10:15", duration: "30分", title: "🎺 吹奏楽部", detail: "体育館中を圧倒する、伝統の美しさと迫力を兼ね備えた大迫力吹奏楽メドレー！" },
       { time: "10:45", duration: "35分", title: "💡 【Quest発表】", detail: "「総合的な探究の時間」で各クラスが地域・社会の課題解決のために練り上げた、感動のプレゼン発表！" },
-      { time: "11:20", duration: "10分", title: "🥋 【演武部門】", detail: "臨時練習の成果！気迫と統一された美しさに満ちた迫真の演武パフォーマンス！" },
+      { time: "11:20", duration: "10分", title: "🥋 【演舞部門】", detail: "臨時練習の成果！気迫と統一された美しさに満ちた迫真の演武パフォーマンス！" },
       { time: "11:30", duration: "10分", title: "💃 【ダンス部門】", detail: "流行のトレンド曲に合わせた一糸乱れぬキレキレダンスステージ！会場を一気に盛り上げます！" },
       { time: "11:40", duration: "35分", title: "🎤 【有志部門】 (1〜5ページ)", detail: "事前オーディションを実力で突破した5つの精鋭有志による、音楽・バンド・歌唱の夢の競演！" },
       { time: "12:25", duration: "35分", title: "🖌️ 書道部", detail: "音楽に合わせて巨大な紙に想いを力強く書き紡ぐ、久商祭クライマックスの大感動書道パフォーマンス！" }
     ];
 
-    // RALLY SPOTS DATA WITH LOCATIONAL TRIVIA QUIZZES
     const rallySpots = [
-      { 
-        id: 1, 
-        name: "正門前（総合本部）", 
-        icon: "🚧", 
-        loc: "正門前特設エリア", 
-        question: "正門をくぐってすぐの総合受付テントにある『久商祭2026のスローガン看板』に書かれている「Blooming」のあとのサブタイトルは、青春の何を咲かせよう？",
-        options: ["夢", "花", "恋"],
-        answer: 1, // "花" (index 1)
-        hint: "総合受付テントに大きく掲げられているメイン看板を見てみてね！"
-      },
-      { 
-        id: 2, 
-        name: "体育館（ステージ入口）", 
-        icon: "🏫", 
-        loc: "体育館エントランス", 
-        question: "体育館の正面玄関前に設置されている、来場者向けの『スリッパ返却箱（プラスチックコンテナ）』の色は何色？",
-        options: ["青色", "緑色", "赤色"],
-        answer: 0, // "青色"
-        hint: "体育館の入口のスリッパ置き場・回収所をよく見てみよう！"
-      },
-      { 
-        id: 3, 
-        name: "同窓会館（食堂フロア）", 
-        icon: "🏠", 
-        loc: "同窓会館食堂自動ドア付近", 
-        question: "同窓会館1階・食堂の入口に掲示されている「当日の学食特別メニュー表」で、久商名物プリン🍮の価格はいくらに設定されている？",
-        options: ["150円", "200円", "250円"],
-        answer: 1, // "200円"
-        hint: "同窓会館の扉に貼ってあるメニューチラシを覗いてみてね！"
-      },
-      { 
-        id: 4, 
-        name: "中庭特設テント", 
-        icon: "🌳", 
-        loc: "中庭テント本部付近", 
-        question: "中庭の美化本部横に設置されている、きゅうちゃんのイラストが描かれた『エコ分別ゴミ箱』が回収しているリサイクル資源はどれ？",
-        options: ["ペットボトルキャップ", "アルミ缶", "牛乳パック"],
-        answer: 0, // "ペットボトルキャップ"
-        hint: "中庭エコステーションの看板ときゅうちゃんのイラストゴミ箱を見てみてね！"
-      },
-      { 
-        id: 5, 
-        name: "東駐車場（ラーメン店付近）", 
-        icon: "🏕️", 
-        loc: "東駐車場案内看板の横", 
-        question: "志あわせラーメンが並ぶ東駐車場テント列の入口で、元気にパタパタなびいている「のぼり旗」のベースの色は何色？",
-        options: ["赤色のぼり", "黄色のぼり", "青色のぼり"],
-        answer: 0, // "赤色のぼり"
-        hint: "ラーメン店テントの前に立っている元気なのぼり旗を観察しよう！"
-      }
+      { id: 1, name: "正門前（総合本部）", icon: "🚧", loc: "正門前特設エリア", question: "正門をくぐってすぐの総合受付テントにある『久商祭2026のスローガン看板』に書かれている「Blooming」のあとのサブタイトルは、青春の何を咲かせよう？", options: ["夢", "花", "恋"], answer: 1, hint: "総合受付テントに大きく掲げられているメイン看板を見てみてね！" },
+      { id: 2, name: "体育館（ステージ入口）", icon: "🏫", loc: "体育館エントランス", question: "体育館の正面玄関前に設置されている、来場者向けの『スリッパ返却箱（プラスチックコンテナ）』の色は何色？", options: ["青色", "緑色", "赤色"], answer: 0, hint: "体育館の入口のスリッパ置き場・回収所をよく見てみよう！" },
+      { id: 3, name: "同窓会館（食堂フロア）", icon: "🏠", loc: "同窓会館食堂自動ドア付近", question: "同窓会館1階・食堂の入口に掲示されている「当日の学食特別メニュー表」で、久商名物プリン🍮の価格はいくらに設定されている？", options: ["150円", "200円", "250円"], answer: 1, hint: "同窓会館の扉に貼ってあるメニューチラシを覗いてみてね！" },
+      { id: 4, name: "中庭特設テント", icon: "🌳", loc: "中庭テント本部付近", question: "中庭の美化本部横に設置されている、きゅうちゃんのイラストが描かれた『エコ分別ゴミ箱』が回収しているリサイクル資源はどれ？", options: ["ペットボトルキャップ", "アルミ缶", "牛乳パック"], answer: 0, hint: "中庭エコステーションの看板ときゅうちゃんのイラストゴミ箱を見てみてね！" },
+      { id: 5, name: "東駐車場（ラーメン店付近）", icon: "🏕️", loc: "東駐車場案内看板の横", question: "志あわせラーメンが並ぶ東駐車場テント列の入口で、元気にパタパタなびいている「のぼり旗」のベースの色は何色？", options: ["赤色のぼり", "黄色のぼり", "青色のぼり"], answer: 0, hint: "ラーメン店テントの前に立っている元気なのぼり旗を観察しよう！" }
     ];
-
-    // INITIAL LIVE ANNOUNCEMENTS & TICKETS
-    const defaultAnnouncements = [
-      { id: 1, time: "10:15", badge: "重要", text: "久商祭の体育館ステージが「吹奏楽部」のパフォーマンスで開幕しました！みなさん体育館へ！🎺", isUrgent: false },
-      { id: 2, time: "09:45", badge: "整理券", text: "2-5 「志あわせラーメン」の11:30配布分整理券は、まもなく配布終了となります！🍜", isUrgent: true },
-      { id: 3, time: "09:15", badge: "開催", text: "久商祭デジタルナビがオープンしました！スタンプラリーやブロック投票にぜひご参加ください！✨", isUrgent: false }
-    ];
-
-    const defaultTickets = [
-      { id: 1, name: "2-5 志あわせラーメン", currentLimit: "11:30の部", remaining: 12, total: 50 },
-      { id: 2, name: "2-4 プリン屋さんだゾ", currentLimit: "先着順（制限中）", remaining: 4, total: 30 }
-    ];
-
-    const defaultBulletinPosts = [
-      { sender: "久商生A", time: "10:12", text: "1-2のキミの実力、めっちゃ面白いからオススメ！🎯" },
-      { sender: "来場者A", time: "10:05", text: "西駐車場のカレー🍛、スパイスめっちゃ効いてて美味しい！ナンがフカフカでした！" },
-      { sender: "きゅうちゃんファン", time: "09:50", text: "受付できゅうちゃんクイズラリーのグッズ貰えた！！超かわいいので絶対みんなやった方がいい！" }
-    ];
-
-    // ----------------------------------------------------
-    // ⚙️ STATE ENGINE
-    // ----------------------------------------------------
-    let currentTab = 'map';
-    let currentNewsTab = 'notices';
-    let clockMode = 'auto'; 
-    let activeCategoryFilter = 'all';
-    let favorites = [];
-    let completedStamps = []; // Store solved quiz spot IDs
-
-    // VOTE SYSTEM STATE
-    const LS_VOTE_FLAG_KEY = 'kyushofes_vote_flag_2026';
-    const LS_VOTE_ART_KEY = 'kyushofes_vote_art_2026';
-    const LS_ANNOUNCE_KEY = 'kyushofes_announce_2026';
-    const LS_TICKET_KEY = 'kyushofes_tickets_2026';
-    const LS_BULLETIN_KEY = 'kyushofes_bulletin_2026';
-
-    const flagBaseVotes = { red: 142, blue: 158, yellow: 119 };
-    const artBaseVotes = { red: 125, blue: 111, yellow: 148 };
-
-    let userVoteFlag = null;
-    let userVoteArt = null;
 
     let announcements = [];
     let tickets = [];
     let bulletinPosts = [];
 
-    // LocalStorage Keys
+    // Local-only state variables
+    let currentTab = 'map';
+    let currentNewsTab = 'notices';
+    let clockMode = 'auto'; 
+    let activeCategoryFilter = 'all';
+    let favorites = [];
+    let completedStamps = [];
+
+    // Realtime voting summaries compiled locally from Firestore records
+    let votesFlagSummary = { red: 142, blue: 158, yellow: 119 };
+    let votesArtSummary = { red: 125, blue: 111, yellow: 148 };
+    let userVoteFlag = null;
+    let userVoteArt = null;
+
     const LS_FAV_KEY = 'kyushofes_favs_2026';
     const LS_STAMP_KEY = 'kyushofes_stamps_2026';
 
     // ----------------------------------------------------
-    // 🚀 INITIALIZATION
+    // 🔐 AUTHENTICATION BEFORE QUERIES (RULE 3)
     // ----------------------------------------------------
-    window.onload = function() {
-      // Load Favorites
+    async function startAuthenticationFlow() {
+      try {
+        const initialToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        if (initialToken) {
+          await signInWithCustomToken(auth, initialToken);
+        } else {
+          await signInAnonymously(auth);
+        }
+      } catch (err) {
+        console.error("Authentication failed: ", err);
+      }
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        userId = user.uid;
+        isUserAuthenticated = true;
+        // Start streaming collection data after auth
+        setupRealtimeSynchronizations();
+      }
+    });
+
+    // ----------------------------------------------------
+    // 📡 REALTIME FIREBASE SYNCHRONIZATIONS (RULE 1, RULE 2)
+    // ----------------------------------------------------
+    function setupRealtimeSynchronizations() {
+      if (!isUserAuthenticated) return;
+
+      // 1. Synchronize bulletin board collection
+      const bulletinRef = collection(db, 'artifacts', appId, 'public', 'data', 'bulletin');
+      onSnapshot(bulletinRef, (snapshot) => {
+        const posts = [];
+        snapshot.forEach((doc) => {
+          posts.push({ id: doc.id, ...doc.data() });
+        });
+        // Sort in memory by time (descending)
+        posts.sort((a, b) => b.timestamp - a.timestamp);
+        bulletinPosts = posts;
+        renderNewsTabContents();
+      }, (err) => {
+        console.error("Error fetching bulletin logs: ", err);
+      });
+
+      // 2. Synchronize dynamic shop parameters (waiting lists and customized announcments)
+      const shopsRef = collection(db, 'artifacts', appId, 'public', 'data', 'shops');
+      onSnapshot(shopsRef, (snapshot) => {
+        snapshot.forEach((docSnap) => {
+          const cloudShop = docSnap.data();
+          const targetId = parseInt(docSnap.id);
+          
+          // Apply changes to master local array
+          const localShop = shops.find(s => s.id === targetId);
+          if (localShop) {
+            localShop.status = cloudShop.status;
+            localShop.currentLimit = cloudShop.currentLimit;
+          }
+
+          // Populate custom shop announcment strings
+          if (cloudShop.announcement) {
+            shopAnnouncements[targetId] = cloudShop.announcement;
+          } else {
+            delete shopAnnouncements[targetId];
+          }
+        });
+        renderShopList();
+        updateMapAnnouncementIndicators();
+      }, (err) => {
+        console.error("Error fetching shop data sync: ", err);
+      });
+
+      // 3. Synchronize live ticket count status
+      const ticketsRef = collection(db, 'artifacts', appId, 'public', 'data', 'tickets');
+      onSnapshot(ticketsRef, (snapshot) => {
+        const cloudTickets = [];
+        snapshot.forEach((docSnap) => {
+          cloudTickets.push({ id: parseInt(docSnap.id), ...docSnap.data() });
+        });
+        if (cloudTickets.length > 0) {
+          // Sort by id asc
+          cloudTickets.sort((a, b) => a.id - b.id);
+          tickets = cloudTickets;
+        } else {
+          // Push default template values on first run
+          initializeCloudTicketDefaults();
+        }
+        renderNewsTabContents();
+      }, (err) => {
+        console.error("Error fetching ticket counters: ", err);
+      });
+
+      // 4. Synchronize votes collection for block flags and toothpick art
+      const votesRef = collection(db, 'artifacts', appId, 'public', 'data', 'votes');
+      onSnapshot(votesRef, (snapshot) => {
+        // Reset base counts
+        votesFlagSummary = { red: 142, blue: 158, yellow: 119 };
+        votesArtSummary = { red: 125, blue: 111, yellow: 148 };
+        userVoteFlag = null;
+        userVoteArt = null;
+
+        snapshot.forEach((docSnap) => {
+          const record = docSnap.data();
+          const voterId = docSnap.id;
+
+          // Increment summaries
+          if (record.flag) {
+            votesFlagSummary[record.flag] = (votesFlagSummary[record.flag] || 0) + 1;
+            if (voterId === userId) {
+              userVoteFlag = record.flag;
+            }
+          }
+          if (record.art) {
+            votesArtSummary[record.art] = (votesArtSummary[record.art] || 0) + 1;
+            if (voterId === userId) {
+              userVoteArt = record.art;
+            }
+          }
+        });
+
+        renderVoteSection();
+        updateVoteNotificationBadge();
+      }, (err) => {
+        console.error("Error listening to votes collection: ", err);
+      });
+
+      // 5. Synchronize central announcements
+      const announcesRef = collection(db, 'artifacts', appId, 'public', 'data', 'announcements');
+      onSnapshot(announcesRef, (snapshot) => {
+        const results = [];
+        snapshot.forEach((docSnap) => {
+          results.push({ id: docSnap.id, ...docSnap.data() });
+        });
+        results.sort((a, b) => b.timestamp - a.timestamp);
+        announcements = results.length > 0 ? results : [
+          { id: "def-1", time: "10:15", badge: "重要", text: "久商祭の体育館ステージが「吹奏楽部」のパフォーマンスで開幕しました！みなさん体育館へ！🎺", timestamp: 1, isUrgent: false },
+          { id: "def-2", time: "09:45", badge: "整理券", text: "2-5 「志あわせラーメン」の11:30配布分整理券は、まもなく配布終了となります！🍜", timestamp: 2, isUrgent: true }
+        ];
+        renderNewsTabContents();
+      }, (err) => {
+        console.error("Error listening to central logs: ", err);
+      });
+    }
+
+    async function initializeCloudTicketDefaults() {
+      if (!isUserAuthenticated) return;
+      const t1Ref = doc(db, 'artifacts', appId, 'public', 'data', 'tickets', '1');
+      const t2Ref = doc(db, 'artifacts', appId, 'public', 'data', 'tickets', '2');
+      await setDoc(t1Ref, { name: "2-5 志あわせラーメン", currentLimit: "11:30の部", remaining: 12, total: 50 });
+      await setDoc(t2Ref, { name: "2-4 プリン屋さんだゾ", currentLimit: "先着順（制限中）", remaining: 4, total: 30 });
+    }
+
+    // ----------------------------------------------------
+    // 🚀 INIT FLOWS
+    // ----------------------------------------------------
+    window.addEventListener('load', async () => {
+      // Load Local Favorites and Stamps
       const storedFavs = localStorage.getItem(LS_FAV_KEY);
-      if (storedFavs) {
-        favorites = JSON.parse(storedFavs);
-      }
+      if (storedFavs) favorites = JSON.parse(storedFavs);
       
-      // Load Completed Quiz Stamps
       const storedStamps = localStorage.getItem(LS_STAMP_KEY);
-      if (storedStamps) {
-        completedStamps = JSON.parse(storedStamps);
-      }
+      if (storedStamps) completedStamps = JSON.parse(storedStamps);
 
-      // Load Announcements, Tickets, and Bulletin Board Posts
-      const storedAnnounce = localStorage.getItem(LS_ANNOUNCE_KEY);
-      announcements = storedAnnounce ? JSON.parse(storedAnnounce) : [...defaultAnnouncements];
-      
-      const storedTickets = localStorage.getItem(LS_TICKET_KEY);
-      tickets = storedTickets ? JSON.parse(storedTickets) : [...defaultTickets];
+      // Start Cloud Connection
+      await startAuthenticationFlow();
 
-      const storedBulletin = localStorage.getItem(LS_BULLETIN_KEY);
-      bulletinPosts = storedBulletin ? JSON.parse(storedBulletin) : [...defaultBulletinPosts];
-
-      // Load Votes
-      userVoteFlag = localStorage.getItem(LS_VOTE_FLAG_KEY);
-      userVoteArt = localStorage.getItem(LS_VOTE_ART_KEY);
-
-      // Start Clock Loop
+      // Setup UI
+      populateAdminShopDropdown();
       setInterval(updateClock, 1000);
       updateClock();
 
-      // Initial Renders
       renderShopList();
       renderStageTimeline();
       renderRallySpots();
@@ -1091,10 +1260,7 @@
       updateMapHearts();
       checkActiveStageProgress();
       updateVoteNotificationBadge();
-      
-      // Initialize News Board Content
-      renderNewsTabContents();
-    };
+    });
 
     // ----------------------------------------------------
     // ⏰ TIME & CLOCK LOGIC
@@ -1115,9 +1281,9 @@
     function updateClock() {
       const now = getAppTime();
       const timeStr = now.toTimeString().split(' ')[0];
-      document.getElementById('header-time-string').innerText = timeStr;
+      const clockEl = document.getElementById('header-time-string');
+      if (clockEl) clockEl.innerText = timeStr;
 
-      // Update interactive stage highlights dynamically
       checkActiveStageProgress();
     }
 
@@ -1132,7 +1298,7 @@
         autoBtn.className = "py-2 rounded-lg text-center bg-white text-slate-800 shadow-sm";
         demoBtn.className = "py-2 rounded-lg text-center text-slate-500 hover:text-slate-700";
         demoCtrls.classList.add('hidden');
-        realTimeBadge.innerHTML = `<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1 animate-ping"></span>自動時計連動中`;
+        realTimeBadge.innerHTML = `<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1 animate-ping"></span>クラウド同期中`;
         realTimeBadge.className = "bg-emerald-100 text-emerald-800 text-[9px] font-black px-2 py-0.5 rounded-full flex items-center mb-0.5";
       } else {
         demoBtn.className = "py-2 rounded-lg text-center bg-white text-slate-800 shadow-sm";
@@ -1158,14 +1324,9 @@
     // ----------------------------------------------------
     function switchTab(tabId) {
       currentTab = tabId;
-      
-      // Hide all tabs
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      
-      // Show active tab
       document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
 
-      // Update button classes
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('bg-rose-500', 'text-white', 'shadow-sm');
         btn.classList.add('text-slate-500', 'hover:bg-slate-100');
@@ -1175,7 +1336,6 @@
       activeBtn.classList.remove('text-slate-500', 'hover:bg-slate-100');
       activeBtn.classList.add('bg-rose-500', 'text-white', 'shadow-sm');
 
-      // Render items on navigation if required
       if (tabId === 'shops') {
         renderShopList();
       } else if (tabId === 'vote') {
@@ -1186,7 +1346,7 @@
     }
 
     // ----------------------------------------------------
-    // 🍔 SHIELDED CORE SHOPPING ENGINE
+    // 🍔 SHOPS MANAGEMENT RENDERERS
     // ----------------------------------------------------
     function getStatusConfig(status) {
       let cssClass = "bg-slate-100 text-slate-700";
@@ -1216,6 +1376,7 @@
 
     function renderShopList() {
       const container = document.getElementById('shop-list-container');
+      if (!container) return;
       const searchVal = document.getElementById('shop-search-input').value.toLowerCase();
       
       container.innerHTML = '';
@@ -1265,6 +1426,17 @@
 
         const statusConfig = getStatusConfig(shop.status);
 
+        const customAnnounce = shopAnnouncements[shop.id];
+        let announceHtml = "";
+        if (customAnnounce && customAnnounce.trim() !== "") {
+          announceHtml = `
+            <div class="mt-2.5 shop-announce-blink border border-rose-200 p-2.5 rounded-2xl text-[10.5px] font-black text-rose-800 flex items-start gap-1.5 shadow-sm">
+              <span>📢</span>
+              <span>${customAnnounce}</span>
+            </div>
+          `;
+        }
+
         const card = document.createElement('div');
         card.className = `bg-white p-4 rounded-3xl border border-slate-200 hover:shadow-md transition duration-200 relative`;
         card.innerHTML = `
@@ -1276,6 +1448,7 @@
               </div>
               <h3 class="text-sm font-black text-slate-800 mt-1">${shop.name}</h3>
               <p class="text-[11px] text-slate-500 line-clamp-2 leading-relaxed mt-1 font-medium">${shop.desc}</p>
+              ${announceHtml}
               <div class="flex items-center gap-3 text-[10px] text-slate-400 font-bold mt-2.5">
                 <span class="flex items-center gap-1"><i class="fa-solid fa-location-dot text-rose-400"></i> ${shop.location}</span>
                 <span class="px-2 py-0.5 rounded-full text-[9px] ${statusConfig.cssClass}">${statusConfig.text}</span>
@@ -1314,7 +1487,7 @@
     }
 
     // ----------------------------------------------------
-    // ❤️ FAVORITES CONTROLLER (LocalStorage Shielded)
+    // ❤️ FAVORITES LOGIC
     // ----------------------------------------------------
     function toggleFavorite(shopId) {
       const index = favorites.indexOf(shopId);
@@ -1331,6 +1504,7 @@
     function renderFavoritesRow() {
       const container = document.getElementById('favorites-bar-container');
       const row = document.getElementById('favorites-list-row');
+      if (!container || !row) return;
       
       if (favorites.length === 0) {
         container.classList.add('hidden');
@@ -1349,7 +1523,7 @@
         badge.className = "flex-shrink-0 bg-white border border-rose-200 px-3 py-1.5 rounded-2xl flex items-center space-x-1 cursor-pointer hover:bg-rose-100/50 transition";
         badge.innerHTML = `
           <span class="text-[9px] font-black text-rose-500">${shop.class}</span>
-          <span class="text-[10px] font-extrabold text-slate-700 truncate max-w-[80px]">${shop.name.replace(/^[0-9]-[0-9]\s*/, '')}</span>
+          <span class="text-[10px] font-extrabold text-slate-700 truncate max-w-[80px]">${shop.name}</span>
         `;
         row.appendChild(badge);
       });
@@ -1366,34 +1540,55 @@
       });
     }
 
+    function updateMapAnnouncementIndicators() {
+      shops.forEach(shop => {
+        const indicator = document.getElementById(`map-announce-indicator-${shop.id}`);
+        if (indicator) {
+          const announce = shopAnnouncements[shop.id];
+          if (announce && announce.trim() !== "") {
+            indicator.classList.remove('hidden');
+          } else {
+            indicator.classList.add('hidden');
+          }
+        }
+      });
+    }
+
     // ----------------------------------------------------
-    // 🗺️ INTERACTIVE MAP TRIGGER
+    // 🗺️ INTERACTIVE MAP CONTROLS
     // ----------------------------------------------------
     function clickMapShop(id) {
       if (id === 99) {
         showHQModal();
         return;
       }
-
       const shop = shops.find(s => s.id === id);
       if (!shop) return;
-
       openShopModal(shop);
     }
 
     // ----------------------------------------------------
-    // 💬 MODAL ANIMATION & RENDER ENGINE
+    // 💬 DETAIL MODALS SYSTEM
     // ----------------------------------------------------
-    let activeModalShopId = null;
+    let activeShopModalId = null;
 
     function openShopModal(shop) {
-      activeModalShopId = shop.id;
+      activeShopModalId = shop.id;
       
       document.getElementById('modal-class-badge').innerText = shop.class;
       document.getElementById('modal-shop-name').innerText = shop.name;
       document.getElementById('modal-location-text').innerHTML = `<i class="fa-solid fa-location-dot text-rose-200"></i> ${shop.location}`;
       document.getElementById('modal-shop-desc').innerText = shop.desc;
       document.getElementById('modal-mascot-tip').innerText = shop.mascotTip || "売り切れ前にぜひ行ってみてね！";
+
+      const modalAnnounceBox = document.getElementById('modal-shop-announcement-box');
+      const customAnnounce = shopAnnouncements[shop.id];
+      if (customAnnounce && customAnnounce.trim() !== "") {
+        modalAnnounceBox.classList.remove('hidden');
+        document.getElementById('modal-shop-announcement-text').innerText = customAnnounce;
+      } else {
+        modalAnnounceBox.classList.add('hidden');
+      }
 
       const statusConfig = getStatusConfig(shop.status);
       const statusBadge = document.getElementById('modal-status-badge');
@@ -1423,7 +1618,7 @@
 
     function syncModalHeartButton() {
       const btn = document.getElementById('modal-fav-action-btn');
-      if (favorites.includes(activeModalShopId)) {
+      if (favorites.includes(activeShopModalId)) {
         btn.innerHTML = `<i class="fa-solid fa-heart text-rose-500"></i> お気に入り中`;
         btn.className = "flex items-center gap-1.5 bg-rose-100 text-rose-700 px-4 py-2.5 rounded-xl border border-rose-200 transition-all font-black text-xs";
       } else {
@@ -1433,8 +1628,8 @@
     }
 
     function toggleFavoriteFromModal() {
-      if (!activeModalShopId) return;
-      toggleFavorite(activeModalShopId);
+      if (!activeShopModalId) return;
+      toggleFavorite(activeShopModalId);
       syncModalHeartButton();
     }
 
@@ -1445,7 +1640,7 @@
       modal.classList.remove('opacity-100');
       setTimeout(() => {
         modal.classList.add('hidden');
-        activeModalShopId = null;
+        activeShopModalId = null;
       }, 250);
     }
 
@@ -1458,7 +1653,8 @@
         location: "正面玄関前エリア",
         desc: "クイズラリークリア記念品の引き換えを行っております！その他、落とし物やお困りごとがございましたらお気軽にお立ち寄りください。🎁",
         mascotTip: "クイズが5問すべて正解になったら私の特製グッズが貰えるよ！楽しみにしててね！",
-        status: "待ちなし"
+        status: "待ちなし",
+        currentLimit: "先着順"
       };
       openShopModal(hqShopObj);
     }
@@ -1488,9 +1684,11 @@
       const quickBanner = document.getElementById('quick-stage-banner');
       const quickTitle = document.getElementById('current-stage-title');
 
+      if (!quickBanner || !quickTitle) return;
+
       if (currentEvent) {
         quickBanner.className = "bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-3 rounded-2xl shadow-md cursor-pointer hover:shadow-lg transition flex justify-between items-center animate-pulse-soft";
-        quickTitle.innerText = `${currentEvent.time} 舞台中 - ${currentEvent.title.replace(/^[^\s]*\s*/, '')}`;
+        quickTitle.innerText = `${currentEvent.time} 舞台中 - ${currentEvent.title}`;
       } else {
         quickBanner.className = "bg-gradient-to-r from-slate-700 to-slate-800 text-white p-3 rounded-2xl shadow-md cursor-pointer hover:shadow-lg transition flex justify-between items-center";
         quickTitle.innerText = "次のステージイベントをお楽しみに！";
@@ -1550,7 +1748,7 @@
     }
 
     // ----------------------------------------------------
-    // 🏅 RENEWED QUIZ RALLY CONTROLLER
+    // 🏅 QUIZ RALLY CONTROLLER
     // ----------------------------------------------------
     let activeQuizSpotId = null;
 
@@ -1612,7 +1810,6 @@
       document.getElementById('quiz-modal-question').innerText = spot.question;
       document.getElementById('quiz-modal-hint').innerText = spot.hint;
 
-      // Reset feedback
       const feedback = document.getElementById('quiz-result-feedback');
       feedback.className = "hidden";
       feedback.innerText = "";
@@ -1657,7 +1854,6 @@
       feedback.classList.remove('hidden');
       
       if (selectedIdx === spot.answer) {
-        // Correct Answer!
         feedback.className = "block text-center p-3 rounded-2xl font-black text-xs bg-emerald-100 text-emerald-800 border border-emerald-300";
         feedback.innerHTML = "🎉 正解です！ピンポンピンポーン！スタンプを獲得しました！";
         
@@ -1666,14 +1862,12 @@
           localStorage.setItem(LS_STAMP_KEY, JSON.stringify(completedStamps));
         }
 
-        // Lock options and reload after a short delay
         setTimeout(() => {
-          openQuizModal(spot); // Refresh with solved state
+          openQuizModal(spot);
           renderRallySpots();
         }, 1500);
 
       } else {
-        // Wrong Answer!
         feedback.className = "block text-center p-3 rounded-2xl font-black text-xs bg-rose-100 text-rose-800 border border-rose-300 animate-bounce";
         feedback.innerHTML = "😭 ざんねん！ちがうみたい。もういちど現地をよく見て考えてみてね！";
       }
@@ -1704,22 +1898,29 @@
     }
 
     // ----------------------------------------------------
-    // 🗳️ VISITOR VOTE SYSTEM (Interactive Engine)
+    // 🗳️ CLOUD-VOTE SYSTEM (RULE 1, RULE 3)
     // ----------------------------------------------------
-    function castVote(type, block) {
+    async function castVote(type, block) {
+      if (!isUserAuthenticated) return;
+
+      const userVoteRef = doc(db, 'artifacts', appId, 'public', 'data', 'votes', userId);
+      const docSnap = await getDoc(userVoteRef);
+
+      const currentRecord = docSnap.exists() ? docSnap.data() : {};
+      
       if (type === 'flag') {
         if (userVoteFlag) return;
+        currentRecord.flag = block;
         userVoteFlag = block;
-        localStorage.setItem(LS_VOTE_FLAG_KEY, block);
         showVoteToast(`ブロック旗：${getBlockNameJa(block)}に投票しました！`);
       } else if (type === 'art') {
         if (userVoteArt) return;
+        currentRecord.art = block;
         userVoteArt = block;
-        localStorage.setItem(LS_VOTE_ART_KEY, block);
         showVoteToast(`つまようじアート：${getBlockNameJa(block)}に投票しました！`);
       }
 
-      renderVoteSection();
+      await setDoc(userVoteRef, currentRecord);
       updateVoteNotificationBadge();
     }
 
@@ -1743,6 +1944,7 @@
 
     function updateVoteNotificationBadge() {
       const badge = document.getElementById('vote-badge');
+      if (!badge) return;
       if (!userVoteFlag || !userVoteArt) {
         badge.classList.remove('hidden');
       } else {
@@ -1751,7 +1953,6 @@
     }
 
     function renderVoteSection() {
-      // 1. Block Flag Vote UI Control
       const flagForm = document.getElementById('flag-vote-form');
       const flagResults = document.getElementById('flag-vote-results');
 
@@ -1759,31 +1960,25 @@
         flagForm.classList.add('hidden');
         flagResults.classList.remove('hidden');
 
-        // Dynamically add user vote onto base simulated numbers
-        const votes = { ...flagBaseVotes };
-        votes[userVoteFlag] += 1;
-        const total = votes.red + votes.blue + votes.yellow;
+        const total = votesFlagSummary.red + votesFlagSummary.blue + votesFlagSummary.yellow;
+        const redPct = total > 0 ? Math.round((votesFlagSummary.red / total) * 100) : 0;
+        const bluePct = total > 0 ? Math.round((votesFlagSummary.blue / total) * 100) : 0;
+        const yellowPct = total > 0 ? (100 - redPct - bluePct) : 0;
 
-        const redPct = Math.round((votes.red / total) * 100);
-        const bluePct = Math.round((votes.blue / total) * 100);
-        const yellowPct = 100 - redPct - bluePct; // Smooth out to perfect 100%
+        document.getElementById('flag-res-red-pct').innerText = `${redPct}% (${votesFlagSummary.red}票)`;
+        document.getElementById('flag-res-blue-pct').innerText = `${bluePct}% (${votesFlagSummary.blue}票)`;
+        document.getElementById('flag-res-yellow-pct').innerText = `${yellowPct}% (${votesFlagSummary.yellow}票)`;
 
-        document.getElementById('flag-res-red-pct').innerText = `${redPct}% (${votes.red}票)`;
-        document.getElementById('flag-res-blue-pct').innerText = `${bluePct}% (${votes.blue}票)`;
-        document.getElementById('flag-res-yellow-pct').innerText = `${yellowPct}% (${votes.yellow}票)`;
-
-        // Trigger css animation width
         setTimeout(() => {
           document.getElementById('flag-res-red-bar').style.width = `${redPct}%`;
           document.getElementById('flag-res-blue-bar').style.width = `${bluePct}%`;
           document.getElementById('flag-res-yellow-bar').style.width = `${yellowPct}%`;
         }, 50);
       } else {
-        flagForm.classList.remove('hidden');
-        flagResults.classList.add('hidden');
+        if (flagForm) flagForm.classList.remove('hidden');
+        if (flagResults) flagResults.classList.add('hidden');
       }
 
-      // 2. Toothpick Art Vote UI Control
       const artForm = document.getElementById('art-vote-form');
       const artResults = document.getElementById('art-vote-results');
 
@@ -1791,17 +1986,14 @@
         artForm.classList.add('hidden');
         artResults.classList.remove('hidden');
 
-        const votes = { ...artBaseVotes };
-        votes[userVoteArt] += 1;
-        const total = votes.red + votes.blue + votes.yellow;
+        const total = votesArtSummary.red + votesArtSummary.blue + votesArtSummary.yellow;
+        const redPct = total > 0 ? Math.round((votesArtSummary.red / total) * 100) : 0;
+        const bluePct = total > 0 ? Math.round((votesArtSummary.blue / total) * 100) : 0;
+        const yellowPct = total > 0 ? (100 - redPct - bluePct) : 0;
 
-        const redPct = Math.round((votes.red / total) * 100);
-        const bluePct = Math.round((votes.blue / total) * 100);
-        const yellowPct = 100 - redPct - bluePct;
-
-        document.getElementById('art-res-red-pct').innerText = `${redPct}% (${votes.red}票)`;
-        document.getElementById('art-res-blue-pct').innerText = `${bluePct}% (${votes.blue}票)`;
-        document.getElementById('art-res-yellow-pct').innerText = `${yellowPct}% (${votes.yellow}票)`;
+        document.getElementById('art-res-red-pct').innerText = `${redPct}% (${votesArtSummary.red}票)`;
+        document.getElementById('art-res-blue-pct').innerText = `${bluePct}% (${votesArtSummary.blue}票)`;
+        document.getElementById('art-res-yellow-pct').innerText = `${yellowPct}% (${votesArtSummary.yellow}票)`;
 
         setTimeout(() => {
           document.getElementById('art-res-red-bar').style.width = `${redPct}%`;
@@ -1809,30 +2001,30 @@
           document.getElementById('art-res-yellow-bar').style.width = `${yellowPct}%`;
         }, 50);
       } else {
-        artForm.classList.remove('hidden');
-        artResults.classList.add('hidden');
+        if (artForm) artForm.classList.remove('hidden');
+        if (artResults) artResults.classList.add('hidden');
       }
     }
 
-    function resetVotes() {
+    async function resetVotes() {
+      if (!isUserAuthenticated) return;
+      const userVoteRef = doc(db, 'artifacts', appId, 'public', 'data', 'votes', userId);
+      await setDoc(userVoteRef, { flag: null, art: null });
       userVoteFlag = null;
       userVoteArt = null;
-      localStorage.removeItem(LS_VOTE_FLAG_KEY);
-      localStorage.removeItem(LS_VOTE_ART_KEY);
       renderVoteSection();
       updateVoteNotificationBadge();
-      showVoteToast("投票データをリセットしました。再度投票できます！");
+      showVoteToast("投票データをクラウド上でリセットしました！");
     }
 
     // ----------------------------------------------------
-    // 📢 NEWS, TICKETS & BULLETIN CONTROLLER
+    // 📢 CLOUD NEWS & REALTIME BULLETIN SYSTEM
     // ----------------------------------------------------
     function openNewsModal() {
       const modal = document.getElementById('news-board-modal');
       const inner = modal.querySelector('div');
       modal.classList.remove('hidden');
       
-      // Render Content Freshly
       renderNewsTabContents();
 
       setTimeout(() => {
@@ -1870,13 +2062,12 @@
         noticeContent.classList.add('hidden');
       }
       
-      // Auto scroll to top of modal tab
       document.getElementById('news-modal-scroll-area').scrollTop = 0;
     }
 
     function renderNewsTabContents() {
-      // 1. Render Announcements & Tickets
       const ticketContainer = document.getElementById('ticket-status-container');
+      if (!ticketContainer) return;
       ticketContainer.innerHTML = '';
 
       tickets.forEach(t => {
@@ -1900,7 +2091,7 @@
         el.innerHTML = `
           <div>
             <span class="text-[8px] uppercase block font-black opacity-80">${t.currentLimit}</span>
-            <span class="text-[10px] font-black truncate block mt-0.5">${t.name.replace(/^[0-9]-[0-9]\s*/, '')}</span>
+            <span class="text-[10px] font-black truncate block mt-0.5">${t.name}</span>
           </div>
           <div class="mt-2 flex items-center justify-between">
             <span class="text-xs font-black">${t.remaining === 0 ? '配布終了' : `残り ${t.remaining}枚`}</span>
@@ -1913,27 +2104,28 @@
       });
 
       const announceContainer = document.getElementById('announcements-container');
-      announceContainer.innerHTML = '';
+      if (announceContainer) {
+        announceContainer.innerHTML = '';
+        announcements.forEach(a => {
+          const isUrgent = a.isUrgent;
+          const cardBg = isUrgent ? 'bg-rose-50 border-rose-200' : 'bg-white border-slate-200';
+          const badgeColor = isUrgent ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-300';
+          
+          const card = document.createElement('div');
+          card.className = `p-3 rounded-2xl border shadow-sm ${cardBg} space-y-1`;
+          card.innerHTML = `
+            <div class="flex justify-between items-center">
+              <span class="text-[9px] font-black font-mono text-slate-400">${a.time}投稿</span>
+              <span class="text-[8px] font-black px-1.5 py-0.5 rounded-md ${badgeColor}">${a.badge}</span>
+            </div>
+            <p class="text-[11px] text-slate-700 leading-relaxed font-semibold">${a.text}</p>
+          `;
+          announceContainer.appendChild(card);
+        });
+      }
 
-      announcements.forEach(a => {
-        const isUrgent = a.isUrgent;
-        const cardBg = isUrgent ? 'bg-rose-50 border-rose-200' : 'bg-white border-slate-200';
-        const badgeColor = isUrgent ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-300';
-        
-        const card = document.createElement('div');
-        card.className = `p-3 rounded-2xl border shadow-sm ${cardBg} space-y-1`;
-        card.innerHTML = `
-          <div class="flex justify-between items-center">
-            <span class="text-[9px] font-black font-mono text-slate-400">${a.time}投稿</span>
-            <span class="text-[8px] font-black px-1.5 py-0.5 rounded-md ${badgeColor}">${a.badge}</span>
-          </div>
-          <p class="text-[11px] text-slate-700 leading-relaxed font-semibold">${a.text}</p>
-        `;
-        announceContainer.appendChild(card);
-      });
-
-      // 2. Render Bulletin board
       const bulletinContainer = document.getElementById('bulletin-posts-container');
+      if (!bulletinContainer) return;
       bulletinContainer.innerHTML = '';
 
       if (bulletinPosts.length === 0) {
@@ -1945,10 +2137,9 @@
         return;
       }
 
-      bulletinPosts.forEach((post, i) => {
+      bulletinPosts.forEach((post) => {
         const card = document.createElement('div');
-        card.className = "bg-white p-3 rounded-2xl border border-slate-150 shadow-sm space-y-1.5 animate-pulse-soft";
-        // Customize avatar based on sender string
+        card.className = "bg-white p-3 rounded-2xl border border-slate-150 shadow-sm space-y-1.5";
         let avatarEmoji = "👤";
         if (post.sender.includes("久商生")) avatarEmoji = "🏫";
         if (post.sender.includes("きゅうちゃん") || post.sender.includes("キュウちゃん")) avatarEmoji = "🐹";
@@ -1968,7 +2159,8 @@
       });
     }
 
-    function postToBulletin() {
+    async function postToBulletin() {
+      if (!isUserAuthenticated) return;
       const msgInput = document.getElementById('bulletin-message-input');
       const senderSelect = document.getElementById('bulletin-sender-select');
 
@@ -1978,43 +2170,164 @@
       const now = getAppTime();
       const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 
-      const newPost = {
+      // Create new Cloud Document (RULE 1)
+      const bulletinRef = collection(db, 'artifacts', appId, 'public', 'data', 'bulletin');
+      await addDoc(bulletinRef, {
         sender: senderSelect.value,
         time: timeStr,
-        text: messageText
-      };
+        text: messageText,
+        timestamp: Date.now()
+      });
 
-      bulletinPosts.unshift(newPost); // Add to beginning of array
-      localStorage.setItem(LS_BULLETIN_KEY, JSON.stringify(bulletinPosts));
-
-      // Reset Form and Update Layout
       msgInput.value = '';
-      renderNewsTabContents();
-      showVoteToast("掲示板にメッセージを書き込みました！💬");
+      showVoteToast("クラウド掲示板にメッセージを同期しました！💬");
     }
 
-    function clearBulletinBoard() {
-      bulletinPosts = [...defaultBulletinPosts];
-      localStorage.setItem(LS_BULLETIN_KEY, JSON.stringify(bulletinPosts));
-      renderNewsTabContents();
+    // ----------------------------------------------------
+    // 🔑 ADMIN PASSCODE GATE
+    // ----------------------------------------------------
+    function openAdminGate() {
+      const isAdminLoggedIn = sessionStorage.getItem('kyushofes_admin_logged_in');
+      if (isAdminLoggedIn === 'true') {
+        openAdminPanel();
+      } else {
+        document.getElementById('admin-lock-error').innerText = "";
+        document.getElementById('admin-passcode-input').value = "";
+        document.getElementById('admin-lock-screen').classList.remove('hidden');
+      }
     }
 
-    function adjustAdminTicket(id, delta) {
+    function closeAdminGate() {
+      document.getElementById('admin-lock-screen').classList.add('hidden');
+    }
+
+    function verifyAdminPasscode() {
+      const input = document.getElementById('admin-passcode-input').value;
+      const errorMsg = document.getElementById('admin-lock-error');
+      
+      if (input === "2026") {
+        sessionStorage.setItem('kyushofes_admin_logged_in', 'true');
+        closeAdminGate();
+        openAdminPanel();
+        showVoteToast("ログインしました 🔓");
+      } else {
+        errorMsg.innerText = "❌ パスコードが正しくありません。";
+      }
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('kyushofes_admin_logged_in');
+      closeAdminPanel();
+      showVoteToast("ログアウトしました 🔒");
+    }
+
+    // ----------------------------------------------------
+    // 🛠️ ADMIN DRAWER PANEL ACTIONS (RULE 1, RULE 3)
+    // ----------------------------------------------------
+    function openAdminPanel() {
+      const panel = document.getElementById('admin-panel');
+      panel.classList.remove('hidden');
+      loadSelectedShopAdminData();
+    }
+
+    function closeAdminPanel() {
+      const panel = document.getElementById('admin-panel');
+      panel.classList.add('hidden');
+    }
+
+    function populateAdminShopDropdown() {
+      const select = document.getElementById('admin-shop-select');
+      if (!select) return;
+      select.innerHTML = '';
+      
+      shops.forEach(shop => {
+        const opt = document.createElement('option');
+        opt.value = shop.id;
+        opt.innerText = `${shop.class} ${shop.name}`;
+        select.appendChild(opt);
+      });
+    }
+
+    function loadSelectedShopAdminData() {
+      const shopId = parseInt(document.getElementById('admin-shop-select').value);
+      const shop = shops.find(s => s.id === shopId);
+      if (!shop) return;
+
+      document.getElementById('admin-shop-status').value = shop.status;
+      document.getElementById('admin-shop-limit').value = shop.currentLimit || "先着順";
+      document.getElementById('admin-shop-announce-text').value = shopAnnouncements[shopId] || "";
+    }
+
+    async function updateShopDetailsFromAdmin() {
+      if (!isUserAuthenticated) return;
+      const shopId = parseInt(document.getElementById('admin-shop-select').value);
+      const status = document.getElementById('admin-shop-status').value;
+      const limit = document.getElementById('admin-shop-limit').value;
+      const announcementText = document.getElementById('admin-shop-announce-text').value;
+
+      // Update cloud shop state (RULE 1)
+      const shopDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'shops', shopId.toString());
+      await setDoc(shopDocRef, {
+        status: status,
+        currentLimit: limit,
+        announcement: announcementText.trim()
+      }, { merge: true });
+
+      showVoteToast(`クラウド上に模擬店情報を即時同期しました！`);
+      
+      if (activeShopModalId === shopId) {
+        closeShopModal();
+      }
+    }
+
+    async function adjustAdminTicket(id, delta) {
+      if (!isUserAuthenticated) return;
       const ticket = tickets.find(t => t.id === id);
       if (!ticket) return;
 
-      ticket.remaining = Math.max(0, Math.min(ticket.total, ticket.remaining + delta));
-      localStorage.setItem(LS_TICKET_KEY, JSON.stringify(tickets));
-      renderNewsTabContents();
+      const newRemaining = Math.max(0, Math.min(ticket.total, ticket.remaining + delta));
+      const ticketDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'tickets', id.toString());
+      await updateDoc(ticketDocRef, { remaining: newRemaining });
     }
 
-    // ----------------------------------------------------
-    // 🛠️ ADMIN PANEL DRAWER ACTIONS
-    // ----------------------------------------------------
-    function toggleAdminPanel() {
-      const panel = document.getElementById('admin-panel');
-      panel.classList.toggle('hidden');
+    async function clearAllAppStatusData() {
+      const confirmClear = confirm("クイズ、投票、お知らせ、模擬店混雑を含むクラウド上のデータを完全初期化します。よろしいですか？");
+      if (!confirmClear) return;
+
+      // Reset stamps locally
+      localStorage.clear();
+      location.reload();
     }
+
+    // Expose local trigger utilities to Global Namespace
+    window.switchTab = switchTab;
+    window.openNewsModal = openNewsModal;
+    window.closeNewsModal = closeNewsModal;
+    window.switchNewsTab = switchNewsTab;
+    window.postToBulletin = postToBulletin;
+    window.clickMapShop = clickMapShop;
+    window.closeShopModal = closeShopModal;
+    window.toggleFavoriteFromModal = toggleFavoriteFromModal;
+    window.toggleFavorite = toggleFavorite;
+    window.openQuizModal = openQuizModal;
+    window.submitQuizAnswer = submitQuizAnswer;
+    window.closeQuizModal = closeQuizModal;
+    window.castVote = castVote;
+    window.openAdminGate = openAdminGate;
+    window.closeAdminGate = closeAdminGate;
+    window.verifyAdminPasscode = verifyAdminPasscode;
+    window.logoutAdmin = logoutAdmin;
+    window.loadSelectedShopAdminData = loadSelectedShopAdminData;
+    window.updateShopDetailsFromAdmin = updateShopDetailsFromAdmin;
+    window.adjustAdminTicket = adjustAdminTicket;
+    window.simSolveQuiz = simSolveQuiz;
+    window.resetRally = resetRally;
+    window.resetVotes = resetVotes;
+    window.clearAllAppStatusData = clearAllAppStatusData;
+    window.setClockMode = setClockMode;
+    window.changeDemoTime = changeDemoTime;
+    window.setShopCategoryFilter = setShopCategoryFilter;
+    window.filterShops = filterShops;
   </script>
 </body>
 </html>
