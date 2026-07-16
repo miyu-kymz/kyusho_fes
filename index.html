@@ -166,13 +166,13 @@
         <!-- Container specified as 940px wide for precise Kurume Comm. Layout presentation -->
         <div class="w-[940px] mx-auto relative flex flex-col space-y-4 text-center">
           
-          <!-- ====== 🟪 NORTH ZONE (北エリア): 同窓会館 ➔ 中庭 ➔ 雨天練習場 ====== -->
+          <!-- ====== 🟪 SOUTH ZONE (南エリア、上が南): 同窓会館 ➔ 中庭 ➔ 雨天練習場 ====== -->
           <div class="grid grid-cols-12 gap-3 pb-2 border-b border-dashed border-slate-300">
             <!-- Left: 同窓会館 (2-4, 2-7) -->
             <div class="col-span-4 bg-orange-50/90 border-2 border-orange-300 rounded-3xl p-3 flex flex-col justify-between shadow-sm min-h-[160px]">
               <div class="text-left">
                 <span class="text-[10px] font-black text-orange-600 block"><i class="fa-solid fa-house-chimney"></i> 同窓会館 (1F食堂グルメ)</span>
-                <span class="text-[8px] text-slate-400 font-bold block">校舎の北西(左上)に位置する建物です</span>
+                <span class="text-[8px] text-slate-400 font-bold block">校舎の南東(左上)に位置する建物です</span>
               </div>
               <div class="space-y-1.5 mt-2">
                 <div onclick="clickMapShop(11)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative shadow-xs">
@@ -218,7 +218,7 @@
             <div class="col-span-4 bg-sky-50 border-2 border-sky-300 rounded-3xl p-3 flex flex-col justify-between shadow-sm min-h-[160px] relative text-left">
               <div>
                 <span class="text-[10px] font-black text-sky-600 block"><i class="fa-solid fa-umbrella"></i> 雨天練習場 1F</span>
-                <span class="text-[8px] text-sky-500 font-bold block">校舎の北東(右上)の練習スペースです</span>
+                <span class="text-[8px] text-sky-500 font-bold block">校舎の南西(右上)の練習スペースです</span>
               </div>
               
               <div class="bg-white/95 border border-sky-200 rounded-2xl p-3 text-center space-y-1">
@@ -229,14 +229,14 @@
             </div>
           </div>
 
-          <!-- ====== 🟩 MIDDLE ZONE (中央エリア): 西駐車場 ➔ 2棟 ➔ 3棟 ➔ 東駐車場 ====== -->
+          <!-- ====== 🟩 MIDDLE ZONE (中央エリア): 東・西の駐車場 ➔ 2棟 ➔ 3棟 ====== -->
           <div class="grid grid-cols-12 gap-3 py-2 border-b border-dashed border-slate-300">
             
-            <!-- Far Left: 西駐車場テント列 (3-1, 3-2, 3-3, 3-4) -->
+            <!-- Far Left: 東駐車場テント列 (3-1, 3-2, 3-3, 3-4) (下が北のとき、左側は東) -->
             <div class="col-span-3 bg-orange-50/50 border-2 border-amber-200 rounded-3xl p-3 flex flex-col justify-between shadow-sm min-h-[240px] text-left">
               <div>
-                <span class="text-[10px] font-black text-amber-700 block"><i class="fa-solid fa-square-parking"></i> 西駐車場 (グルメテント列)</span>
-                <span class="text-[8px] text-slate-400 font-bold block">校舎の西側(左端)の駐車場です</span>
+                <span class="text-[10px] font-black text-amber-700 block"><i class="fa-solid fa-square-parking"></i> 東駐車場 (グルメテント列)</span>
+                <span class="text-[8px] text-slate-400 font-bold block">校舎の東側(左端)の駐車場です</span>
               </div>
               <div class="space-y-1 mt-2">
                 <div onclick="clickMapShop(15)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
@@ -320,11 +320,11 @@
               <span class="text-[8px] text-slate-500 font-bold block mt-1">校舎内立入禁止</span>
             </div>
 
-            <!-- Far Right: 東駐車場テント列 (2-5, 3-5, 3-6, 3-7) -->
+            <!-- Far Right: 西駐車場テント列 (2-5, 3-5, 3-6, 3-7) (下が北のとき、右側は西) -->
             <div class="col-span-3 bg-orange-50/50 border-2 border-amber-200 rounded-3xl p-3 flex flex-col justify-between shadow-sm min-h-[240px] text-left">
               <div>
-                <span class="text-[10px] font-black text-amber-700 block"><i class="fa-solid fa-square-parking"></i> 東駐車場 (グルメテント列)</span>
-                <span class="text-[8px] text-slate-400 font-bold block">校舎の東側(右端)の駐車場です</span>
+                <span class="text-[10px] font-black text-amber-700 block"><i class="fa-solid fa-square-parking"></i> 西駐車場 (グルメテント列)</span>
+                <span class="text-[8px] text-slate-400 font-bold block">校舎の西側(右端)の駐車場です</span>
               </div>
               <div class="space-y-1 mt-2">
                 <div onclick="clickMapShop(12)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
@@ -359,16 +359,16 @@
             </div>
           </div>
 
-          <!-- ====== 🟦 SOUTH ZONE (南エリア): 南西校舎 ＆ 体育館 ➔ 1棟 ➔ 正門前受付 ====== -->
+          <!-- ====== 🟦 NORTH ZONE (北エリア、下が北): 北東校舎 ＆ 体育館 ➔ 1棟 ➔ 正門前受付 ====== -->
           <div class="grid grid-cols-12 gap-3 pt-2">
             
-            <!-- Left: 南西校舎 & 体育館 (1-2, 1-7, 2-1, 2-3) -->
+            <!-- Left: 北東校舎 & 体育館 (1-2, 1-7, 2-1, 2-3) (左下は北東になります) -->
             <div class="col-span-5 bg-purple-50 border-2 border-purple-300 rounded-3xl p-3 shadow-sm min-h-[170px] flex flex-col justify-between text-left">
               <div>
                 <span class="text-[10px] font-black text-purple-700 block flex items-center gap-1">
-                  <i class="fa-solid fa-building-user"></i> 南西校舎 ＆ 体育館 (1F〜2F)
+                  <i class="fa-solid fa-building-user"></i> 北東校舎 ＆ 体育館 (1F〜2F)
                 </span>
-                <span class="text-[8px] text-slate-400 font-bold block">遊戯アトラクション＆ステージ会場です</span>
+                <span class="text-[8px] text-slate-400 font-bold block">校舎の北東(左下)に位置する、遊戯アトラクション＆ステージ会場です</span>
               </div>
               
               <!-- Quick Link to Classroom Games -->
@@ -386,7 +386,7 @@
                   <span class="map-fav-heart-indicator" data-shop-id="8"></span>
                 </div>
                 <div onclick="clickMapShop(10)" class="bg-white hover:bg-purple-100 p-1.5 rounded-xl border border-purple-200 cursor-pointer text-center text-[10.5px] font-black relative shadow-xs">
-                  <span class="block text-[8px] text-purple-600">2-3  bowling🎳</span>あつシー・ランド
+                  <span class="block text-[8px] text-purple-600">2-3 🎳</span>あつシー・ランド
                   <span class="map-fav-heart-indicator" data-shop-id="10"></span>
                 </div>
               </div>
@@ -399,11 +399,11 @@
               <span class="text-[8px] text-red-500 font-bold block mt-1">一般立入禁止 (管理棟)</span>
             </div>
 
-            <!-- Right: 正門前特設 総合本部・受付 -->
+            <!-- Right: 正門前特設 総合本部・受付 (右下は北西になります) -->
             <div class="col-span-4 bg-gradient-to-br from-amber-50 to-amber-100 border-2 border-amber-400 rounded-3xl p-3 shadow-sm min-h-[170px] flex flex-col justify-between text-center relative">
               <div class="text-left">
-                <span class="text-[10px] font-black text-amber-800 block"><i class="fa-solid fa-circle-info"></i> 正門前ゲート付近</span>
-                <span class="text-[8px] text-amber-600 font-black block">来場してすぐのフロントエリアです</span>
+                <span class="text-[10px] font-black text-amber-800 block"><i class="fa-solid fa-circle-info"></i> 正門前(北側)ゲート付近</span>
+                <span class="text-[8px] text-amber-600 font-bold block">校舎の北西(右下)に位置する、来場してすぐのフロントエリアです</span>
               </div>
               
               <div onclick="clickMapShop(99)" class="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 border-2 border-white p-3.5 rounded-2xl flex flex-col justify-center items-center text-center cursor-pointer hover:shadow-md transition relative shadow-xs">
@@ -422,7 +422,7 @@
       <div class="bg-amber-50 border border-amber-200 p-3 rounded-2xl flex items-center space-x-3 text-xs text-amber-900 shadow-sm">
         <span class="text-xl">💡</span>
         <p class="font-medium leading-relaxed text-left">
-          <strong>校内配置図は、横スクロールして確認できます。</strong><br>
+          <strong>校内配置図は、横スクロールして確認できます。</strong>（久留米商業高校では、下側の正門がある方向が「北」となります）<br>
           マップ上の各看板や建物をタップすると、メニューの詳細、お気に入り登録、リアルタイムの混雑状況がその場でパッと確認できます！
         </p>
       </div>
@@ -545,7 +545,7 @@
           <span class="text-xl">🚩</span>
           <h3 class="text-sm font-black text-slate-800">【投票】ブロック旗 部門</h3>
         </div>
-        <p class="text-[11.5px] text-slate-500 font-bold leading-relaxed">各ブロック of こだわりを詰め込んだ巨大シンボル旗！感動した作品に投票してください。</p>
+        <p class="text-[11.5px] text-slate-500 font-bold leading-relaxed">各ブロックのこだわりを詰め込んだ巨大シンボル旗！感動した作品に投票してください。</p>
         
         <!-- 投票前 -->
         <div id="flag-vote-form" class="space-y-2">
@@ -1070,32 +1070,32 @@
     // ----------------------------------------------------
     const initialShops = [
       { id: 1, class: "1-1", name: "NTY〜あなたのとなりに〜", category: "goods", location: "2棟 1F", desc: "【協力店舗: Serenity】世界にひとつだけ！手作り感あふれる可愛いキーホルダーを販売します！🎒", mascotTip: "数量限定なのでお早めに寄ってみてね！", status: "待ちなし" },
-      { id: 2, class: "1-2", name: "キミの実力試してみる！？", category: "play", location: "南西校舎 1F", desc: "【遊戯・サービス】的を狙ってハイスコアを目指そう！大人気の体験型遊戯ゲームコーナー！🎯", mascotTip: "気軽に挑戦できて面白い景品も用意されているよ！", status: "待ちなし" },
+      { id: 2, class: "1-2", name: "キミの実力試してみる！？", category: "play", location: "北東校舎 1F", desc: "【遊戯・サービス】的を狙ってハイスコアを目指そう！大人気の体験型遊戯ゲームコーナー！🎯", mascotTip: "気軽に挑戦できて面白い景品も用意されているよ！", status: "待ちなし" },
       { id: 3, class: "1-3", name: "和宝", category: "food", location: "2棟 2F", desc: "【協力店舗: とらや】上品な甘さともちもちの食感がたまらない絶品の老舗和菓子を販売しています。🍡", mascotTip: "お茶と一緒に楽しむとさらに美味しいよ！", status: "５分" },
       { id: 4, class: "1-4", name: "茶。-お茶の深みについて-", category: "goods", location: "2棟 2F", desc: "【協力店舗: 茶舗ふりゅう】お茶の深みについての展示や特別な日本茶の体験・販売スペースです。🍵", mascotTip: "ホッと一息つきたい時に最高の隠れ家スポットだよ！", status: "待ちなし" },
       { id: 5, class: "1-5", name: "Drink Lab", category: "food", location: "2棟 3F", desc: "【ドリンク】冷たくて爽快なソフトドリンク各種が勢揃い！喉を潤してフェスを楽しもう！🥤", mascotTip: "お好みの冷たいジュースで疲れを吹き飛ばそう！", status: "待ちなし" },
       { id: 6, class: "1-6", name: "買ってクレープ", category: "food", location: "2棟 3F", desc: "【協力店舗: シュシュクレープ】もっちもちの皮にクリームとフルーツをたっぷり包んだ大人気クレープ！🧁", mascotTip: "甘党の人には絶対に見逃してほしくない一品だよ！", status: "待ちなし" },
-      { id: 7, class: "1-7", name: "球式会社 セブン遊戯堂", category: "play", location: "南西校舎 1F", desc: "【遊戯】セブン遊戯堂が提供する、みんなで盛り上がれるハラハラドキドキのゲームアトラクション！👾", mascotTip: "友達と一緒に遊ぶとさらにエキサイトすること間違いなし！", status: "20分" },
-      { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "南西校舎 1F", desc: "【遊戯】昭和レトロでエモい雰囲気が漂う池口商店のおもしろゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "待ちなし" },
+      { id: 7, class: "1-7", name: "球式会社 セブン遊戯堂", category: "play", location: "北東校舎 1F", desc: "【遊戯】セブン遊戯堂が提供する、みんなで盛り上がれるハラハラドキドキのゲームアトラクション！👾", mascotTip: "友達と一緒に遊ぶとさらにエキサイトすること間違いなし！", status: "20分" },
+      { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "北東校舎 1F", desc: "【遊戯】昭和レトロでエモい雰囲気が漂う池口商店のおもしろゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "待ちなし" },
       { id: 9, class: "2-2", name: "肉包", category: "food", location: "中庭特設テント", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る中華肉まんです。🐼", mascotTip: "中庭のベンチでハフハフしながら食べてみてね！", status: "待ちなし" },
-      { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "南西校舎 2F", desc: "【遊戯】手に汗握る面白さ！慎重にボールをゴールへ運ぶ特製ボール転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分" },
-      { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
-      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "東駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメン of 神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "10分" },
+      { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "北東校舎 2F", desc: "【遊戯】手に汗握る面白さ！慎重にボールをゴールへ運ぶ特製ボール転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手括采がもらえるよ！", status: "５分" },
+      { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろめます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
+      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "西駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず西駐車場へ向かおう！", status: "10分" },
       { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
       { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュです！🥐", mascotTip: "食堂内のおしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし" },
-      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "西駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お腹がすいたら迷わず西駐車場へ向かおう！", status: "10分" },
-      { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "西駐車場 テント4", desc: "【協力店舗: BELLE CURRY】スパイスの香りが駐車場中に漂う！じっくり煮込まれた本格旨口カレーライス🍛", mascotTip: "辛すぎずコクがあって、どんどんスプーンが進む絶品カレー！", status: "待ちなし" },
-      { id: 17, class: "3-3", name: "今日タピいいじゃん", category: "food", location: "西駐車場 テント5", desc: "【協力店舗: DDDコーヒー】モチモチのタピオカと極上まろやかミルクティーが最高にマッチした一杯🧋", mascotTip: "ストローで吸い込む楽しさと贅沢な甘さに癒されよう！", status: "待ちなし" },
-      { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "西駐車場 テント6", desc: "【協力店舗: 磯六】アツアツの鉄板で豪快に焼き上げる香ばしいソースお好み焼き！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われて、お腹がグーと鳴っちゃうね！", status: "10分" },
-      { id: 19, class: "3-5", name: "UDON販売作戦 〜立花のプライド〜", category: "food", location: "東駐車場 テント7", desc: "【協力店舗: 立花うどん】お出汁の香りがふんわり広がる！コシと喉越しにプライドをかけた究極の手打ちうどん🥢", mascotTip: "温かいおつゆが疲れた体にじんわり染み渡る極上の味！", status: "５分" },
-      { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "food", location: "東駐車場 テント8", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "待ちなし" },
-      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "東駐車場 テント9", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めたつくね串＆皮焼きコンボ！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて長蛇の列ができるよ！", status: "20分" }
+      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "東駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "10分" },
+      { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "東駐車場 テント4", desc: "【協力店舗: BELLE CURRY】スパイスの香りが駐車場中に漂う！じっくり煮込まれた本格旨口カレーライス🍛", mascotTip: "辛すぎずコクがあって、どんどんスプーンが進む絶品カレー！", status: "待ちなし" },
+      { id: 17, class: "3-3", name: "今日タピいいじゃん", category: "food", location: "東駐車場 テント5", desc: "【協力店舗: DDDコーヒー】モチモチのタピオカと極上まろやかミルクティーが最高にマッチした一杯🧋", mascotTip: "ストローで吸い込む楽しさと贅沢な甘さに癒されよう！", status: "待ちなし" },
+      { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "東駐車場 テント6", desc: "【協力店舗: 磯六】アツアツの鉄板で豪快に焼き上げる香ばしいソースお好み焼き！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われて、お腹がグーと鳴っちゃうね！", status: "10分" },
+      { id: 19, class: "3-5", name: "UDON販売作戦 〜立花のプライド〜", category: "food", location: "西駐車場 テント7", desc: "【協力店舗: 立花うどん】お出汁の香りがふんわり広がる！コシと喉越しにプライドをかけた究極の手打ちうどん🥢", mascotTip: "温かいおつゆが疲れた体にじんわり染み渡る極上の味！", status: "５分" },
+      { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "西駐車場 テント8", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "待ちなし" },
+      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "西駐車場 テント9", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めたつくね串＆皮焼きコンボ！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて長蛇の列ができるよ！", status: "20分" }
     ];
 
     const stageProgram = [
       { time: "10:15", duration: "30分", title: "🎺 吹奏楽部", detail: "体育館中を圧倒する、伝統の美しさと迫力を兼ね備えた大迫力吹奏楽メドレー！" },
       { time: "10:45", duration: "35分", title: "💡 【Quest発表】", detail: "「総合的な探究の時間」で各クラスが地域・社会の課題解決のために練り上げた、感動のプレゼン発表！" },
-      { time: "11:20", duration: "10分", title: "🥋 【演舞部門】", detail: "臨時練習 of 演舞！気迫と統一された美しさに満ちた迫真 of パフォーマンス！" },
+      { time: "11:20", duration: "10分", title: "🥋 【演武部門】", detail: "臨時練習 of 演武！気迫と統一された美しさに満ちた迫真のパフォーマンス！" },
       { time: "11:30", duration: "10分", title: "💃 【ダンス部門】", detail: "流行のトレンド曲に合わせた一糸乱れぬキレキレダンスステージ！会場を一気に盛り上げます！" },
       { time: "11:40", duration: "35分", title: "🎤 【有志部門】", detail: "事前オーディションを実力で突破した5つの精鋭有志による、音楽・バンド・歌唱の夢の競演！" },
       { time: "12:25", duration: "30分", title: "🖌️ 書道部", detail: "音楽に合わせて巨大な紙に想いを力強く書き紡ぐ、久商祭クライマックスの大感動書道パフォーマンス！" }
@@ -1106,7 +1106,7 @@
       { id: 2, name: "体育館（ステージ入口）", icon: "🏫", loc: "体育館エントランス", question: "体育館の正面玄関前に設置されている、来場者向けの『スリッパ返却箱（プラスチックコンテナ）』の色は何色？", options: ["青色", "緑色", "赤色"], answer: 0, hint: "体育館の入口のスリッパ回収所をよく見てみよう！" },
       { id: 3, name: "同窓会館（食堂フロア）", icon: "🏠", loc: "同窓会館食堂自動ドア付近", question: "同窓会館1階・食堂の入口に掲示されている「当日の学食特別メニュー表」で、久商名物プリン🍮の価格はいくらに設定されている？", options: ["150円", "200円", "250円"], answer: 1, hint: "同窓会館の扉に貼ってあるメニューチラシを覗いてみてね！" },
       { id: 4, name: "中庭特設テント", icon: "🌳", loc: "中庭テント本部付近", question: "中庭の美化本部横に設置されている、きゅうちゃんのイラストが描かれた『エコ分別ゴミ箱』が回収しているリサイクル資源はどれ？", options: ["ペットボトルキャップ", "アルミ缶", "牛乳パック"], answer: 0, hint: "中庭エコステーションの看板ときゅうちゃんのイラストゴミ箱を見てみてね！" },
-      { id: 5, name: "東駐車場（ラーメン店付近）", icon: "🏕️", loc: "東駐車場案内看板の横", question: "志あわせラーメンが並ぶ東駐車場テント列の入口で、元気にパタパタなびいている「のぼり旗」のベースの色は何色？", options: ["赤色のぼり", "黄色のぼり", "青色のぼり"], answer: 0, hint: "ラーメン店テントの前に立っているのぼり旗を観察しよう！" }
+      { id: 5, name: "西駐車場（ラーメン店付近）", icon: "🏕️", loc: "西駐車場案内看板の横", question: "志あわせラーメンが並ぶ西駐車場テント列の入口で、元気にパタパタなびいている「のぼり旗」のベースの色は何色？", options: ["赤色のぼり", "黄色のぼり", "青色のぼり"], answer: 0, hint: "ラーメン店テントの前に立っているのぼり旗を観察しよう！" }
     ];
 
     let shops = JSON.parse(JSON.stringify(initialShops));
@@ -1237,4 +1237,1176 @@
         if (data) {
           if (data.flag) {
             votesFlagSummary.red = data.flag.red || 0;
-            votesFlagSummary.blue = data.flag.blue ||
+            votesFlagSummary.blue = data.flag.blue || 0;
+            votesFlagSummary.yellow = data.flag.yellow || 0;
+          }
+          if (data.art) {
+            votesArtSummary.red = data.art.red || 0;
+            votesArtSummary.blue = data.art.blue || 0;
+            votesArtSummary.yellow = data.art.yellow || 0;
+          }
+          renderVoteSection();
+        }
+      }, (err) => console.warn("Votes fetch failed:", err));
+    }
+
+    // ----------------------------------------------------
+    // 💾 LOCAL STORAGE BACKUP
+    // ----------------------------------------------------
+    function loadSavedStates() {
+      try {
+        const storedFavs = localStorage.getItem(LS_FAV_KEY);
+        if (storedFavs) favorites = JSON.parse(storedFavs);
+
+        const storedStamps = localStorage.getItem(LS_STAMP_KEY);
+        if (storedStamps) completedStamps = JSON.parse(storedStamps);
+
+        const storedFlagVote = localStorage.getItem(LS_VOTE_FLAG_KEY);
+        if (storedFlagVote) userVoteFlag = storedFlagVote;
+
+        const storedArtVote = localStorage.getItem(LS_VOTE_ART_KEY);
+        if (storedArtVote) userVoteArt = storedArtVote;
+
+        const storedShops = localStorage.getItem(LS_SHOPS_KEY);
+        if (storedShops) {
+          const parsed = JSON.parse(storedShops);
+          shops = parsed.shops || shops;
+          shopAnnouncements = parsed.announcements || {};
+        }
+
+        const storedBulletin = localStorage.getItem(LS_BULLETIN_KEY);
+        if (storedBulletin) {
+          bulletinPosts = JSON.parse(storedBulletin);
+        }
+      } catch (e) {
+        console.error("Local load failed:", e);
+      }
+    }
+
+    function saveShopsToLocal() {
+      try {
+        localStorage.setItem(LS_SHOPS_KEY, JSON.stringify({ shops, announcements: shopAnnouncements }));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    // ----------------------------------------------------
+    // ⏰ TIME & CLOCK LOGIC
+    // ----------------------------------------------------
+    function getAppTime() {
+      if (clockMode === 'auto') {
+        return new Date();
+      } else {
+        const sliderVal = parseInt(document.getElementById('demo-time-slider').value);
+        const hours = Math.floor(sliderVal / 60);
+        const mins = sliderVal % 60;
+        const d = new Date();
+        d.setHours(hours, mins, 0);
+        return d;
+      }
+    }
+
+    function updateClock() {
+      try {
+        const now = getAppTime();
+        const timeStr = now.toTimeString().split(' ')[0];
+        const clockEl = document.getElementById('header-time-string');
+        if (clockEl) clockEl.innerText = timeStr;
+        checkActiveStageProgress();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function setClockMode(mode) {
+      clockMode = mode;
+      const autoBtn = document.getElementById('clock-mode-auto');
+      const demoBtn = document.getElementById('clock-mode-demo');
+      const demoCtrls = document.getElementById('demo-controls');
+      const realTimeBadge = document.getElementById('real-time-badge');
+
+      if (mode === 'auto') {
+        autoBtn.className = "py-2 rounded-lg text-center bg-white text-slate-800 shadow-sm";
+        demoBtn.className = "py-2 rounded-lg text-center text-slate-500 hover:text-slate-700";
+        demoCtrls.classList.add('hidden');
+        realTimeBadge.innerHTML = `<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1 animate-ping"></span>リアルタイム連動`;
+        realTimeBadge.className = "bg-emerald-100 text-emerald-800 text-[9px] font-black px-2 py-0.5 rounded-full flex items-center mb-0.5";
+      } else {
+        demoBtn.className = "py-2 rounded-lg text-center bg-white text-slate-800 shadow-sm";
+        autoBtn.className = "py-2 rounded-lg text-center text-slate-500 hover:text-slate-700";
+        demoCtrls.classList.remove('hidden');
+        realTimeBadge.innerHTML = `<span class="w-1.5 h-1.5 bg-rose-500 rounded-full mr-1"></span>テストデモ運転`;
+        realTimeBadge.className = "bg-rose-100 text-rose-800 text-[9px] font-black px-2 py-0.5 rounded-full flex items-center mb-0.5";
+        changeDemoTime(document.getElementById('demo-time-slider').value);
+      }
+      updateClock();
+    }
+
+    function changeDemoTime(val) {
+      const hours = Math.floor(val / 60);
+      const mins = val % 60;
+      const paddedMins = mins.toString().padStart(2, '0');
+      document.getElementById('demo-time-display').innerText = `${hours}:${paddedMins}`;
+      updateClock();
+    }
+
+    // ----------------------------------------------------
+    // 🎛️ TAB CONTROLLER
+    // ----------------------------------------------------
+    function switchTab(tabId) {
+      currentTab = tabId;
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-rose-500', 'text-white', 'shadow-sm');
+        btn.classList.add('text-slate-500', 'hover:bg-slate-100');
+      });
+
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      activeBtn.classList.remove('text-slate-500', 'hover:bg-slate-100');
+      activeBtn.classList.add('bg-rose-500', 'text-white', 'shadow-sm');
+
+      if (tabId === 'shops') {
+        renderShopList();
+      } else if (tabId === 'vote') {
+        renderVoteSection();
+      } else if (tabId === 'rally') {
+        renderRallySpots();
+      }
+    }
+
+    // ----------------------------------------------------
+    // 🍔 SHOPS MANAGEMENT RENDERERS
+    // ----------------------------------------------------
+    function getStatusConfig(status) {
+      let cssClass = "bg-slate-100 text-slate-700";
+      let text = status;
+
+      if (status === "待ちなし") {
+        cssClass = "bg-emerald-100 text-emerald-800 font-bold border border-emerald-300";
+        text = "💚 待ちなし";
+      } else if (status === "5分" || status === "５分") {
+        cssClass = "bg-teal-50 text-teal-800 font-bold border border-teal-200";
+        text = "⚡ 5分待ち";
+      } else if (status === "10分") {
+        cssClass = "bg-amber-100 text-amber-800 font-bold border border-amber-300";
+        text = "🕒 10分待ち";
+      } else if (status === "20分") {
+        cssClass = "bg-orange-100 text-orange-800 font-bold border border-orange-300";
+        text = "⚠️ 20分待ち";
+      } else if (status === "30分以上") {
+        cssClass = "bg-red-100 text-red-800 font-extrabold border border-red-300 animate-pulse-soft";
+        text = "🚨 30分以上待ち";
+      } else if (status === "完売") {
+        cssClass = "bg-slate-200 text-slate-500 border border-slate-300 line-through opacity-70";
+        text = "😭 完売";
+      }
+      return { cssClass, text };
+    }
+
+    function renderShopList() {
+      const container = document.getElementById('shop-list-container');
+      if (!container) return;
+      const searchVal = document.getElementById('shop-search-input').value.toLowerCase();
+      
+      container.innerHTML = '';
+
+      const filtered = shops.filter(shop => {
+        if (activeCategoryFilter !== 'all') {
+          if (activeCategoryFilter === 'food' && shop.category !== 'food') return false;
+          if (activeCategoryFilter === 'play' && shop.category !== 'play') return false;
+          if (activeCategoryFilter === 'other' && (shop.category === 'food' || shop.category === 'play')) return false;
+        }
+
+        const matchSearch = shop.class.toLowerCase().includes(searchVal) || 
+                            shop.name.toLowerCase().includes(searchVal) || 
+                            shop.desc.toLowerCase().includes(searchVal) ||
+                            shop.location.toLowerCase().includes(searchVal);
+        return matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-10 bg-white border rounded-3xl p-6 text-slate-400">
+            <span class="text-3xl">🔍</span>
+            <p class="text-xs font-bold mt-2">一致する模擬店が見つかりません</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(shop => {
+        const isFav = favorites.includes(shop.id);
+        
+        let catBadgeColor = "";
+        let catText = "";
+        if (shop.category === 'food') {
+          catBadgeColor = "bg-orange-50 text-orange-600 border-orange-200";
+          catText = "🍔 グルメ";
+        } else if (shop.category === 'play') {
+          catBadgeColor = "bg-purple-50 text-purple-600 border-purple-200";
+          catText = "🎮 遊戯サービス";
+        } else if (shop.category === 'goods') {
+          catBadgeColor = "bg-emerald-50 text-emerald-600 border-emerald-200";
+          catText = "🛍️ 物品販売";
+        } else {
+          catBadgeColor = "bg-slate-50 text-slate-600 border-slate-200";
+          catText = "🎨 展示・他";
+        }
+
+        const statusConfig = getStatusConfig(shop.status);
+
+        const customAnnounce = shopAnnouncements[shop.id];
+        let announceHtml = "";
+        if (customAnnounce && customAnnounce.trim() !== "") {
+          announceHtml = `
+            <div class="mt-2.5 shop-announce-blink border border-rose-200 p-2.5 rounded-2xl text-[10.5px] font-black text-rose-800 flex items-start gap-1.5 shadow-sm">
+              <span>📢</span>
+              <span>${customAnnounce}</span>
+            </div>
+          `;
+        }
+
+        const card = document.createElement('div');
+        card.className = `bg-white p-4 rounded-3xl border border-slate-200 hover:shadow-md transition duration-200 relative`;
+        card.innerHTML = `
+          <div class="flex justify-between items-start">
+            <div class="space-y-1 max-w-[80%]">
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="text-[10px] font-black bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full">${shop.class}</span>
+                <span class="text-[9px] font-bold px-2 py-0.5 rounded-full border ${catBadgeColor}">${catText}</span>
+              </div>
+              <h3 class="text-sm font-black text-slate-800 mt-1">${shop.name}</h3>
+              <p class="text-[11px] text-slate-500 line-clamp-2 leading-relaxed mt-1 font-medium">${shop.desc}</p>
+              ${announceHtml}
+              <div class="flex items-center gap-3 text-[10px] text-slate-400 font-bold mt-2.5">
+                <span class="flex items-center gap-1"><i class="fa-solid fa-location-dot text-rose-400"></i> ${shop.location}</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] ${statusConfig.cssClass}">${statusConfig.text}</span>
+              </div>
+            </div>
+            
+            <button onclick="toggleFavorite(${shop.id}); event.stopPropagation();" class="text-lg p-2 rounded-full hover:bg-slate-50 transition relative z-20">
+              <i class="${isFav ? 'fa-solid fa-heart text-rose-500' : 'fa-regular fa-heart text-slate-300'}"></i>
+            </button>
+          </div>
+          <div onclick="clickMapShop(${shop.id})" class="absolute inset-y-0 left-0 right-12 cursor-pointer z-10"></div>
+        `;
+        container.appendChild(card);
+      });
+
+      renderFavoritesRow();
+    }
+
+    function setShopCategoryFilter(cat) {
+      activeCategoryFilter = cat;
+      document.querySelectorAll('[id^="filter-btn-"]').forEach(btn => {
+        btn.className = "py-2 rounded-xl border border-slate-200 text-slate-600 bg-slate-50 hover:bg-slate-100 text-center transition flex flex-col items-center justify-center";
+      });
+
+      const activeBtn = document.getElementById(`filter-btn-${cat}`);
+      if (cat === 'all') {
+        activeBtn.className = "py-2 rounded-xl border text-center transition bg-rose-500 border-rose-500 text-white";
+      } else {
+        activeBtn.className = "py-2 rounded-xl border text-center transition bg-rose-500 border-rose-500 text-white flex flex-col items-center justify-center";
+      }
+      renderShopList();
+    }
+
+    function filterShops() {
+      renderShopList();
+    }
+
+    // ----------------------------------------------------
+    // ❤️ FAVORITES LOGIC
+    // ----------------------------------------------------
+    function toggleFavorite(shopId) {
+      const index = favorites.indexOf(shopId);
+      if (index === -1) {
+        favorites.push(shopId);
+      } else {
+        favorites.splice(index, 1);
+      }
+      localStorage.setItem(LS_FAV_KEY, JSON.stringify(favorites));
+      renderShopList();
+      updateMapHearts();
+    }
+
+    function renderFavoritesRow() {
+      const container = document.getElementById('favorites-bar-container');
+      const row = document.getElementById('favorites-list-row');
+      if (!container || !row) return;
+      
+      if (favorites.length === 0) {
+        container.classList.add('hidden');
+        return;
+      }
+      
+      container.classList.remove('hidden');
+      row.innerHTML = '';
+
+      favorites.forEach(id => {
+        const shop = shops.find(s => s.id === id);
+        if (!shop) return;
+        
+        const badge = document.createElement('div');
+        badge.onclick = () => clickMapShop(id);
+        badge.className = "flex-shrink-0 bg-white border border-rose-200 px-3 py-1.5 rounded-2xl flex items-center space-x-1 cursor-pointer hover:bg-rose-100/50 transition";
+        badge.innerHTML = `
+          <span class="text-[9px] font-black text-rose-500">${shop.class}</span>
+          <span class="text-[10px] font-extrabold text-slate-700 truncate max-w-[80px]">${shop.name}</span>
+        `;
+        row.appendChild(badge);
+      });
+    }
+
+    function updateMapHearts() {
+      document.querySelectorAll('.map-fav-heart-indicator').forEach(el => {
+        const id = parseInt(el.getAttribute('data-shop-id'));
+        if (favorites.includes(id)) {
+          el.innerHTML = `<span class="absolute -top-3 -right-3 text-rose-500 text-xs animate-bounce-slow">❤️</span>`;
+        } else {
+          el.innerHTML = '';
+        }
+      });
+    }
+
+    function updateMapAnnouncementIndicators() {
+      shops.forEach(shop => {
+        const indicator = document.getElementById(`map-announce-indicator-${shop.id}`);
+        if (indicator) {
+          const announce = shopAnnouncements[shop.id];
+          if (announce && announce.trim() !== "") {
+            indicator.classList.remove('hidden');
+          } else {
+            indicator.classList.add('hidden');
+          }
+        }
+      });
+    }
+
+    // ----------------------------------------------------
+    // 🗺️ INTERACTIVE MAP CONTROLS
+    // ----------------------------------------------------
+    function clickMapShop(id) {
+      if (id === 99) {
+        showHQModal();
+        return;
+      }
+      const shop = shops.find(s => s.id === id);
+      if (!shop) return;
+      openShopModal(shop);
+    }
+
+    // ----------------------------------------------------
+    // 💬 DETAIL MODALS SYSTEM
+    // ----------------------------------------------------
+    let activeShopModalId = null;
+
+    function openShopModal(shop) {
+      activeShopModalId = shop.id;
+      
+      document.getElementById('modal-class-badge').innerText = shop.class;
+      document.getElementById('modal-shop-name').innerText = shop.name;
+      document.getElementById('modal-location-text').innerHTML = `<i class="fa-solid fa-location-dot text-rose-200"></i> ${shop.location}`;
+      document.getElementById('modal-shop-desc').innerText = shop.desc;
+      document.getElementById('modal-mascot-tip').innerText = shop.mascotTip || "売り切れ前にぜひ行ってみてね！";
+
+      const modalAnnounceBox = document.getElementById('modal-shop-announcement-box');
+      const customAnnounce = shopAnnouncements[shop.id];
+      if (customAnnounce && customAnnounce.trim() !== "") {
+        modalAnnounceBox.classList.remove('hidden');
+        document.getElementById('modal-shop-announcement-text').innerText = customAnnounce;
+      } else {
+        modalAnnounceBox.classList.add('hidden');
+      }
+
+      const statusConfig = getStatusConfig(shop.status);
+      const statusBadge = document.getElementById('modal-status-badge');
+      statusBadge.innerText = statusConfig.text;
+      statusBadge.className = "inline-block mt-1 px-3 py-1 rounded-full text-[10px] font-black " + statusConfig.cssClass;
+
+      const banner = document.getElementById('modal-header-banner');
+      banner.className = "p-5 relative text-white";
+      if (shop.category === 'food') {
+        banner.classList.add('bg-gradient-to-r', 'from-orange-500', 'to-amber-500');
+      } else if (shop.category === 'play') {
+        banner.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-indigo-500');
+      } else {
+        banner.classList.add('bg-gradient-to-r', 'from-emerald-500', 'to-teal-500');
+      }
+
+      syncModalHeartButton();
+
+      const modal = document.getElementById('shop-detail-modal');
+      const inner = modal.querySelector('div');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.add('opacity-100');
+        inner.classList.remove('translate-y-full');
+      }, 50);
+    }
+
+    function syncModalHeartButton() {
+      const btn = document.getElementById('modal-fav-action-btn');
+      if (favorites.includes(activeShopModalId)) {
+        btn.innerHTML = `<i class="fa-solid fa-heart text-rose-500"></i> お気に入り中`;
+        btn.className = "flex items-center gap-1.5 bg-rose-100 text-rose-700 px-4 py-2.5 rounded-xl border border-rose-200 transition-all font-black text-xs";
+      } else {
+        btn.innerHTML = `<i class="fa-regular fa-heart text-slate-400"></i> お気に入り`;
+        btn.className = "flex items-center gap-1.5 bg-slate-50 hover:bg-slate-100 text-slate-600 px-4 py-2.5 rounded-xl border border-slate-200 transition-all font-black text-xs";
+      }
+    }
+
+    function toggleFavoriteFromModal() {
+      if (!activeShopModalId) return;
+      toggleFavorite(activeShopModalId);
+      syncModalHeartButton();
+    }
+
+    function closeShopModal() {
+      const modal = document.getElementById('shop-detail-modal');
+      const inner = modal.querySelector('div');
+      inner.classList.add('translate-y-full');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        activeShopModalId = null;
+      }, 250);
+    }
+
+    function showHQModal() {
+      const hqShopObj = {
+        id: 99,
+        class: "本部",
+        name: "🚧 正門前特設 総合本部・受付",
+        category: "other",
+        location: "正面玄関前エリア",
+        desc: "クイズラリークリア記念品の引き換えを行っております！その他、落とし物やお困りごとがございましたらお気軽にお立ち寄りください。🎁",
+        mascotTip: "クイズが5問すべて正解になったら私の特製グッズが貰えるよ！楽しみにしててね！",
+        status: "待ちなし"
+      };
+      openShopModal(hqShopObj);
+    }
+
+    // ----------------------------------------------------
+    // 🎭 STAGE MONITOR SYSTEM
+    // ----------------------------------------------------
+    function checkActiveStageProgress() {
+      const now = getAppTime();
+      const nowMin = now.getHours() * 60 + now.getMinutes();
+
+      let currentEvent = null;
+
+      for (let i = 0; i < stageProgram.length; i++) {
+        const item = stageProgram[i];
+        const [h, m] = item.time.split(':').map(Number);
+        const startMin = h * 60 + m;
+        const durationMin = parseInt(item.duration);
+        const endMin = startMin + durationMin;
+
+        if (nowMin >= startMin && nowMin < endMin) {
+          currentEvent = item;
+          break;
+        }
+      }
+
+      const quickBanner = document.getElementById('quick-stage-banner');
+      const quickTitle = document.getElementById('current-stage-title');
+
+      if (!quickBanner || !quickTitle) return;
+
+      if (currentEvent) {
+        quickBanner.className = "bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-3 rounded-2xl shadow-md cursor-pointer hover:shadow-lg transition flex justify-between items-center animate-pulse-soft";
+        quickTitle.innerText = `${currentEvent.time} 舞台中 - ${currentEvent.title}`;
+      } else {
+        quickBanner.className = "bg-gradient-to-r from-slate-700 to-slate-800 text-white p-3 rounded-2xl shadow-md cursor-pointer hover:shadow-lg transition flex justify-between items-center";
+        quickTitle.innerText = "次のステージイベントをお楽しみに！";
+      }
+
+      renderStageTimeline();
+    }
+
+    function renderStageTimeline() {
+      const container = document.getElementById('stage-timeline-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const now = getAppTime();
+      const nowMin = now.getHours() * 60 + now.getMinutes();
+
+      stageProgram.forEach(item => {
+        const [h, m] = item.time.split(':').map(Number);
+        const startMin = h * 60 + m;
+        const durationMin = parseInt(item.duration);
+        const endMin = startMin + durationMin;
+
+        const isCurrent = nowMin >= startMin && nowMin < endMin;
+        const isPast = nowMin >= endMin;
+
+        let nodeColor = "bg-slate-200 border-slate-300 text-slate-400";
+        let cardBg = "bg-white border-slate-200";
+        let badge = "";
+
+        if (isCurrent) {
+          nodeColor = "bg-purple-500 border-purple-400 text-white ring-4 ring-purple-100 animate-pulse";
+          cardBg = "bg-gradient-to-r from-purple-50/70 to-indigo-50/40 border-purple-300 shadow-sm ring-2 ring-purple-100";
+          badge = `<span class="bg-purple-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded-md animate-ping">LIVE</span>`;
+        } else if (isPast) {
+          nodeColor = "bg-emerald-100 border-emerald-200 text-emerald-600";
+          cardBg = "bg-slate-50/80 border-slate-200 opacity-70";
+          badge = `<span class="bg-slate-200 text-slate-600 text-[9px] font-bold px-1.5 py-0.5 rounded-md">終了</span>`;
+        }
+
+        const el = document.createElement('div');
+        el.className = "flex items-start space-x-3.5 relative z-10";
+        el.innerHTML = `
+          <div class="w-8 h-8 rounded-full border-4 flex items-center justify-center text-xs font-black shrink-0 ${nodeColor}">
+            ${isPast ? '✓' : '⏰'}
+          </div>
+          <div class="border p-3.5 rounded-2xl flex-1 space-y-1 transition duration-150 ${cardBg}">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-black text-slate-700 font-mono tracking-wide">${item.time} (${item.duration})</span>
+              ${badge}
+            </div>
+            <h4 class="text-xs font-black text-slate-800">${item.title}</h4>
+            <p class="text-[10px] text-slate-500 leading-relaxed font-medium">${item.detail}</p>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    // ----------------------------------------------------
+    // 🏅 QUIZ RALLY CONTROLLER
+    // ----------------------------------------------------
+    let activeQuizSpotId = null;
+
+    function renderRallySpots() {
+      const grid = document.getElementById('rally-spots-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      let checkedCount = 0;
+
+      rallySpots.forEach(spot => {
+        const isStamped = completedStamps.includes(spot.id);
+        if (isStamped) checkedCount++;
+
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-3xl border-2 flex items-center justify-between text-left transition duration-200 cursor-pointer active:scale-[0.98] ${
+          isStamped ? 'bg-emerald-50/70 border-emerald-400 shadow-sm' : 'bg-white border-slate-200 hover:border-emerald-200'
+        }`;
+        
+        card.onclick = () => openQuizModal(spot);
+
+        card.innerHTML = `
+          <div class="flex items-center space-x-3.5">
+            <div class="text-3xl p-1 bg-slate-50 rounded-2xl border ${isStamped ? 'border-emerald-200 grayscale-0' : 'border-slate-150 grayscale'}">
+              ${spot.icon}
+            </div>
+            <div>
+              <span class="text-[9px] text-emerald-600 block font-black">スポット ${spot.id}</span>
+              <h4 class="text-xs font-black text-slate-800">${spot.name}</h4>
+              <span class="text-[8.5px] text-slate-400 font-bold block">${spot.loc}</span>
+            </div>
+          </div>
+          
+          <div>
+            ${isStamped 
+              ? `<div class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-[9px] font-black px-3 py-1.5 rounded-xl shadow-sm flex items-center gap-1">🏆 正解！</div>`
+              : `<div class="bg-amber-400 hover:bg-amber-500 text-slate-900 text-[9px] font-black px-3 py-1.5 rounded-xl shadow-sm flex items-center gap-1">📝 クイズに挑戦</div>`
+            }
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      document.getElementById('rally-progress-text').innerText = `${checkedCount} / 5`;
+      const badge = document.getElementById('rally-badge');
+      if (checkedCount === 5) {
+        badge.className = "absolute top-1 right-1 bg-rose-500 w-3 h-3 rounded-full border border-white animate-bounce";
+      } else {
+        badge.className = "absolute top-1 right-1 bg-amber-500 w-2.5 h-2.5 rounded-full border border-white";
+      }
+    }
+
+    function openQuizModal(spot) {
+      activeQuizSpotId = spot.id;
+      
+      document.getElementById('quiz-modal-spot-id').innerText = `スポット ${spot.id}`;
+      document.getElementById('quiz-modal-spot-name').innerText = `${spot.name} の現地クイズ`;
+      document.getElementById('quiz-modal-location').innerText = spot.loc;
+      document.getElementById('quiz-modal-question').innerText = spot.question;
+      document.getElementById('quiz-modal-hint').innerText = spot.hint;
+
+      const feedback = document.getElementById('quiz-result-feedback');
+      feedback.className = "hidden";
+      feedback.innerText = "";
+
+      const optionsContainer = document.getElementById('quiz-options-container');
+      optionsContainer.innerHTML = '';
+
+      const isAlreadyCorrect = completedStamps.includes(spot.id);
+
+      spot.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-3 rounded-2xl border-2 font-bold text-xs transition duration-150 flex justify-between items-center ";
+        
+        if (isAlreadyCorrect) {
+          if (idx === spot.answer) {
+            btn.className += "bg-emerald-50 border-emerald-400 text-emerald-800 pointer-events-none";
+            btn.innerHTML = `<span>${opt}</span> <span class="bg-emerald-500 text-white text-[9px] font-black px-2 py-0.5 rounded-lg">正解済み</span>`;
+          } else {
+            btn.className += "bg-slate-50 border-slate-200 text-slate-400 pointer-events-none";
+            btn.innerHTML = `<span>${opt}</span>`;
+          }
+        } else {
+          btn.className += "bg-white border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/30 active:scale-[0.99]";
+          btn.onclick = () => submitQuizAnswer(idx, spot);
+          btn.innerHTML = `<span>${opt}</span> <i class="fa-solid fa-chevron-right text-[10px] text-slate-300"></i>`;
+        }
+
+        optionsContainer.appendChild(btn);
+      });
+
+      const modal = document.getElementById('quiz-modal');
+      const inner = modal.querySelector('div');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.add('opacity-100');
+        inner.classList.remove('translate-y-full');
+      }, 50);
+    }
+
+    function submitQuizAnswer(selectedIdx, spot) {
+      const feedback = document.getElementById('quiz-result-feedback');
+      feedback.classList.remove('hidden');
+      
+      if (selectedIdx === spot.answer) {
+        feedback.className = "block text-center p-3 rounded-2xl font-black text-xs bg-emerald-100 text-emerald-800 border border-emerald-300";
+        feedback.innerHTML = "🎉 正解です！スタンプを獲得しました！";
+        
+        if (!completedStamps.includes(spot.id)) {
+          completedStamps.push(spot.id);
+          localStorage.setItem(LS_STAMP_KEY, JSON.stringify(completedStamps));
+        }
+
+        setTimeout(() => {
+          openQuizModal(spot);
+          renderRallySpots();
+        }, 1500);
+
+      } else {
+        feedback.className = "block text-center p-3 rounded-2xl font-black text-xs bg-rose-100 text-rose-800 border border-rose-300";
+        feedback.innerHTML = "😭 ざんねん！ちがうみたい。もういちど現地をよく見て考えてみてね！";
+      }
+    }
+
+    function closeQuizModal() {
+      const modal = document.getElementById('quiz-modal');
+      const inner = modal.querySelector('div');
+      inner.classList.add('translate-y-full');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        activeQuizSpotId = null;
+      }, 250);
+    }
+
+    function simSolveQuiz(spotId) {
+      if (completedStamps.includes(spotId)) return;
+      completedStamps.push(spotId);
+      localStorage.setItem(LS_STAMP_KEY, JSON.stringify(completedStamps));
+      renderRallySpots();
+    }
+
+    function resetRally() {
+      completedStamps = [];
+      localStorage.setItem(LS_STAMP_KEY, JSON.stringify(completedStamps));
+      renderRallySpots();
+    }
+
+    // ----------------------------------------------------
+    // 🗳️ REALTIME VOTE SYSTEM (FIREBASE COLLABORATIVE)
+    // ----------------------------------------------------
+    function castVote(type, block) {
+      if (type === 'flag') {
+        if (userVoteFlag) return;
+        userVoteFlag = block;
+        localStorage.setItem(LS_VOTE_FLAG_KEY, block);
+        
+        // Firebaseへ加算送信
+        if (isFirebaseReady) {
+          db.ref(`votes/flag/${block}`).transaction((current) => (current || 0) + 1);
+        } else {
+          votesFlagSummary[block]++;
+          renderVoteSection();
+        }
+        showVoteToast(`ブロック旗：${getBlockNameJa(block)}に投票しました！`);
+      } else if (type === 'art') {
+        if (userVoteArt) return;
+        userVoteArt = block;
+        localStorage.setItem(LS_VOTE_ART_KEY, block);
+        
+        // Firebaseへ加算送信
+        if (isFirebaseReady) {
+          db.ref(`votes/art/${block}`).transaction((current) => (current || 0) + 1);
+        } else {
+          votesArtSummary[block]++;
+          renderVoteSection();
+        }
+        showVoteToast(`つまようじアート：${getBlockNameJa(block)}に投票しました！`);
+      }
+
+      updateVoteNotificationBadge();
+    }
+
+    function getBlockNameJa(block) {
+      if (block === 'red') return '赤ブロック 🟥';
+      if (block === 'blue') return '青ブロック 🟦';
+      return '黄ブロック 🟨';
+    }
+
+    function showVoteToast(message) {
+      const toast = document.getElementById('vote-toast');
+      document.getElementById('vote-toast-text').innerText = message;
+      toast.classList.remove('translate-y-[-150px]', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-[-150px]', 'opacity-0');
+      }, 3000);
+    }
+
+    function updateVoteNotificationBadge() {
+      const badge = document.getElementById('vote-badge');
+      if (!badge) return;
+      if (!userVoteFlag || !userVoteArt) {
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    function renderVoteSection() {
+      const flagForm = document.getElementById('flag-vote-form');
+      const flagResults = document.getElementById('flag-vote-results');
+
+      if (userVoteFlag) {
+        if (flagForm) flagForm.classList.add('hidden');
+        if (flagResults) flagResults.classList.remove('hidden');
+      } else {
+        if (flagForm) flagForm.classList.remove('hidden');
+        if (flagResults) flagResults.classList.add('hidden');
+      }
+
+      const artForm = document.getElementById('art-vote-form');
+      const artResults = document.getElementById('art-vote-results');
+
+      if (userVoteArt) {
+        if (artForm) artForm.classList.add('hidden');
+        if (artResults) artResults.classList.remove('hidden');
+      } else {
+        if (artForm) artForm.classList.remove('hidden');
+        if (artResults) artResults.classList.add('hidden');
+      }
+
+      // 管理者パネル内の投票統計グラフを更新
+      const totalFlag = votesFlagSummary.red + votesFlagSummary.blue + votesFlagSummary.yellow;
+      const fRedPct = totalFlag > 0 ? Math.round((votesFlagSummary.red / totalFlag) * 100) : 0;
+      const fBluePct = totalFlag > 0 ? Math.round((votesFlagSummary.blue / totalFlag) * 100) : 0;
+      const fYellowPct = totalFlag > 0 ? (100 - fRedPct - fBluePct) : 0;
+
+      const fRedEl = document.getElementById('admin-flag-red');
+      const fBlueEl = document.getElementById('admin-flag-blue');
+      const fYellowEl = document.getElementById('admin-flag-yellow');
+      
+      if (fRedEl) fRedEl.innerText = `${votesFlagSummary.red}票 (${fRedPct}%)`;
+      if (fBlueEl) fBlueEl.innerText = `${votesFlagSummary.blue}票 (${fBluePct}%)`;
+      if (fYellowEl) fYellowEl.innerText = `${votesFlagSummary.yellow}票 (${fYellowPct}%)`;
+
+      const fRedBar = document.getElementById('admin-flag-red-bar');
+      const fBlueBar = document.getElementById('admin-flag-blue-bar');
+      const fYellowBar = document.getElementById('admin-flag-yellow-bar');
+
+      if (fRedBar) fRedBar.style.width = `${fRedPct}%`;
+      if (fBlueBar) fBlueBar.style.width = `${fBluePct}%`;
+      if (fYellowBar) fYellowBar.style.width = `${fYellowPct}%`;
+
+      const totalArt = votesArtSummary.red + votesArtSummary.blue + votesArtSummary.yellow;
+      const aRedPct = totalArt > 0 ? Math.round((votesArtSummary.red / totalArt) * 100) : 0;
+      const aBluePct = totalArt > 0 ? Math.round((votesArtSummary.blue / totalArt) * 100) : 0;
+      const aYellowPct = totalArt > 0 ? (100 - aRedPct - aBluePct) : 0;
+
+      const aRedEl = document.getElementById('admin-art-red');
+      const aBlueEl = document.getElementById('admin-art-blue');
+      const aYellowEl = document.getElementById('admin-art-yellow');
+
+      if (aRedEl) aRedEl.innerText = `${votesArtSummary.red}票 (${aRedPct}%)`;
+      if (aBlueEl) aBlueEl.innerText = `${votesArtSummary.blue}票 (${aBluePct}%)`;
+      if (aYellowEl) aYellowEl.innerText = `${votesArtSummary.yellow}票 (${aYellowPct}%)`;
+
+      const aRedBar = document.getElementById('admin-art-red-bar');
+      const aBlueBar = document.getElementById('admin-art-blue-bar');
+      const aYellowBar = document.getElementById('admin-art-yellow-bar');
+
+      if (aRedBar) aRedBar.style.width = `${aRedPct}%`;
+      if (aBlueBar) aBlueBar.style.width = `${aBluePct}%`;
+      if (aYellowBar) aYellowBar.style.width = `${aYellowPct}%`;
+    }
+
+    function resetVotes() {
+      localStorage.removeItem(LS_VOTE_FLAG_KEY);
+      localStorage.removeItem(LS_VOTE_ART_KEY);
+      userVoteFlag = null;
+      userVoteArt = null;
+
+      if (isFirebaseReady) {
+        db.ref('votes').set({
+          flag: { red: 142, blue: 158, yellow: 119 },
+          art: { red: 125, blue: 111, yellow: 148 }
+        });
+      } else {
+        votesFlagSummary = { red: 142, blue: 158, yellow: 119 };
+        votesArtSummary = { red: 125, blue: 111, yellow: 148 };
+        renderVoteSection();
+      }
+      
+      updateVoteNotificationBadge();
+      showVoteToast("投票データを初期状態にリセットしました！");
+    }
+
+    // ----------------------------------------------------
+    // 📢 NEWS & REALTIME BULLETIN SYSTEM
+    // ----------------------------------------------------
+    function openNewsModal() {
+      const modal = document.getElementById('news-board-modal');
+      const inner = modal.querySelector('div');
+      modal.classList.remove('hidden');
+      
+      renderNewsTabContents();
+
+      setTimeout(() => {
+        modal.classList.add('opacity-100');
+        inner.classList.remove('translate-y-full');
+      }, 50);
+    }
+
+    function closeNewsModal() {
+      const modal = document.getElementById('news-board-modal');
+      const inner = modal.querySelector('div');
+      inner.classList.add('translate-y-full');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 250);
+    }
+
+    function switchNewsTab(tabId) {
+      currentNewsTab = tabId;
+      const noticeBtn = document.getElementById('news-tab-notices');
+      const bulletinBtn = document.getElementById('news-tab-bulletin');
+      const noticeContent = document.getElementById('news-tab-content-notices');
+      const bulletinContent = document.getElementById('news-tab-content-bulletin');
+
+      if (tabId === 'notices') {
+        noticeBtn.className = "py-1.5 rounded-lg text-center bg-white text-slate-800 shadow-sm";
+        bulletinBtn.className = "py-1.5 rounded-lg text-center text-white/90 hover:bg-white/10";
+        noticeContent.classList.remove('hidden');
+        bulletinContent.classList.add('hidden');
+      } else {
+        bulletinBtn.className = "py-1.5 rounded-lg text-center bg-white text-slate-800 shadow-sm";
+        noticeBtn.className = "py-1.5 rounded-lg text-center text-white/90 hover:bg-white/10";
+        bulletinContent.classList.remove('hidden');
+        noticeContent.classList.add('hidden');
+      }
+      
+      document.getElementById('news-modal-scroll-area').scrollTop = 0;
+    }
+
+    function renderNewsTabContents() {
+      const announceContainer = document.getElementById('announcements-container');
+      if (announceContainer) {
+        announceContainer.innerHTML = '';
+        
+        const customAlerts = [];
+        Object.keys(shopAnnouncements).forEach(shopId => {
+          const shop = shops.find(s => s.id == shopId);
+          const txt = shopAnnouncements[shopId];
+          if (shop && txt && txt.trim() !== "") {
+            customAlerts.push({
+              id: "shop-" + shopId,
+              time: "配信中",
+              badge: `${shop.class} 速報`,
+              text: `【${shop.name}】${txt}`,
+              isUrgent: true
+            });
+          }
+        });
+
+        const allAnnounces = [...customAlerts, ...announcements];
+
+        if (allAnnounces.length === 0) {
+          announceContainer.innerHTML = `
+            <div class="text-center py-8 text-slate-400 text-[11px]">
+               現在、店舗や本部からのニュースはありません。
+            </div>
+          `;
+        } else {
+          allAnnounces.forEach(a => {
+            const isUrgent = a.isUrgent;
+            const cardBg = isUrgent ? 'bg-rose-50 border-rose-200' : 'bg-white border-slate-200';
+            const badgeColor = isUrgent ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-300';
+            
+            const card = document.createElement('div');
+            card.className = `p-3 rounded-2xl border shadow-sm ${cardBg} space-y-1`;
+            card.innerHTML = `
+              <div class="flex justify-between items-center">
+                <span class="text-[9px] font-black font-mono text-slate-400">${a.time}</span>
+                <span class="text-[8px] font-black px-1.5 py-0.5 rounded-md ${badgeColor}">${a.badge}</span>
+              </div>
+              <p class="text-[11px] text-slate-700 leading-relaxed font-semibold">${a.text}</p>
+            `;
+            announceContainer.appendChild(card);
+          });
+        }
+      }
+
+      const bulletinContainer = document.getElementById('bulletin-posts-container');
+      if (!bulletinContainer) return;
+      bulletinContainer.innerHTML = '';
+
+      if (bulletinPosts.length === 0) {
+        bulletinContainer.innerHTML = `
+          <div class="text-center py-8 text-slate-400 text-[11px]">
+             まだ掲示板にメッセージはありません。<br>最初の一言を書き込んでみよう！💬
+          </div>
+        `;
+        return;
+      }
+
+      bulletinPosts.forEach((post) => {
+        const card = document.createElement('div');
+        card.className = "bg-white p-3 rounded-2xl border border-slate-150 shadow-sm space-y-1.5";
+        let avatarEmoji = "👤";
+        if (post.sender.includes("久商生")) avatarEmoji = "🏫";
+        if (post.sender.includes("きゅうちゃん") || post.sender.includes("キュウちゃん")) avatarEmoji = "🐹";
+        if (post.sender.includes("PTA")) avatarEmoji = "👪";
+        if (post.sender.includes("卒業生") || post.sender.includes("OB")) avatarEmoji = "🎓";
+
+        card.innerHTML = `
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] font-black text-rose-600 flex items-center gap-1">
+              <span>${avatarEmoji}</span> ${post.sender}
+            </span>
+            <span class="text-[8.5px] font-mono text-slate-400 font-bold">${post.time}</span>
+          </div>
+          <p class="text-[11px] text-slate-700 font-bold leading-relaxed">${post.text}</p>
+        `;
+        bulletinContainer.appendChild(card);
+      });
+    }
+
+    function postToBulletin() {
+      const msgInput = document.getElementById('bulletin-message-input');
+      const senderSelect = document.getElementById('bulletin-sender-select');
+
+      const messageText = msgInput.value.trim();
+      if (!messageText) return;
+
+      const now = getAppTime();
+      const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+      const newPost = {
+        id: "post-" + Date.now(),
+        sender: senderSelect.value,
+        time: timeStr,
+        text: messageText,
+        timestamp: Date.now()
+      };
+
+      if (isFirebaseReady) {
+        db.ref(`bulletin/${newPost.id}`).set(newPost);
+      } else {
+        bulletinPosts.unshift(newPost);
+        localStorage.setItem(LS_BULLETIN_KEY, JSON.stringify(bulletinPosts));
+        renderNewsTabContents();
+      }
+
+      msgInput.value = '';
+      showVoteToast("掲示板にメッセージを投稿しました！💬");
+    }
+
+    // ----------------------------------------------------
+    // 🔑 ADMIN PASSCODE GATE
+    // ----------------------------------------------------
+    function openAdminGate() {
+      const isAdminLoggedIn = sessionStorage.getItem('kyushofes_admin_logged_in');
+      if (isAdminLoggedIn === 'true') {
+        openAdminPanel();
+      } else {
+        document.getElementById('admin-lock-error').innerText = "";
+        document.getElementById('admin-passcode-input').value = "";
+        document.getElementById('admin-lock-screen').classList.remove('hidden');
+      }
+    }
+
+    function closeAdminGate() {
+      document.getElementById('admin-lock-screen').classList.add('hidden');
+    }
+
+    function verifyAdminPasscode() {
+      const input = document.getElementById('admin-passcode-input').value;
+      const errorMsg = document.getElementById('admin-lock-error');
+      
+      if (input === "2026") {
+        sessionStorage.setItem('kyushofes_admin_logged_in', 'true');
+        closeAdminGate();
+        openAdminPanel();
+        showVoteToast("ログインしました 🔓");
+      } else {
+        errorMsg.innerText = "❌ パスコードが正しくありません。";
+      }
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('kyushofes_admin_logged_in');
+      closeAdminPanel();
+      showVoteToast("ログアウトしました 🔒");
+    }
+
+    // ----------------------------------------------------
+    // 🛠️ ADMIN DRAWER PANEL ACTIONS
+    // ----------------------------------------------------
+    function openAdminPanel() {
+      const panel = document.getElementById('admin-panel');
+      panel.classList.remove('hidden');
+      loadSelectedShopAdminData();
+      renderVoteSection();
+    }
+
+    function closeAdminPanel() {
+      const panel = document.getElementById('admin-panel');
+      panel.classList.add('hidden');
+    }
+
+    function populateAdminShopDropdown() {
+      const select = document.getElementById('admin-shop-select');
+      if (!select) return;
+      select.innerHTML = '';
+      
+      shops.forEach(shop => {
+        const opt = document.createElement('option');
+        opt.value = shop.id;
+        opt.innerText = `${shop.class} ${shop.name}`;
+        select.appendChild(opt);
+      });
+    }
+
+    function loadSelectedShopAdminData() {
+      const shopId = parseInt(document.getElementById('admin-shop-select').value);
+      const shop = shops.find(s => s.id === shopId);
+      if (!shop) return;
+
+      document.getElementById('admin-shop-status').value = shop.status;
+      document.getElementById('admin-shop-announce-text').value = shopAnnouncements[shopId] || "";
+    }
+
+    function updateShopDetailsFromAdmin() {
+      const shopId = parseInt(document.getElementById('admin-shop-select').value);
+      const status = document.getElementById('admin-shop-status').value;
+      const announcementText = document.getElementById('admin-shop-announce-text').value;
+
+      if (isFirebaseReady) {
+        db.ref(`shops/${shopId}`).set({
+          status: status,
+          announcement: announcementText.trim()
+        });
+      } else {
+        const shop = shops.find(s => s.id === shopId);
+        if (shop) shop.status = status;
+
+        if (announcementText.trim() !== "") {
+          shopAnnouncements[shopId] = announcementText.trim();
+        } else {
+          delete shopAnnouncements[shopId];
+        }
+        saveShopsToLocal();
+        renderShopList();
+        updateMapHearts();
+        updateMapAnnouncementIndicators();
+      }
+
+      showVoteToast(`「模擬店番号 ${shopId}」の情報を同期しました！📢`);
+      
+      if (activeShopModalId === shopId) {
+        closeShopModal();
+      }
+    }
+
+    function clearAllAppStatusData() {
+      const confirmation = confirm("クイズ、投票、お気に入り、模擬店の編集情報を含むすべてのアプリの状態を完全に初期化します。よろしいですか？");
+      if (confirmation) {
+        localStorage.clear();
+        if (isFirebaseReady) {
+          db.ref().remove();
+        }
+        location.reload();
+      }
+    }
+
+    // ----------------------------------------------------
+    // 🚀 BOOTSTRAP INITIALIZATION ON LOAD
+    // ----------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSavedStates();
+      initFirebase();
+      populateAdminShopDropdown();
+      
+      setInterval(updateClock, 1000);
+      updateClock();
+
+      renderShopList();
+      renderStageTimeline();
+      renderRallySpots();
+      renderVoteSection();
+      updateMapHearts();
+      updateMapAnnouncementIndicators();
+      checkActiveStageProgress();
+      updateVoteNotificationBadge();
+    });
+
+    // Expose functions globally to bypass module scope restrictions
+    window.switchTab = switchTab;
+    window.openNewsModal = openNewsModal;
+    window.closeNewsModal = closeNewsModal;
+    window.switchNewsTab = switchNewsTab;
+    window.postToBulletin = postToBulletin;
+    window.clickMapShop = clickMapShop;
+    window.closeShopModal = closeShopModal;
+    window.toggleFavoriteFromModal = toggleFavoriteFromModal;
+    window.toggleFavorite = toggleFavorite;
+    window.openQuizModal = openQuizModal;
+    window.submitQuizAnswer = submitQuizAnswer;
+    window.closeQuizModal = closeQuizModal;
+    window.castVote = castVote;
+    window.openAdminGate = openAdminGate;
+    window.closeAdminGate = closeAdminGate;
+    window.verifyAdminPasscode = verifyAdminPasscode;
+    window.logoutAdmin = logoutAdmin;
+    window.loadSelectedShopAdminData = loadSelectedShopAdminData;
+    window.updateShopDetailsFromAdmin = updateShopDetailsFromAdmin;
+    window.simSolveQuiz = simSolveQuiz;
+    window.resetRally = resetRally;
+    window.resetVotes = resetVotes;
+    window.clearAllAppStatusData = clearAllAppStatusData;
+    window.setClockMode = setClockMode;
+    window.changeDemoTime = changeDemoTime;
+    window.setShopCategoryFilter = setShopCategoryFilter;
+    window.filterShops = filterShops;
+  </script>
+</body>
+</html>
