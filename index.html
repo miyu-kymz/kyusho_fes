@@ -68,7 +68,7 @@
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <div class="relative">
-            <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='https://placehold.co/100x100/fecdd3/9f1239?text=Kyuchan'" class="w-11 h-11 rounded-full border-2 border-rose-400 bg-white object-contain shadow-sm">
+            <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='kyachan.webp'" class="w-11 h-11 rounded-full border-2 border-rose-400 bg-white object-contain shadow-sm">
             <span class="absolute -bottom-1 -right-1 bg-amber-400 text-slate-900 text-[9px] font-black px-1 rounded-full border border-white">公式</span>
           </div>
           <div>
@@ -91,13 +91,13 @@
 
       <!-- Bottom Row: Bulletin & News Button -->
       <div class="flex justify-between items-center bg-slate-50 p-1.5 rounded-xl border border-slate-100">
-        <span class="text-[10px] font-bold text-slate-500 pl-1">💬 当日のリアルタイム情報局</span>
+        <span class="text-[10px] font-bold text-slate-500 pl-1">💬 各模擬店のリアルタイム速報</span>
         <button onclick="openNewsModal()" class="relative bg-gradient-to-r from-rose-500 to-amber-500 text-white px-3 py-1 rounded-xl transition-all font-black text-[10px] flex items-center gap-1 shadow-sm active:scale-95">
           <span class="relative flex h-1.5 w-1.5 mr-0.5">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
             <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-rose-200"></span>
           </span>
-          <i class="fa-solid fa-bullhorn"></i> 掲示板＆整理券を開く
+          <i class="fa-solid fa-bullhorn"></i> 掲示板＆最新速報を開く
         </button>
       </div>
     </div>
@@ -159,7 +159,7 @@
 
       <!-- 2D MAP CANVAS CONTAINER -->
       <div class="relative overflow-x-auto border-2 border-slate-200 rounded-3xl bg-slate-50 p-4 scrollbar-none shadow-inner" style="min-height: 520px;">
-        <div class="w-[850px] mx-auto relative grid grid-cols-12 gap-2 text-center" style="font-family: 'Zen Maru Gothic', sans-serif;">
+        <div class="w-[850px] mx-auto relative grid grid-cols-12 gap-2 text-center">
           
           <!-- ====== 北エリア: 同窓会館, 中庭, 雨天練習場 ====== -->
           <div class="col-span-12 grid grid-cols-12 gap-2 border-b-2 border-dashed border-slate-300 pb-3">
@@ -300,7 +300,7 @@
             <div class="text-[14px] mt-6">🚫</div>
             
             <div onclick="clickMapShop(99)" class="bg-gradient-to-r from-amber-100 to-amber-200 border-2 border-amber-400 p-2 rounded-xl flex flex-col justify-center items-center text-center cursor-pointer hover:shadow-md transition relative">
-              <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='https://placehold.co/50x50/fecdd3/9f1239?text=Q'" class="w-6 h-6 rounded-full border border-white absolute right-1.5 bottom-1.5 object-contain bg-white">
+              <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='kyachan.webp'" class="w-6 h-6 rounded-full border border-white absolute right-1.5 bottom-1.5 object-contain bg-white">
               <span class="text-[8px] font-black text-amber-800">🚧 正門前・屋外特設テント</span>
               <span class="text-[11px] font-extrabold text-slate-800">総合本部・受付 🎁</span>
             </div>
@@ -639,12 +639,12 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
         <h3 class="text-lg font-black flex items-center gap-1"><i class="fa-solid fa-bullhorn"></i> リアルタイム情報局</h3>
-        <p class="text-[10px] text-white/90">最新の整理券情報や、みんなの自由な掲示板です！</p>
+        <p class="text-[10px] text-white/90">各模擬店からの最新ニュースや、みんなの掲示板です！</p>
         
         <!-- Modal Tabs -->
         <div class="grid grid-cols-2 gap-2 mt-3 bg-black/10 p-1 rounded-xl text-xs font-black">
           <button onclick="switchNewsTab('notices')" id="news-tab-notices" class="py-1.5 rounded-lg text-center bg-white text-slate-800 shadow-sm">
-            📢 お知らせ・整理券
+            📢 お店からの速報一覧
           </button>
           <button onclick="switchNewsTab('bulletin')" id="news-tab-bulletin" class="py-1.5 rounded-lg text-center text-white/90 hover:bg-white/10">
             💬 みんなの掲示板
@@ -655,20 +655,11 @@
       <!-- Scrollable Tab Content Area -->
       <div class="p-4 overflow-y-auto flex-1 space-y-4 bg-slate-50 min-h-[300px]" id="news-modal-scroll-area">
         
-        <!-- Tab 1: Notices & Tickets -->
+        <!-- Tab 1: Notices & Shop Alerts -->
         <div id="news-tab-content-notices" class="space-y-3">
-          
-          <!-- Live Tickets Status Widget -->
-          <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-            <span class="text-[10px] font-black text-rose-600 block"><i class="fa-solid fa-ticket"></i> 【リアルタイム更新】整理券状況</span>
-            <div class="grid grid-cols-2 gap-2" id="ticket-status-container">
-              <!-- Rendered Dynamically -->
-            </div>
-          </div>
-
           <!-- Emergency Announcement Feed -->
           <div class="space-y-2.5">
-            <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider block">重要なお知らせ</span>
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider block">運営・模擬店からのニュース</span>
             <div class="space-y-2" id="announcements-container">
               <!-- Rendered Dynamically -->
             </div>
@@ -737,13 +728,13 @@
         <div id="modal-shop-announcement-box" class="hidden shop-announce-blink border-2 border-rose-500 p-3.5 rounded-2xl flex items-start space-x-2.5 text-xs text-rose-800">
           <span class="text-xl">📢</span>
           <div>
-            <span class="font-black text-rose-600 block text-[10px]">お店からの最新ニュース！</span>
+            <span class="font-black text-rose-600 block text-[10px]">お店からの最新速報！</span>
             <p id="modal-shop-announcement-text" class="font-extrabold text-slate-800 leading-normal mt-0.5">お知らせがここに表示されます。</p>
           </div>
         </div>
 
         <div>
-          <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-1">お店のしょうかい / メニュー</span>
+          <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-1">お店の紹介 / メニュー</span>
           <p id="modal-shop-desc" class="text-xs text-slate-600 leading-relaxed font-medium">なめらかプリン！</p>
         </div>
 
@@ -761,7 +752,7 @@
 
         <!-- Mascot Tip inside details -->
         <div class="bg-amber-50/50 border border-amber-100 p-3 rounded-2xl flex items-start space-x-2 text-[11px] text-amber-900">
-          <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='https://placehold.co/50x50/fecdd3/9f1239?text=Q'" class="w-8 h-8 rounded-full object-contain bg-white border border-amber-200">
+          <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='kyachan.webp'" class="w-8 h-8 rounded-full object-contain bg-white border border-amber-200">
           <div>
             <span class="font-black block text-amber-800 text-[10px]">きゅうちゃんのワンポイント📝</span>
             <p id="modal-mascot-tip">売り切れになる前に、お早めに並ぶのがおすすめです！</p>
@@ -798,7 +789,7 @@
       <div class="p-5 space-y-4">
         <!-- Mascot Outbox -->
         <div class="bg-amber-50 border border-amber-200 p-3 rounded-2xl flex items-start space-x-3 text-xs text-amber-900">
-          <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='https://placehold.co/50x50/fecdd3/9f1239?text=Q'" class="w-10 h-10 rounded-full object-contain bg-white border border-amber-200 shrink-0">
+          <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='kyachan.webp'" class="w-10 h-10 rounded-full object-contain bg-white border border-amber-200 shrink-0">
           <div class="space-y-1">
             <span class="font-black block text-amber-800 text-[10px]">きゅうちゃんからの出題！🎤</span>
             <p id="quiz-modal-question" class="font-extrabold text-slate-800 leading-normal text-xs">問題がここに表示されます。</p>
@@ -845,7 +836,7 @@
         <i class="fa-solid fa-lock"></i>
       </div>
       <div>
-        <h3 class="text-sm font-black text-slate-800">管理者用ログインロック</h3>
+        <h3 class="text-sm font-black text-slate-800">管理者・実演用ログインロック</h3>
         <p class="text-[10px] text-slate-400 mt-1">模擬店お知らせや待ち時間を更新できます。<br>（デモパスコード: <span class="font-bold text-rose-500">2026</span>）</p>
       </div>
       <div class="space-y-2">
@@ -916,7 +907,7 @@
           </div>
 
           <!-- Select Status -->
-          <div class="grid grid-cols-2 gap-2">
+          <div class="grid grid-cols-1 gap-2">
             <div>
               <label class="text-[8.5px] font-black text-slate-400 block mb-1">待ち時間・状況</label>
               <select id="admin-shop-status" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-black text-slate-700 outline-none">
@@ -928,34 +919,19 @@
                 <option value="完売">完売</option>
               </select>
             </div>
-            <div>
-              <label class="text-[8.5px] font-black text-slate-400 block mb-1">整理券配布部</label>
-              <input type="text" id="admin-shop-limit" placeholder="例: 11:30の部" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-700 focus:outline-none">
-            </div>
           </div>
 
           <!-- Shop Announcement text -->
           <div>
-            <label class="text-[8.5px] font-black text-slate-400 block mb-1">お店からのお知らせメッセージ（個別配信）</label>
-            <input type="text" id="admin-shop-announce-text" placeholder="例: 大好評につき13時より再販売します！" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-400">
-            <p class="text-[8px] text-slate-400 font-bold mt-1">※空欄にして更新すると個別お知らせを削除できます。</p>
+            <label class="text-[8.5px] font-black text-slate-400 block mb-1">お店からのお知らせメッセージ（速報・即時配信）</label>
+            <input type="text" id="admin-shop-announce-text" placeholder="例: 大好評につき残りあと少しです！" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-400">
+            <p class="text-[8px] text-slate-400 font-bold mt-1">※空欄にして更新すると、個別お知らせを非表示に戻せます。</p>
           </div>
 
           <!-- Update Button -->
           <button onclick="updateShopDetailsFromAdmin()" class="w-full bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black py-2 rounded-xl text-xs shadow-sm active:scale-95 transition-all flex items-center justify-center gap-1">
             <i class="fa-solid fa-circle-check"></i> この模擬店の情報を即時反映する
           </button>
-        </div>
-      </div>
-
-      <!-- Ticket Admin controls -->
-      <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-2">
-        <span class="text-[10px] font-black text-slate-500 block"><i class="fa-solid fa-ticket"></i> 【整理券シミュレータ】残数の編集</span>
-        <div class="grid grid-cols-2 gap-1.5 text-[9px] font-black">
-          <button onclick="adjustAdminTicket(1, 5)" class="p-1.5 bg-white border rounded-xl">+5 ラーメン</button>
-          <button onclick="adjustAdminTicket(1, -5)" class="p-1.5 bg-white border rounded-xl">-5 ラーメン</button>
-          <button onclick="adjustAdminTicket(2, 2)" class="p-1.5 bg-white border rounded-xl">+2 クレープ</button>
-          <button onclick="adjustAdminTicket(2, -2)" class="p-1.5 bg-white border rounded-xl">-2 クレープ</button>
         </div>
       </div>
 
@@ -996,55 +972,51 @@
     // 🏠 MASTER LOCAL DATABASE & FALLBACK DEFAULTS
     // ----------------------------------------------------
     const initialShops = [
-      { id: 1, class: "1-1", name: "NTY〜あなたのとなりに〜", category: "goods", location: "2棟 1F", desc: "【協力店舗: Serenity】世界にひとつだけ！手作り感あふれる可愛いキーホルダーを販売します！🎒", mascotTip: "数量限定なのでお早めに寄ってみてね！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 2, class: "1-2", name: "キミの実力試してみる！？", category: "play", location: "南西校舎 1F", desc: "【遊戯・サービス】的を狙ってハイスコアを目指そう！大人気の体験型遊戯ゲームコーナー！🎯", mascotTip: "気軽に挑戦できて面白い景品も用意されているよ！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 3, class: "1-3", name: "和宝", category: "food", location: "2棟 2F", desc: "【協力店舗: とらや】上品な甘さともちもちの食感がたまらない絶品の老舗和菓子を販売しています。🍡", mascotTip: "お茶と一緒に楽しむとさらに美味しいよ！", status: "５分", currentLimit: "先着順" },
-      { id: 4, class: "1-4", name: "茶。-お茶の深みについて-", category: "goods", location: "2棟 2F", desc: "【協力店舗: 茶舗ふりゅう】お茶の深みについての展示や特別な日本茶の体験・販売スペースです。🍵", mascotTip: "ホッと一息つきたい時に最高の隠れ家スポットだよ！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 5, class: "1-5", name: "Drink Lab", category: "food", location: "2棟 3F", desc: "【ドリンク】冷たくて爽快なソフトドリンク各種が勢揃い！喉を潤してフェスを楽しもう！🥤", mascotTip: "お好みの冷たいジュースで疲れを吹き飛ばそう！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 6, class: "1-6", name: "買ってクレープ", category: "food", location: "2棟 3F", desc: "【協力店舗: シュシュクレープ】もっちもちの皮にクリームとフルーツをたっぷり包んだ大人気クレープ！🧁", mascotTip: "甘党の人には絶対に見逃してほしくない一品だよ！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 7, class: "1-7", name: "球式会社 セブン遊戯堂", category: "play", location: "南西校舎 1F", desc: "【遊戯】セブン遊戯堂が提供する、みんなで盛り上がれるハラハラドキドキのゲームアトラクション！👾", mascotTip: "友達と一緒に遊ぶとさらにエキサイトすること間違いなし！", status: "20分", currentLimit: "先着順" },
-      { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "南西校舎 1F", desc: "【遊戯】昭和レトロでエモい雰囲気が漂う池口商店のおもしろゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 9, class: "2-2", name: "肉包", category: "food", location: "中庭特設テント", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る中華肉まんです。🐼", mascotTip: "中庭のベンチでハフハフしながら食べてみてね！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "南西校舎 2F", desc: "【遊戯】手に汗握る面白さ！慎重にボールをゴールへ運ぶ特製ボール転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分", currentLimit: "先着順" },
-      { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "東駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "10分", currentLimit: "11:30の部" },
-      { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュです！🥐", mascotTip: "食堂内のおしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "西駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お腹がすいたら迷わず西駐車場へ向かおう！", status: "10分", currentLimit: "先着順" },
-      { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "西駐車場 テント4", desc: "【協力店舗: BELLE CURRY】スパイスの香りが駐車場中に漂う！じっくり煮込まれた本格旨口カレーライス🍛", mascotTip: "辛すぎずコクがあって、どんどんスプーンが進む絶品カレー！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 17, class: "3-3", name: "今日タピいいじゃん", category: "food", location: "西駐車場 テント5", desc: "【協力店舗: DDDコーヒー】モチモチのタピオカと極上まろやかミルクティーが最高にマッチした一杯🧋", mascotTip: "ストローで吸い込む楽しさと贅沢な甘さに癒されよう！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "西駐車場 テント6", desc: "【協力店舗: 磯六】アツアツの鉄板で豪快に焼き上げる香ばしいソースお好み焼き！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われて、お腹がグーと鳴っちゃうね！", status: "10分", currentLimit: "先着順" },
-      { id: 19, class: "3-5", name: "UDON販売作戦 〜立花のプライド〜", category: "food", location: "東駐車場 テント7", desc: "【協力店舗: 立花うどん】お出汁の香りがふんわり広がる！コシと喉越しにプライドをかけた究極の手打ちうどん🥢", mascotTip: "温かいおつゆが疲れた体にじんわり染み渡る極上の味！", status: "５分", currentLimit: "先着順" },
-      { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "food", location: "東駐車場 テント8", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "東駐車場 テント9", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めたつくね串＆皮焼きコンボ！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて長蛇の列ができるよ！", status: "20分", currentLimit: "先着順" }
+      { id: 1, class: "1-1", name: "NTY〜あなたのとなりに〜", category: "goods", location: "2棟 1F", desc: "【協力店舗: Serenity】世界にひとつだけ！手作り感あふれる可愛いキーホルダーを販売します！🎒", mascotTip: "数量限定なのでお早めに寄ってみてね！", status: "待ちなし" },
+      { id: 2, class: "1-2", name: "キミの実力試してみる！？", category: "play", location: "南西校舎 1F", desc: "【遊戯・サービス】的を狙ってハイスコアを目指そう！大人気の体験型遊戯ゲームコーナー！🎯", mascotTip: "気軽に挑戦できて面白い景品も用意されているよ！", status: "待ちなし" },
+      { id: 3, class: "1-3", name: "和宝", category: "food", location: "2棟 2F", desc: "【協力店舗: とらや】上品な甘さともちもちの食感がたまらない絶品の老舗和菓子を販売しています。🍡", mascotTip: "お茶と一緒に楽しむとさらに美味しいよ！", status: "５分" },
+      { id: 4, class: "1-4", name: "茶。-お茶の深みについて-", category: "goods", location: "2棟 2F", desc: "【協力店舗: 茶舗ふりゅう】お茶の深みについての展示や特別な日本茶の体験・販売スペースです。🍵", mascotTip: "ホッと一息つきたい時に最高の隠れ家スポットだよ！", status: "待ちなし" },
+      { id: 5, class: "1-5", name: "Drink Lab", category: "food", location: "2棟 3F", desc: "【ドリンク】冷たくて爽快なソフトドリンク各種が勢揃い！喉を潤してフェスを楽しもう！🥤", mascotTip: "お好みの冷たいジュースで疲れを吹き飛ばそう！", status: "待ちなし" },
+      { id: 6, class: "1-6", name: "買ってクレープ", category: "food", location: "2棟 3F", desc: "【協力店舗: シュシュクレープ】もっちもちの皮にクリームとフルーツをたっぷり包んだ大人気クレープ！🧁", mascotTip: "甘党の人には絶対に見逃してほしくない一品だよ！", status: "待ちなし" },
+      { id: 7, class: "1-7", name: "球式会社 セブン遊戯堂", category: "play", location: "南西校舎 1F", desc: "【遊戯】セブン遊戯堂が提供する、みんなで盛り上がれるハラハラドキドキのゲームアトラクション！👾", mascotTip: "友達と一緒に遊ぶとさらにエキサイトすること間違いなし！", status: "20分" },
+      { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "南西校舎 1F", desc: "【遊戯】昭和レトロでエモい雰囲気が漂う池口商店のおもしろゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "待ちなし" },
+      { id: 9, class: "2-2", name: "肉包", category: "food", location: "中庭特設テント", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る中華肉まんです。🐼", mascotTip: "中庭のベンチでハフハフしながら食べてみてね！", status: "待ちなし" },
+      { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "南西校舎 2F", desc: "【遊戯】手に汗握る面白さ！慎重にボールをゴールへ運ぶ特製ボール転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分" },
+      { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
+      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "東駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "10分" },
+      { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
+      { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュです！🥐", mascotTip: "食堂内のおしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし" },
+      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "西駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お腹がすいたら迷わず西駐車場へ向かおう！", status: "10分" },
+      { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "西駐車場 テント4", desc: "【協力店舗: BELLE CURRY】スパイスの香りが駐車場中に漂う！じっくり煮込まれた本格旨口カレーライス🍛", mascotTip: "辛すぎずコクがあって、どんどんスプーンが進む絶品カレー！", status: "待ちなし" },
+      { id: 17, class: "3-3", name: "今日タピいいじゃん", category: "food", location: "西駐車場 テント5", desc: "【協力店舗: DDDコーヒー】モチモチのタピオカと極上まろやかミルクティーが最高にマッチした一杯🧋", mascotTip: "ストローで吸い込む楽しさと贅沢な甘さに癒されよう！", status: "待ちなし" },
+      { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "西駐車場 テント6", desc: "【協力店舗: 磯六】アツアツの鉄板で豪快に焼き上げる香ばしいソースお好み焼き！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われて、お腹がグーと鳴っちゃうね！", status: "10分" },
+      { id: 19, class: "3-5", name: "UDON販売作戦 〜立花のプライド〜", category: "food", location: "東駐車場 テント7", desc: "【協力店舗: 立花うどん】お出汁の香りがふんわり広がる！コシと喉越しにプライドをかけた究極の手打ちうどん🥢", mascotTip: "温かいおつゆが疲れた体にじんわり染み渡る極上の味！", status: "５分" },
+      { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "food", location: "東駐車場 テント8", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "待ちなし" },
+      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "東駐車場 テント9", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めたつくね串＆皮焼きコンボ！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて長蛇の列ができるよ！", status: "20分" }
     ];
 
     const stageProgram = [
       { time: "10:15", duration: "30分", title: "🎺 吹奏楽部", detail: "体育館中を圧倒する、伝統の美しさと迫力を兼ね備えた大迫力吹奏楽メドレー！" },
       { time: "10:45", duration: "35分", title: "💡 【Quest発表】", detail: "「総合的な探究の時間」で各クラスが地域・社会の課題解決のために練り上げた、感動のプレゼン発表！" },
-      { time: "11:20", duration: "10分", title: "🥋 【演武部門】", detail: "臨時練習の成果！気迫と統一された美しさに満ちた迫真の演武パフォーマンス！" },
+      { time: "11:20", duration: "10分", title: "🥋 【演武部門】", detail: "臨時練習 of 演武！気迫と統一された美しさに満ちた迫真のパフォーマンス！" },
       { time: "11:30", duration: "10分", title: "💃 【ダンス部門】", detail: "流行のトレンド曲に合わせた一糸乱れぬキレキレダンスステージ！会場を一気に盛り上げます！" },
-      { time: "11:40", duration: "35分", title: "🎤 【有志部門】 (1〜5ページ)", detail: "事前オーディションを実力で突破した5つの精鋭有志による、音楽・バンド・歌唱の夢の競演！" },
-      { time: "12:25", duration: "35分", title: "🖌️ 書道部", detail: "音楽に合わせて巨大な紙に想いを力強く書き紡ぐ、久商祭クライマックスの大感動書道パフォーマンス！" }
+      { time: "11:40", duration: "35分", title: "🎤 【有志部門】", detail: "事前オーディションを実力で突破した5つの精鋭有志による、音楽・バンド・歌唱の夢の競演！" },
+      { time: "12:25", duration: "30分", title: "🖌️ 書道部", detail: "音楽に合わせて巨大な紙に想いを力強く書き紡ぐ、久商祭クライマックスの大感動書道パフォーマンス！" }
     ];
 
     const rallySpots = [
       { id: 1, name: "正門前（総合本部）", icon: "🚧", loc: "正門前特設エリア", question: "正門をくぐってすぐの総合受付テントにある『久商祭2026のスローガン看板』に書かれている「Blooming」のあとのサブタイトルは、青春の何を咲かせよう？", options: ["夢", "花", "恋"], answer: 1, hint: "総合受付テントに大きく掲げられているメイン看板を見てみてね！" },
-      { id: 2, name: "体育館（ステージ入口）", icon: "🏫", loc: "体育館エントランス", question: "体育館の正面玄関前に設置されている、来場者向けの『スリッパ返却箱（プラスチックコンテナ）』の色は何色？", options: ["青色", "緑色", "赤色"], answer: 0, hint: "体育館の入口のスリッパ置き場・回収所をよく見てみよう！" },
+      { id: 2, name: "体育館（ステージ入口）", icon: "🏫", loc: "体育館エントランス", question: "体育館の正面玄関前に設置されている、来場者向けの『スリッパ返却箱（プラスチックコンテナ）』の色は何色？", options: ["青色", "緑色", "赤色"], answer: 0, hint: "体育館の入口のスリッパ回収所をよく見てみよう！" },
       { id: 3, name: "同窓会館（食堂フロア）", icon: "🏠", loc: "同窓会館食堂自動ドア付近", question: "同窓会館1階・食堂の入口に掲示されている「当日の学食特別メニュー表」で、久商名物プリン🍮の価格はいくらに設定されている？", options: ["150円", "200円", "250円"], answer: 1, hint: "同窓会館の扉に貼ってあるメニューチラシを覗いてみてね！" },
       { id: 4, name: "中庭特設テント", icon: "🌳", loc: "中庭テント本部付近", question: "中庭の美化本部横に設置されている、きゅうちゃんのイラストが描かれた『エコ分別ゴミ箱』が回収しているリサイクル資源はどれ？", options: ["ペットボトルキャップ", "アルミ缶", "牛乳パック"], answer: 0, hint: "中庭エコステーションの看板ときゅうちゃんのイラストゴミ箱を見てみてね！" },
-      { id: 5, name: "東駐車場（ラーメン店付近）", icon: "🏕️", loc: "東駐車場案内看板の横", question: "志あわせラーメンが並ぶ東駐車場テント列の入口で、元気にパタパタなびいている「のぼり旗」のベースの色は何色？", options: ["赤色のぼり", "黄色のぼり", "青色のぼり"], answer: 0, hint: "ラーメン店テントの前に立っている元気なのぼり旗を観察しよう！" }
+      { id: 5, name: "東駐車場（ラーメン店付近）", icon: "🏕️", loc: "東駐車場案内看板の横", question: "志あわせラーメンが並ぶ東駐車場テント列の入口で、元気にパタパタなびいている「のぼり旗」のベースの色は何色？", options: ["赤色のぼり", "黄色のぼり", "青色のぼり"], answer: 0, hint: "ラーメン店テントの前に立っているのぼり旗を観察しよう！" }
     ];
 
     let shops = JSON.parse(JSON.stringify(initialShops));
     let shopAnnouncements = {};
     let announcements = [
-      { id: "def-1", time: "10:15", badge: "重要", text: "久商祭の体育館ステージが「吹奏楽部」のパフォーマンスで開幕しました！みなさん体育館へ！🎺", timestamp: 1, isUrgent: false },
-      { id: "def-2", time: "09:45", badge: "整理券", text: "2-5 「志あわせラーメン」の11:30配布分整理券は、まもなく配布終了となります！🍜", timestamp: 2, isUrgent: true }
-    ];
-    let tickets = [
-      { id: 1, name: "2-5 志あわせラーメン", currentLimit: "11:30の部", remaining: 12, total: 50 },
-      { id: 2, name: "1-6 買ってクレープ", currentLimit: "先着順（制限中）", remaining: 4, total: 30 }
+      { id: "def-1", time: "10:15", badge: "重要", text: "久商祭の体育館ステージが「吹奏楽部」のパフォーマンスで開幕しました！みなさん体育館へ！🎺", isUrgent: false },
+      { id: "def-2", time: "11:42", badge: "速報", text: "1-1「NTY〜あなたのとなりに〜」のキーホルダー、残り僅かとなっています！お早めに！🛍️", isUrgent: true }
     ];
     let bulletinPosts = [
       { id: "b1", sender: "久商生B", time: "10:20", text: "1-7のセブン遊戯堂、意外と待ち時間少なめでおすすめです！👾", timestamp: Date.now() - 10000 },
@@ -1069,7 +1041,6 @@
     const LS_VOTE_ART_KEY = 'kyushofes_vote_art_2026';
     const LS_SHOPS_KEY = 'kyushofes_shops_state_2026';
     const LS_BULLETIN_KEY = 'kyushofes_bulletin_posts_2026';
-    const LS_TICKETS_KEY = 'kyushofes_tickets_2026';
 
     function loadSavedStates() {
       try {
@@ -1101,11 +1072,6 @@
         const storedBulletin = localStorage.getItem(LS_BULLETIN_KEY);
         if (storedBulletin) {
           bulletinPosts = JSON.parse(storedBulletin);
-        }
-
-        const storedTickets = localStorage.getItem(LS_TICKETS_KEY);
-        if (storedTickets) {
-          tickets = JSON.parse(storedTickets);
         }
       } catch (e) {
         console.error("Local load failed:", e);
@@ -1514,8 +1480,7 @@
         location: "正面玄関前エリア",
         desc: "クイズラリークリア記念品の引き換えを行っております！その他、落とし物やお困りごとがございましたらお気軽にお立ち寄りください。🎁",
         mascotTip: "クイズが5問すべて正解になったら私の特製グッズが貰えるよ！楽しみにしててね！",
-        status: "待ちなし",
-        currentLimit: "先着順"
+        status: "待ちなし"
       };
       openShopModal(hqShopObj);
     }
@@ -1875,7 +1840,7 @@
     }
 
     // ----------------------------------------------------
-    // 📢 CLOUD NEWS & REALTIME BULLETIN SYSTEM
+    // 📢 NEWS & REALTIME BULLETIN SYSTEM
     // ----------------------------------------------------
     function openNewsModal() {
       const modal = document.getElementById('news-board-modal');
@@ -1923,62 +1888,52 @@
     }
 
     function renderNewsTabContents() {
-      const ticketContainer = document.getElementById('ticket-status-container');
-      if (!ticketContainer) return;
-      ticketContainer.innerHTML = '';
-
-      tickets.forEach(t => {
-        let pct = Math.round((t.remaining / t.total) * 100);
-        let colorClass = "bg-emerald-500";
-        let textBg = "bg-emerald-50 border-emerald-200 text-emerald-800";
-        
-        if (t.remaining === 0) {
-          colorClass = "bg-slate-400";
-          textBg = "bg-slate-100 border-slate-200 text-slate-500 line-through";
-        } else if (t.remaining <= 5) {
-          colorClass = "bg-rose-500 animate-pulse";
-          textBg = "bg-rose-50 border-rose-200 text-rose-800";
-        } else if (t.remaining <= 15) {
-          colorClass = "bg-amber-500";
-          textBg = "bg-amber-50 border-amber-200 text-amber-800";
-        }
-
-        const el = document.createElement('div');
-        el.className = `p-2 rounded-xl border flex flex-col justify-between ${textBg}`;
-        el.innerHTML = `
-          <div>
-            <span class="text-[8px] uppercase block font-black opacity-80">${t.currentLimit}</span>
-            <span class="text-[10px] font-black truncate block mt-0.5">${t.name}</span>
-          </div>
-          <div class="mt-2 flex items-center justify-between">
-            <span class="text-xs font-black">${t.remaining === 0 ? '配布終了' : `残り ${t.remaining}枚`}</span>
-            <div class="w-12 bg-black/10 h-1.5 rounded-full overflow-hidden">
-              <div class="h-full rounded-full ${colorClass}" style="width: ${pct}%"></div>
-            </div>
-          </div>
-        `;
-        ticketContainer.appendChild(el);
-      });
-
       const announceContainer = document.getElementById('announcements-container');
       if (announceContainer) {
         announceContainer.innerHTML = '';
-        announcements.forEach(a => {
-          const isUrgent = a.isUrgent;
-          const cardBg = isUrgent ? 'bg-rose-50 border-rose-200' : 'bg-white border-slate-200';
-          const badgeColor = isUrgent ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-300';
-          
-          const card = document.createElement('div');
-          card.className = `p-3 rounded-2xl border shadow-sm ${cardBg} space-y-1`;
-          card.innerHTML = `
-            <div class="flex justify-between items-center">
-              <span class="text-[9px] font-black font-mono text-slate-400">${a.time}投稿</span>
-              <span class="text-[8px] font-black px-1.5 py-0.5 rounded-md ${badgeColor}">${a.badge}</span>
-            </div>
-            <p class="text-[11px] text-slate-700 leading-relaxed font-semibold">${a.text}</p>
-          `;
-          announceContainer.appendChild(card);
+        
+        // 1. 各店舗のリアルタイムお知らせ（shopAnnouncements）をマージする
+        const customAlerts = [];
+        Object.keys(shopAnnouncements).forEach(shopId => {
+          const shop = shops.find(s => s.id == shopId);
+          const txt = shopAnnouncements[shopId];
+          if (shop && txt && txt.trim() !== "") {
+            customAlerts.push({
+              id: "shop-" + shopId,
+              time: "配信中",
+              badge: `${shop.class} 速報`,
+              text: `【${shop.name}】${txt}`,
+              isUrgent: true
+            });
+          }
         });
+
+        const allAnnounces = [...customAlerts, ...announcements];
+
+        if (allAnnounces.length === 0) {
+          announceContainer.innerHTML = `
+            <div class="text-center py-8 text-slate-400 text-[11px]">
+               現在、店舗や本部からのニュースはありません。
+            </div>
+          `;
+        } else {
+          allAnnounces.forEach(a => {
+            const isUrgent = a.isUrgent;
+            const cardBg = isUrgent ? 'bg-rose-50 border-rose-200' : 'bg-white border-slate-200';
+            const badgeColor = isUrgent ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-300';
+            
+            const card = document.createElement('div');
+            card.className = `p-3 rounded-2xl border shadow-sm ${cardBg} space-y-1`;
+            card.innerHTML = `
+              <div class="flex justify-between items-center">
+                <span class="text-[9px] font-black font-mono text-slate-400">${a.time}</span>
+                <span class="text-[8px] font-black px-1.5 py-0.5 rounded-md ${badgeColor}">${a.badge}</span>
+              </div>
+              <p class="text-[11px] text-slate-700 leading-relaxed font-semibold">${a.text}</p>
+            `;
+            announceContainer.appendChild(card);
+          });
+        }
       }
 
       const bulletinContainer = document.getElementById('bulletin-posts-container');
@@ -2113,20 +2068,17 @@
       if (!shop) return;
 
       document.getElementById('admin-shop-status').value = shop.status;
-      document.getElementById('admin-shop-limit').value = shop.currentLimit || "先着順";
       document.getElementById('admin-shop-announce-text').value = shopAnnouncements[shopId] || "";
     }
 
     function updateShopDetailsFromAdmin() {
       const shopId = parseInt(document.getElementById('admin-shop-select').value);
       const status = document.getElementById('admin-shop-status').value;
-      const limit = document.getElementById('admin-shop-limit').value;
       const announcementText = document.getElementById('admin-shop-announce-text').value;
 
       const shop = shops.find(s => s.id === shopId);
       if (shop) {
         shop.status = status;
-        shop.currentLimit = limit;
       }
 
       if (announcementText.trim() !== "") {
@@ -2140,20 +2092,11 @@
       updateMapHearts();
       updateMapAnnouncementIndicators();
 
-      showVoteToast(`模擬店「${shop ? shop.class : ''}」の情報を更新しました！`);
+      showVoteToast(`「${shop ? shop.class : ''}」の情報を即時反映しました！📢`);
       
       if (activeShopModalId === shopId) {
         closeShopModal();
       }
-    }
-
-    function adjustAdminTicket(id, delta) {
-      const ticket = tickets.find(t => t.id === id);
-      if (!ticket) return;
-
-      ticket.remaining = Math.max(0, Math.min(ticket.total, ticket.remaining + delta));
-      localStorage.setItem(LS_TICKETS_KEY, JSON.stringify(tickets));
-      renderNewsTabContents();
     }
 
     function clearAllAppStatusData() {
@@ -2204,7 +2147,6 @@
     window.logoutAdmin = logoutAdmin;
     window.loadSelectedShopAdminData = loadSelectedShopAdminData;
     window.updateShopDetailsFromAdmin = updateShopDetailsFromAdmin;
-    window.adjustAdminTicket = adjustAdminTicket;
     window.simSolveQuiz = simSolveQuiz;
     window.resetRally = resetRally;
     window.resetVotes = resetVotes;
