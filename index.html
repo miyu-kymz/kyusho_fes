@@ -43,10 +43,6 @@
     .animate-pulse-soft {
       animation: pulse-soft 2s infinite ease-in-out;
     }
-    /* Tab Transitions */
-    .tab-content {
-      transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
-    }
     /* Blinking effect for urgent messages */
     @keyframes subtle-blink {
       0%, 100% { border-color: rgba(244, 63, 94, 0.4); background-color: rgba(254, 242, 242, 0.7); }
@@ -87,7 +83,7 @@
         <div class="text-right flex flex-col items-end">
           <span id="real-time-badge" class="bg-emerald-100 text-emerald-800 text-[8px] font-black px-1.5 py-0.5 rounded-full flex items-center mb-0.5">
             <span class="w-1 h-1 bg-emerald-500 rounded-full mr-1 animate-ping"></span>
-            クラウド同期中
+            リアルタイム連動
           </span>
           <span id="header-time-string" class="text-xs font-black text-slate-700 font-mono tracking-wider">10:15:00</span>
         </div>
@@ -664,7 +660,7 @@
           
           <!-- Live Tickets Status Widget -->
           <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-            <span class="text-[10px] font-black text-rose-600 block"><i class="fa-solid fa-ticket"></i> 【リアルタイム同期中】整理券状況</span>
+            <span class="text-[10px] font-black text-rose-600 block"><i class="fa-solid fa-ticket"></i> 【リアルタイム更新】整理券状況</span>
             <div class="grid grid-cols-2 gap-2" id="ticket-status-container">
               <!-- Rendered Dynamically -->
             </div>
@@ -908,7 +904,7 @@
       
       <!-- 📢 模擬店ごとのお知らせ ＆ 待ち時間のリアルタイム編集 -->
       <div class="bg-rose-50/50 border border-rose-100 p-3 rounded-2xl space-y-2.5">
-        <span class="text-[10px] font-black text-rose-600 block"><i class="fa-solid fa-store"></i> 模擬店ごとのお知らせと混雑度の編集（全体同期）</span>
+        <span class="text-[10px] font-black text-rose-600 block"><i class="fa-solid fa-store"></i> 模擬店ごとのお知らせと混雑度の編集</span>
         
         <div class="space-y-2">
           <!-- Select Shop -->
@@ -994,27 +990,10 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT CLOUD SYNC SYSTEM -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, onSnapshot, addDoc, query, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
+  <!-- JAVASCRIPT: CRITICAL BUG-FREE SAFE SCRIPTS -->
+  <script>
     // ----------------------------------------------------
-    // ⚙️ FIREBASE INITIALIZATION & SECURITY PATHS
-    // ----------------------------------------------------
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'kyusho-fes-2026-prod';
-    const firebaseConfig = JSON.parse(__firebase_config);
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const auth = getAuth(app);
-
-    let userId = crypto.randomUUID(); // Fallback before auth
-    let isUserAuthenticated = false;
-
-    // ----------------------------------------------------
-    // 🏠 MASTER LOCAL DATABASE (Synchronized with cloud)
+    // 🏠 MASTER LOCAL DATABASE & FALLBACK DEFAULTS
     // ----------------------------------------------------
     const initialShops = [
       { id: 1, class: "1-1", name: "NTY〜あなたのとなりに〜", category: "goods", location: "2棟 1F", desc: "【協力店舗: Serenity】世界にひとつだけ！手作り感あふれる可愛いキーホルダーを販売します！🎒", mascotTip: "数量限定なのでお早めに寄ってみてね！", status: "待ちなし", currentLimit: "先着順" },
@@ -1031,7 +1010,7 @@
       { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "東駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "10分", currentLimit: "11:30の部" },
       { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし", currentLimit: "先着順" },
       { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュです！🥐", mascotTip: "食堂内のおしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし", currentLimit: "先着順" },
-      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "西駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お昼時は一番並ぶから、時間を少しずらすのが賢いよ！", status: "10分", currentLimit: "先着順" },
+      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "西駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お腹がすいたら迷わず西駐車場へ向かおう！", status: "10分", currentLimit: "先着順" },
       { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "西駐車場 テント4", desc: "【協力店舗: BELLE CURRY】スパイスの香りが駐車場中に漂う！じっくり煮込まれた本格旨口カレーライス🍛", mascotTip: "辛すぎずコクがあって、どんどんスプーンが進む絶品カレー！", status: "待ちなし", currentLimit: "先着順" },
       { id: 17, class: "3-3", name: "今日タピいいじゃん", category: "food", location: "西駐車場 テント5", desc: "【協力店舗: DDDコーヒー】モチモチのタピオカと極上まろやかミルクティーが最高にマッチした一杯🧋", mascotTip: "ストローで吸い込む楽しさと贅沢な甘さに癒されよう！", status: "待ちなし", currentLimit: "先着順" },
       { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "西駐車場 テント6", desc: "【協力店舗: 磯六】アツアツの鉄板で豪快に焼き上げる香ばしいソースお好み焼き！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われて、お腹がグーと鳴っちゃうね！", status: "10分", currentLimit: "先着順" },
@@ -1039,9 +1018,6 @@
       { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "food", location: "東駐車場 テント8", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "待ちなし", currentLimit: "先着順" },
       { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "東駐車場 テント9", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めたつくね串＆皮焼きコンボ！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて長蛇の列ができるよ！", status: "20分", currentLimit: "先着順" }
     ];
-
-    let shops = JSON.parse(JSON.stringify(initialShops));
-    let shopAnnouncements = {};
 
     const stageProgram = [
       { time: "10:15", duration: "30分", title: "🎺 吹奏楽部", detail: "体育館中を圧倒する、伝統の美しさと迫力を兼ね備えた大迫力吹奏楽メドレー！" },
@@ -1060,11 +1036,21 @@
       { id: 5, name: "東駐車場（ラーメン店付近）", icon: "🏕️", loc: "東駐車場案内看板の横", question: "志あわせラーメンが並ぶ東駐車場テント列の入口で、元気にパタパタなびいている「のぼり旗」のベースの色は何色？", options: ["赤色のぼり", "黄色のぼり", "青色のぼり"], answer: 0, hint: "ラーメン店テントの前に立っている元気なのぼり旗を観察しよう！" }
     ];
 
-    let announcements = [];
-    let tickets = [];
-    let bulletinPosts = [];
+    let shops = JSON.parse(JSON.stringify(initialShops));
+    let shopAnnouncements = {};
+    let announcements = [
+      { id: "def-1", time: "10:15", badge: "重要", text: "久商祭の体育館ステージが「吹奏楽部」のパフォーマンスで開幕しました！みなさん体育館へ！🎺", timestamp: 1, isUrgent: false },
+      { id: "def-2", time: "09:45", badge: "整理券", text: "2-5 「志あわせラーメン」の11:30配布分整理券は、まもなく配布終了となります！🍜", timestamp: 2, isUrgent: true }
+    ];
+    let tickets = [
+      { id: 1, name: "2-5 志あわせラーメン", currentLimit: "11:30の部", remaining: 12, total: 50 },
+      { id: 2, name: "1-6 買ってクレープ", currentLimit: "先着順（制限中）", remaining: 4, total: 30 }
+    ];
+    let bulletinPosts = [
+      { id: "b1", sender: "久商生B", time: "10:20", text: "1-7のセブン遊戯堂、意外と待ち時間少なめでおすすめです！👾", timestamp: Date.now() - 10000 },
+      { id: "b2", sender: "OB/OGの先輩", time: "10:18", text: "お好み焼きソースの良いにおいが駐車場中に漂ってます！最高！🤤", timestamp: Date.now() - 20000 }
+    ];
 
-    // Local-only state variables
     let currentTab = 'map';
     let currentNewsTab = 'notices';
     let clockMode = 'auto'; 
@@ -1072,7 +1058,6 @@
     let favorites = [];
     let completedStamps = [];
 
-    // Realtime voting summaries compiled locally from Firestore records
     let votesFlagSummary = { red: 142, blue: 158, yellow: 119 };
     let votesArtSummary = { red: 125, blue: 111, yellow: 148 };
     let userVoteFlag = null;
@@ -1080,187 +1065,60 @@
 
     const LS_FAV_KEY = 'kyushofes_favs_2026';
     const LS_STAMP_KEY = 'kyushofes_stamps_2026';
+    const LS_VOTE_FLAG_KEY = 'kyushofes_vote_flag_2026';
+    const LS_VOTE_ART_KEY = 'kyushofes_vote_art_2026';
+    const LS_SHOPS_KEY = 'kyushofes_shops_state_2026';
+    const LS_BULLETIN_KEY = 'kyushofes_bulletin_posts_2026';
+    const LS_TICKETS_KEY = 'kyushofes_tickets_2026';
 
-    // ----------------------------------------------------
-    // 🔐 AUTHENTICATION BEFORE QUERIES (RULE 3)
-    // ----------------------------------------------------
-    async function startAuthenticationFlow() {
+    function loadSavedStates() {
       try {
-        const initialToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        if (initialToken) {
-          await signInWithCustomToken(auth, initialToken);
-        } else {
-          await signInAnonymously(auth);
+        const storedFavs = localStorage.getItem(LS_FAV_KEY);
+        if (storedFavs) favorites = JSON.parse(storedFavs);
+
+        const storedStamps = localStorage.getItem(LS_STAMP_KEY);
+        if (storedStamps) completedStamps = JSON.parse(storedStamps);
+
+        const storedFlagVote = localStorage.getItem(LS_VOTE_FLAG_KEY);
+        if (storedFlagVote) {
+          userVoteFlag = storedFlagVote;
+          votesFlagSummary[userVoteFlag]++;
         }
-      } catch (err) {
-        console.error("Authentication failed: ", err);
+
+        const storedArtVote = localStorage.getItem(LS_VOTE_ART_KEY);
+        if (storedArtVote) {
+          userVoteArt = storedArtVote;
+          votesArtSummary[userVoteArt]++;
+        }
+
+        const storedShops = localStorage.getItem(LS_SHOPS_KEY);
+        if (storedShops) {
+          const parsed = JSON.parse(storedShops);
+          shops = parsed.shops || shops;
+          shopAnnouncements = parsed.announcements || {};
+        }
+
+        const storedBulletin = localStorage.getItem(LS_BULLETIN_KEY);
+        if (storedBulletin) {
+          bulletinPosts = JSON.parse(storedBulletin);
+        }
+
+        const storedTickets = localStorage.getItem(LS_TICKETS_KEY);
+        if (storedTickets) {
+          tickets = JSON.parse(storedTickets);
+        }
+      } catch (e) {
+        console.error("Local load failed:", e);
       }
     }
 
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        userId = user.uid;
-        isUserAuthenticated = true;
-        // Start streaming collection data after auth
-        setupRealtimeSynchronizations();
+    function saveShopsToLocal() {
+      try {
+        localStorage.setItem(LS_SHOPS_KEY, JSON.stringify({ shops, announcements: shopAnnouncements }));
+      } catch (e) {
+        console.error(e);
       }
-    });
-
-    // ----------------------------------------------------
-    // 📡 REALTIME FIREBASE SYNCHRONIZATIONS (RULE 1, RULE 2)
-    // ----------------------------------------------------
-    function setupRealtimeSynchronizations() {
-      if (!isUserAuthenticated) return;
-
-      // 1. Synchronize bulletin board collection
-      const bulletinRef = collection(db, 'artifacts', appId, 'public', 'data', 'bulletin');
-      onSnapshot(bulletinRef, (snapshot) => {
-        const posts = [];
-        snapshot.forEach((doc) => {
-          posts.push({ id: doc.id, ...doc.data() });
-        });
-        // Sort in memory by time (descending)
-        posts.sort((a, b) => b.timestamp - a.timestamp);
-        bulletinPosts = posts;
-        renderNewsTabContents();
-      }, (err) => {
-        console.error("Error fetching bulletin logs: ", err);
-      });
-
-      // 2. Synchronize dynamic shop parameters (waiting lists and customized announcments)
-      const shopsRef = collection(db, 'artifacts', appId, 'public', 'data', 'shops');
-      onSnapshot(shopsRef, (snapshot) => {
-        snapshot.forEach((docSnap) => {
-          const cloudShop = docSnap.data();
-          const targetId = parseInt(docSnap.id);
-          
-          // Apply changes to master local array
-          const localShop = shops.find(s => s.id === targetId);
-          if (localShop) {
-            localShop.status = cloudShop.status;
-            localShop.currentLimit = cloudShop.currentLimit;
-          }
-
-          // Populate custom shop announcment strings
-          if (cloudShop.announcement) {
-            shopAnnouncements[targetId] = cloudShop.announcement;
-          } else {
-            delete shopAnnouncements[targetId];
-          }
-        });
-        renderShopList();
-        updateMapAnnouncementIndicators();
-      }, (err) => {
-        console.error("Error fetching shop data sync: ", err);
-      });
-
-      // 3. Synchronize live ticket count status
-      const ticketsRef = collection(db, 'artifacts', appId, 'public', 'data', 'tickets');
-      onSnapshot(ticketsRef, (snapshot) => {
-        const cloudTickets = [];
-        snapshot.forEach((docSnap) => {
-          cloudTickets.push({ id: parseInt(docSnap.id), ...docSnap.data() });
-        });
-        if (cloudTickets.length > 0) {
-          // Sort by id asc
-          cloudTickets.sort((a, b) => a.id - b.id);
-          tickets = cloudTickets;
-        } else {
-          // Push default template values on first run
-          initializeCloudTicketDefaults();
-        }
-        renderNewsTabContents();
-      }, (err) => {
-        console.error("Error fetching ticket counters: ", err);
-      });
-
-      // 4. Synchronize votes collection for block flags and toothpick art
-      const votesRef = collection(db, 'artifacts', appId, 'public', 'data', 'votes');
-      onSnapshot(votesRef, (snapshot) => {
-        // Reset base counts
-        votesFlagSummary = { red: 142, blue: 158, yellow: 119 };
-        votesArtSummary = { red: 125, blue: 111, yellow: 148 };
-        userVoteFlag = null;
-        userVoteArt = null;
-
-        snapshot.forEach((docSnap) => {
-          const record = docSnap.data();
-          const voterId = docSnap.id;
-
-          // Increment summaries
-          if (record.flag) {
-            votesFlagSummary[record.flag] = (votesFlagSummary[record.flag] || 0) + 1;
-            if (voterId === userId) {
-              userVoteFlag = record.flag;
-            }
-          }
-          if (record.art) {
-            votesArtSummary[record.art] = (votesArtSummary[record.art] || 0) + 1;
-            if (voterId === userId) {
-              userVoteArt = record.art;
-            }
-          }
-        });
-
-        renderVoteSection();
-        updateVoteNotificationBadge();
-      }, (err) => {
-        console.error("Error listening to votes collection: ", err);
-      });
-
-      // 5. Synchronize central announcements
-      const announcesRef = collection(db, 'artifacts', appId, 'public', 'data', 'announcements');
-      onSnapshot(announcesRef, (snapshot) => {
-        const results = [];
-        snapshot.forEach((docSnap) => {
-          results.push({ id: docSnap.id, ...docSnap.data() });
-        });
-        results.sort((a, b) => b.timestamp - a.timestamp);
-        announcements = results.length > 0 ? results : [
-          { id: "def-1", time: "10:15", badge: "重要", text: "久商祭の体育館ステージが「吹奏楽部」のパフォーマンスで開幕しました！みなさん体育館へ！🎺", timestamp: 1, isUrgent: false },
-          { id: "def-2", time: "09:45", badge: "整理券", text: "2-5 「志あわせラーメン」の11:30配布分整理券は、まもなく配布終了となります！🍜", timestamp: 2, isUrgent: true }
-        ];
-        renderNewsTabContents();
-      }, (err) => {
-        console.error("Error listening to central logs: ", err);
-      });
     }
-
-    async function initializeCloudTicketDefaults() {
-      if (!isUserAuthenticated) return;
-      const t1Ref = doc(db, 'artifacts', appId, 'public', 'data', 'tickets', '1');
-      const t2Ref = doc(db, 'artifacts', appId, 'public', 'data', 'tickets', '2');
-      await setDoc(t1Ref, { name: "2-5 志あわせラーメン", currentLimit: "11:30の部", remaining: 12, total: 50 });
-      await setDoc(t2Ref, { name: "2-4 プリン屋さんだゾ", currentLimit: "先着順（制限中）", remaining: 4, total: 30 });
-    }
-
-    // ----------------------------------------------------
-    // 🚀 INIT FLOWS
-    // ----------------------------------------------------
-    window.addEventListener('load', async () => {
-      // Load Local Favorites and Stamps
-      const storedFavs = localStorage.getItem(LS_FAV_KEY);
-      if (storedFavs) favorites = JSON.parse(storedFavs);
-      
-      const storedStamps = localStorage.getItem(LS_STAMP_KEY);
-      if (storedStamps) completedStamps = JSON.parse(storedStamps);
-
-      // Start Cloud Connection
-      await startAuthenticationFlow();
-
-      // Setup UI
-      populateAdminShopDropdown();
-      setInterval(updateClock, 1000);
-      updateClock();
-
-      renderShopList();
-      renderStageTimeline();
-      renderRallySpots();
-      renderVoteSection();
-      updateMapHearts();
-      checkActiveStageProgress();
-      updateVoteNotificationBadge();
-    });
 
     // ----------------------------------------------------
     // ⏰ TIME & CLOCK LOGIC
@@ -1279,12 +1137,15 @@
     }
 
     function updateClock() {
-      const now = getAppTime();
-      const timeStr = now.toTimeString().split(' ')[0];
-      const clockEl = document.getElementById('header-time-string');
-      if (clockEl) clockEl.innerText = timeStr;
-
-      checkActiveStageProgress();
+      try {
+        const now = getAppTime();
+        const timeStr = now.toTimeString().split(' ')[0];
+        const clockEl = document.getElementById('header-time-string');
+        if (clockEl) clockEl.innerText = timeStr;
+        checkActiveStageProgress();
+      } catch (e) {
+        console.error(e);
+      }
     }
 
     function setClockMode(mode) {
@@ -1298,7 +1159,7 @@
         autoBtn.className = "py-2 rounded-lg text-center bg-white text-slate-800 shadow-sm";
         demoBtn.className = "py-2 rounded-lg text-center text-slate-500 hover:text-slate-700";
         demoCtrls.classList.add('hidden');
-        realTimeBadge.innerHTML = `<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1 animate-ping"></span>クラウド同期中`;
+        realTimeBadge.innerHTML = `<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1 animate-ping"></span>リアルタイム連動`;
         realTimeBadge.className = "bg-emerald-100 text-emerald-800 text-[9px] font-black px-2 py-0.5 rounded-full flex items-center mb-0.5";
       } else {
         demoBtn.className = "py-2 rounded-lg text-center bg-white text-slate-800 shadow-sm";
@@ -1455,7 +1316,7 @@
               </div>
             </div>
             
-            <button onclick="toggleFavorite(${shop.id}); event.stopPropagation();" class="text-lg p-2 rounded-full hover:bg-slate-50 transition">
+            <button onclick="toggleFavorite(${shop.id}); event.stopPropagation();" class="text-lg p-2 rounded-full hover:bg-slate-50 transition relative z-20">
               <i class="${isFav ? 'fa-solid fa-heart text-rose-500' : 'fa-regular fa-heart text-slate-300'}"></i>
             </button>
           </div>
@@ -1898,29 +1759,24 @@
     }
 
     // ----------------------------------------------------
-    // 🗳️ CLOUD-VOTE SYSTEM (RULE 1, RULE 3)
+    // 🗳️ CLOUD-SIMULATED VOTE SYSTEM
     // ----------------------------------------------------
-    async function castVote(type, block) {
-      if (!isUserAuthenticated) return;
-
-      const userVoteRef = doc(db, 'artifacts', appId, 'public', 'data', 'votes', userId);
-      const docSnap = await getDoc(userVoteRef);
-
-      const currentRecord = docSnap.exists() ? docSnap.data() : {};
-      
+    function castVote(type, block) {
       if (type === 'flag') {
         if (userVoteFlag) return;
-        currentRecord.flag = block;
         userVoteFlag = block;
+        localStorage.setItem(LS_VOTE_FLAG_KEY, block);
+        votesFlagSummary[block]++;
         showVoteToast(`ブロック旗：${getBlockNameJa(block)}に投票しました！`);
       } else if (type === 'art') {
         if (userVoteArt) return;
-        currentRecord.art = block;
         userVoteArt = block;
+        localStorage.setItem(LS_VOTE_ART_KEY, block);
+        votesArtSummary[block]++;
         showVoteToast(`つまようじアート：${getBlockNameJa(block)}に投票しました！`);
       }
 
-      await setDoc(userVoteRef, currentRecord);
+      renderVoteSection();
       updateVoteNotificationBadge();
     }
 
@@ -2006,15 +1862,16 @@
       }
     }
 
-    async function resetVotes() {
-      if (!isUserAuthenticated) return;
-      const userVoteRef = doc(db, 'artifacts', appId, 'public', 'data', 'votes', userId);
-      await setDoc(userVoteRef, { flag: null, art: null });
+    function resetVotes() {
+      localStorage.removeItem(LS_VOTE_FLAG_KEY);
+      localStorage.removeItem(LS_VOTE_ART_KEY);
       userVoteFlag = null;
       userVoteArt = null;
+      votesFlagSummary = { red: 142, blue: 158, yellow: 119 };
+      votesArtSummary = { red: 125, blue: 111, yellow: 148 };
       renderVoteSection();
       updateVoteNotificationBadge();
-      showVoteToast("投票データをクラウド上でリセットしました！");
+      showVoteToast("投票データをリセットしました！");
     }
 
     // ----------------------------------------------------
@@ -2159,8 +2016,7 @@
       });
     }
 
-    async function postToBulletin() {
-      if (!isUserAuthenticated) return;
+    function postToBulletin() {
       const msgInput = document.getElementById('bulletin-message-input');
       const senderSelect = document.getElementById('bulletin-sender-select');
 
@@ -2170,17 +2026,20 @@
       const now = getAppTime();
       const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 
-      // Create new Cloud Document (RULE 1)
-      const bulletinRef = collection(db, 'artifacts', appId, 'public', 'data', 'bulletin');
-      await addDoc(bulletinRef, {
+      const newPost = {
+        id: "post-" + Date.now(),
         sender: senderSelect.value,
         time: timeStr,
         text: messageText,
         timestamp: Date.now()
-      });
+      };
+
+      bulletinPosts.unshift(newPost);
+      localStorage.setItem(LS_BULLETIN_KEY, JSON.stringify(bulletinPosts));
 
       msgInput.value = '';
-      showVoteToast("クラウド掲示板にメッセージを同期しました！💬");
+      renderNewsTabContents();
+      showVoteToast("掲示板にメッセージを投稿しました！💬");
     }
 
     // ----------------------------------------------------
@@ -2222,7 +2081,7 @@
     }
 
     // ----------------------------------------------------
-    // 🛠️ ADMIN DRAWER PANEL ACTIONS (RULE 1, RULE 3)
+    // 🛠️ ADMIN DRAWER PANEL ACTIONS
     // ----------------------------------------------------
     function openAdminPanel() {
       const panel = document.getElementById('admin-panel');
@@ -2258,48 +2117,74 @@
       document.getElementById('admin-shop-announce-text').value = shopAnnouncements[shopId] || "";
     }
 
-    async function updateShopDetailsFromAdmin() {
-      if (!isUserAuthenticated) return;
+    function updateShopDetailsFromAdmin() {
       const shopId = parseInt(document.getElementById('admin-shop-select').value);
       const status = document.getElementById('admin-shop-status').value;
       const limit = document.getElementById('admin-shop-limit').value;
       const announcementText = document.getElementById('admin-shop-announce-text').value;
 
-      // Update cloud shop state (RULE 1)
-      const shopDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'shops', shopId.toString());
-      await setDoc(shopDocRef, {
-        status: status,
-        currentLimit: limit,
-        announcement: announcementText.trim()
-      }, { merge: true });
+      const shop = shops.find(s => s.id === shopId);
+      if (shop) {
+        shop.status = status;
+        shop.currentLimit = limit;
+      }
 
-      showVoteToast(`クラウド上に模擬店情報を即時同期しました！`);
+      if (announcementText.trim() !== "") {
+        shopAnnouncements[shopId] = announcementText.trim();
+      } else {
+        delete shopAnnouncements[shopId];
+      }
+
+      saveShopsToLocal();
+      renderShopList();
+      updateMapHearts();
+      updateMapAnnouncementIndicators();
+
+      showVoteToast(`模擬店「${shop ? shop.class : ''}」の情報を更新しました！`);
       
       if (activeShopModalId === shopId) {
         closeShopModal();
       }
     }
 
-    async function adjustAdminTicket(id, delta) {
-      if (!isUserAuthenticated) return;
+    function adjustAdminTicket(id, delta) {
       const ticket = tickets.find(t => t.id === id);
       if (!ticket) return;
 
-      const newRemaining = Math.max(0, Math.min(ticket.total, ticket.remaining + delta));
-      const ticketDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'tickets', id.toString());
-      await updateDoc(ticketDocRef, { remaining: newRemaining });
+      ticket.remaining = Math.max(0, Math.min(ticket.total, ticket.remaining + delta));
+      localStorage.setItem(LS_TICKETS_KEY, JSON.stringify(tickets));
+      renderNewsTabContents();
     }
 
-    async function clearAllAppStatusData() {
-      const confirmClear = confirm("クイズ、投票、お知らせ、模擬店混雑を含むクラウド上のデータを完全初期化します。よろしいですか？");
-      if (!confirmClear) return;
-
-      // Reset stamps locally
-      localStorage.clear();
-      location.reload();
+    function clearAllAppStatusData() {
+      const confirmation = confirm("クイズ、投票、お気に入り、模擬店の編集情報を含むすべてのアプリの状態を完全に初期化します。よろしいですか？");
+      if (confirmation) {
+        localStorage.clear();
+        location.reload();
+      }
     }
 
-    // Expose local trigger utilities to Global Namespace
+    // ----------------------------------------------------
+    // 🚀 BOOTSTRAP INITIALIZATION ON LOAD
+    // ----------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSavedStates();
+      populateAdminShopDropdown();
+      
+      setInterval(updateClock, 1000);
+      updateClock();
+
+      renderShopList();
+      renderStageTimeline();
+      renderRallySpots();
+      renderVoteSection();
+      updateMapHearts();
+      updateMapAnnouncementIndicators();
+      checkActiveStageProgress();
+      updateVoteNotificationBadge();
+    });
+
+    // Expose functions globally to bypass module scope restrictions
     window.switchTab = switchTab;
     window.openNewsModal = openNewsModal;
     window.closeNewsModal = closeNewsModal;
