@@ -405,7 +405,7 @@
 
               <!-- Main Entrance Headquarters -->
               <div onclick="clickMapShop(99)" class="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 border-2 border-white p-2 rounded-xl flex items-center justify-center text-center cursor-pointer hover:shadow-md transition relative shadow-xs">
-                <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='kyachan.webp'" class="w-5 h-5 rounded-full border border-white absolute right-1.5 bottom-1 object-contain bg-white">
+                <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='kyachan.webp'" class="w-5 h-5 rounded-full border border-white absolute right-1.5 bottom-1 object-contain bg-white">
                 <span class="text-[9px] font-black flex items-center gap-1">総合本部・受付 🎁 <span class="text-[7.5px] font-medium">(景品引換所)</span></span>
               </div>
             </div>
@@ -492,7 +492,7 @@
         <h2 class="text-xl font-black mt-2">きゅうちゃんの校内クイズラリー</h2>
         <p class="text-[11px] text-emerald-100/90 mt-1.5 leading-relaxed">
           校内の5つのスポットをまわって、<strong>「その場所に行くと答えがわかるクイズ」</strong>に挑戦しよう！<br>
-          すべての謎を解き明かして、本部できゅうちゃんの特別記念品をゲットしよう！🎁
+          すべての謎を解き明かして、久商博士になろう！🎁
         </p>
         <div class="mt-4 inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-2xl border border-white/20">
           <span class="text-lg font-black" id="rally-progress-text">0 / 5</span>
@@ -757,7 +757,7 @@
 
         <!-- Mascot Tip inside details -->
         <div class="bg-amber-50/50 border border-amber-100 p-3 rounded-2xl flex items-start space-x-2 text-[11px] text-amber-900">
-          <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='kyachan.webp'" class="w-8 h-8 rounded-full object-contain bg-white border border-amber-200">
+          <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='kyuchan.webp'" class="w-8 h-8 rounded-full object-contain bg-white border border-amber-200">
           <div>
             <span class="font-black block text-amber-800 text-[10px]">きゅうちゃんのワンポイント📝</span>
             <p id="modal-mascot-tip">売り切れになる前に、お早めに並ぶのがおすすめです！</p>
@@ -794,7 +794,7 @@
       <div class="p-5 space-y-4">
         <!-- Mascot Outbox -->
         <div class="bg-amber-50 border border-amber-200 p-3 rounded-2xl flex items-start space-x-3 text-xs text-amber-900">
-          <img src="kyachan.webp" alt="きゅうちゃん" onerror="this.src='kyachan.webp'" class="w-10 h-10 rounded-full object-contain bg-white border border-amber-200 shrink-0">
+          <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='kyuchan.webp'" class="w-10 h-10 rounded-full object-contain bg-white border border-amber-200 shrink-0">
           <div class="space-y-1">
             <span class="font-black block text-amber-800 text-[10px]">きゅうちゃんからの出題！🎤</span>
             <p id="quiz-modal-question" class="font-extrabold text-slate-800 leading-normal text-xs">問題がここに表示されます。</p>
@@ -842,7 +842,7 @@
       </div>
       <div>
         <h3 class="text-sm font-black text-slate-800">管理者・実演用ログインロック</h3>
-        <p class="text-[10px] text-slate-400 mt-1">模擬店お知らせや待ち時間を更新できます。<br>（デモパスコード: <span class="font-bold text-rose-500">2026</span>）</p>
+        <p class="text-[10px] text-slate-400 mt-1">模擬店お知らせや待ち時間を更新できます。<br>（デモパスコード: <span class="font-bold text-rose-500">0000</span>）</p>
       </div>
       <div class="space-y-2">
         <input type="password" id="admin-passcode-input" placeholder="パスコードを入力..." class="w-full text-center tracking-widest px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm font-black">
@@ -1058,7 +1058,7 @@
       { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "メディアセンター前 屋外テント", desc: "【遊戯】昭和レトロでエモい雰囲気が漂う池口商店のおもしろゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "待ちなし" },
       { id: 9, class: "2-2", name: "肉包", category: "food", location: "中庭特設テント", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る中華肉まんです。🐼", mascotTip: "中庭のベンチでハフハフしながら食べてみてね！", status: "待ちなし" },
       { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "運動場前・プール横付近 屋外", desc: "【遊戯】手に汗握る面白さ！慎重にボールをゴールへ運ぶ特製ボール転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分" },
-      { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろめます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
+      { id: 11, class: "2-4", name: "ぷりぷりーんぷりぷりーん　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろめます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
       { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "西駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず西駐車場へ向かおう！", status: "10分" },
       { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
       { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュです！🥐", mascotTip: "食堂内のおしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし" },
@@ -1074,7 +1074,7 @@
     const stageProgram = [
       { time: "10:15", duration: "30分", title: "🎺 吹奏楽部", detail: "体育館中を圧倒する、伝統の美しさと迫力を兼ね備えた大迫力吹奏楽メドレー！" },
       { time: "10:45", duration: "35分", title: "💡 【Quest発表】", detail: "「総合的な探究の時間」で各クラスが地域・社会の課題解決のために練り上げた、感動のプレゼン発表！" },
-      { time: "11:20", duration: "10分", title: "🥋 【演武部門】", detail: "臨時練習 of 演武！気迫と統一された美しさに満ちた迫真のパフォーマンス！" },
+      { time: "11:20", duration: "10分", title: "🥋 【演武部門】", detail: "臨時練習 of 演舞！気迫と統一された美しさに満ちた迫真のパフォーマンス！" },
       { time: "11:30", duration: "10分", title: "💃 【ダンス部門】", detail: "流行のトレンド曲に合わせた一糸乱れぬキレキレダンスステージ！会場を一気に盛り上げます！" },
       { time: "11:40", duration: "35分", title: "🎤 【有志部門】", detail: "事前オーディションを実力で突破した5つの精鋭有志による、音楽・バンド・歌唱の夢の競演！" },
       { time: "12:25", duration: "30分", title: "🖌️ 書道部", detail: "音楽に合わせて巨大な紙に想いを力強く書き紡ぐ、久商祭クライマックスの大感動書道パフォーマンス！" }
@@ -1657,8 +1657,8 @@
         name: "🚧 正門前特設 総合本部・受付",
         category: "other",
         location: "正面玄関前エリア",
-        desc: "クイズラリークリア記念品の引き換えを行っております！その他、落とし物やお困りごとがございましたらお気軽にお立ち寄りください。🎁",
-        mascotTip: "クイズが5問すべて正解になったら私の特製グッズが貰えるよ！楽しみにしててね！",
+        desc: "落とし物やお困りごとがございましたらお気軽にお立ち寄りください。🎁",
+        mascotTip: "5問すべて正解を目指してクイズにチャレンジ！久商博士になろう！",
         status: "待ちなし"
       };
       openShopModal(hqShopObj);
