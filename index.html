@@ -16,11 +16,10 @@
   <!-- FontAwesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Firebase SDKs (Compat version for absolute HTML stability) -->
+  <!-- Firebase SDKs (Compat version for HTML stability) -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
-  <!-- Custom Styles for Smooth Animations and Premium Theme -->
   <style>
     body {
       font-family: 'Zen Maru Gothic', sans-serif;
@@ -35,14 +34,14 @@
     }
     @keyframes bounce-slow {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      50% { transform: translateY(-5px); }
     }
     .animate-bounce-slow {
       animation: bounce-slow 3s infinite ease-in-out;
     }
     @keyframes pulse-soft {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.03); }
+      50% { opacity: 0.85; transform: scale(1.02); }
     }
     .animate-pulse-soft {
       animation: pulse-soft 2s infinite ease-in-out;
@@ -65,12 +64,12 @@
   </div>
 
   <!-- HEADER -->
-  <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-rose-100/50 shadow-sm px-4 py-3">
+  <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-rose-100/50 shadow-sm px-4 py-3">
     <div class="max-w-md mx-auto flex flex-col space-y-2">
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <div class="relative">
-            <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='kyuchan.webp'" class="w-11 h-11 rounded-full border-2 border-rose-400 bg-white object-contain shadow-sm">
+            <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='https://placehold.co/80x80/f43f5e/ffffff?text=%E3%81%8D%E3%82%85%E3%81%86'" class="w-11 h-11 rounded-full border-2 border-rose-400 bg-white object-contain shadow-sm">
             <span class="absolute -bottom-1 -right-1 bg-amber-400 text-slate-900 text-[9px] font-black px-1 rounded-full border border-white">公式</span>
           </div>
           <div>
@@ -90,7 +89,8 @@
         </div>
       </div>
 
-      <div class="flex justify-between items-center bg-slate-50 p-1.5 rounded-xl border border-slate-100">
+      <!-- Bulletin & News Quick Bar -->
+      <div class="flex justify-between items-center bg-slate-50 p-1.5 rounded-xl border border-slate-150">
         <span class="text-[10px] font-bold text-slate-500 pl-1">💬 各模擬店のリアルタイム速報</span>
         <button onclick="openNewsModal()" class="relative bg-gradient-to-r from-rose-500 to-amber-500 text-white px-3 py-1 rounded-xl transition-all font-black text-[10px] flex items-center gap-1 shadow-sm active:scale-95">
           <span class="relative flex h-1.5 w-1.5 mr-0.5">
@@ -103,10 +103,9 @@
     </div>
   </header>
 
-  <!-- MAIN CONTAINER -->
   <main class="max-w-md mx-auto px-4 mt-3 space-y-4">
 
-    <!-- HERO NOTIFICATION / STAGE SHORTCUT -->
+    <!-- HERO STAGE SHORTCUT BANNER -->
     <div id="quick-stage-banner" onclick="switchTab('stage')" class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-3 rounded-2xl shadow-md cursor-pointer hover:shadow-lg transition flex justify-between items-center">
       <div class="flex items-center space-x-3">
         <span class="text-2xl animate-bounce-slow">🎭</span>
@@ -121,7 +120,7 @@
     </div>
 
     <!-- TABS NAVIGATION -->
-    <div class="grid grid-cols-5 gap-1 bg-white/70 p-1 rounded-2xl border border-slate-200/50 shadow-sm">
+    <div class="grid grid-cols-5 gap-1 bg-white/80 p-1 rounded-2xl border border-slate-200 shadow-sm">
       <button onclick="switchTab('map')" id="tab-btn-map" class="tab-btn py-2 rounded-xl text-center transition flex flex-col items-center justify-center space-y-0.5 bg-rose-500 text-white shadow-sm font-bold">
         <span class="text-base"><i class="fa-solid fa-map-location-dot"></i></span>
         <span class="text-[9px]">マップ</span>
@@ -146,268 +145,403 @@
       </button>
     </div>
 
-    <!-- ================== TAB: MAP ================== -->
+    <!-- ================== TAB: MAP (配付パンフレット原案完全準拠) ================== -->
     <div id="tab-content-map" class="tab-content block space-y-4">
       
       <!-- Map Legend -->
       <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap gap-2 justify-center text-[10px] font-bold">
         <span class="flex items-center gap-1 px-2 py-1 rounded-lg bg-orange-50 border border-orange-200 text-orange-700">🍔 食品・グルメ</span>
         <span class="flex items-center gap-1 px-2 py-1 rounded-lg bg-purple-50 border border-purple-200 text-purple-700">🎮 遊戯・サービス</span>
-        <span class="flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700">🛍️ 物品・展示</span>
-        <span class="flex items-center gap-1 px-2 py-1 rounded-lg bg-sky-50 border border-sky-200 text-sky-700">🍽️ 休憩・イートイン</span>
+        <span class="flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700">🎨 展示・文化部</span>
+        <span class="flex items-center gap-1 px-2 py-1 rounded-lg bg-sky-50 border border-sky-200 text-sky-700">🍽️ 飲食スペース</span>
+        <span class="flex items-center gap-1 px-2 py-1 rounded-lg bg-rose-50 border border-rose-200 text-rose-700">🚫 校舎立入禁止</span>
       </div>
 
-      <!-- 2D CAMPUS MAP CANVAS CONTAINER (HORIZONTAL SWIPE SUPPORTED) -->
-      <div class="relative overflow-x-auto border-2 border-slate-200 rounded-3xl bg-slate-100 p-4 scrollbar-none shadow-inner" style="min-height: 520px;">
-        <div class="w-[940px] mx-auto relative flex flex-col space-y-4 text-center">
+      <!-- 2D CAMPUS MAP CONTAINER -->
+      <div class="relative overflow-x-auto border-2 border-slate-200 rounded-3xl bg-slate-100 p-4 scrollbar-none shadow-inner" style="min-height: 720px;">
+        <div class="w-[980px] mx-auto relative bg-white p-6 rounded-3xl border border-slate-300 text-center select-none shadow-sm">
           
-          <!-- ====== 🟪 SOUTH ZONE (南エリア、上が南): 同窓会館 ➔ 中庭 ➔ 雨天練習場 ====== -->
-          <div class="grid grid-cols-12 gap-3 pb-2 border-b border-dashed border-slate-300">
-            <!-- Left: 同窓会館 (2-4, 2-7) -->
-            <div class="col-span-4 bg-orange-50/90 border-2 border-orange-300 rounded-3xl p-3 flex flex-col justify-between shadow-sm min-h-[160px]">
-              <div class="text-left">
-                <span class="text-[10px] font-black text-orange-600 block"><i class="fa-solid fa-house-chimney"></i> 同窓会館 (1F食堂グルメ)</span>
-                <span class="text-[8px] text-slate-400 font-bold block">校舎の南東(左上)に位置する建物です</span>
-              </div>
-              <div class="space-y-1.5 mt-2">
-                <div onclick="clickMapShop(11)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative shadow-xs">
-                  <div class="text-left">
-                    <span class="text-[8px] text-orange-600 block font-bold">2-4 プリン</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">プリン屋さんだゾ🍮 <span id="map-announce-indicator-11" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
-                  <span class="map-fav-heart-indicator" data-shop-id="11"></span>
-                </div>
-                <div onclick="clickMapShop(14)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border border-slate-200 cursor-pointer transition-all flex justify-between items-center relative shadow-xs">
-                  <div class="text-left">
-                    <span class="text-[8px] text-orange-600 block font-bold">2-7 デニッシュ</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">カワセミ養殖場🥐 <span id="map-announce-indicator-14" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
-                  <span class="map-fav-heart-indicator" data-shop-id="14"></span>
-                </div>
-              </div>
+          <!-- MAP HEADER -->
+          <div class="flex justify-between items-center mb-4 border-b pb-2">
+            <div class="text-left">
+              <span class="text-[9px] bg-rose-100 text-rose-700 px-2 py-0.5 rounded font-black">公式配付パンフレット原案準拠</span>
+              <h2 class="text-sm font-black text-slate-800">創立130周年記念久商祭 2026 校内案内図</h2>
             </div>
+            <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">開催時間: 10:00 〜 14:00</span>
+          </div>
+
+          <!-- ====== TOP ZONE: 同窓会館 (左上) & 3棟 (中央上) & 部室棟 (右上) ====== -->
+          <div class="grid grid-cols-12 gap-3 items-start">
             
-            <!-- Middle: 中庭 (2-2, 2-6) -->
-            <div class="col-span-4 bg-emerald-50 border-2 border-emerald-250 rounded-3xl p-3 flex flex-col justify-between shadow-sm min-h-[160px] relative overflow-hidden">
-              <div class="text-left">
-                <span class="text-[10px] font-black text-emerald-600 block"><i class="fa-solid fa-tree"></i> 中庭 (特設グルメエリア)</span>
-                <span class="text-[8px] text-emerald-500 font-bold block">芝生の憩い場（南エリア中央）</span>
-              </div>
-              
-              <div class="bg-white/95 border border-emerald-300 rounded-2xl p-2 mt-2 shadow-xs z-10 space-y-1">
-                <span class="text-[9px] font-black text-emerald-600 block text-left">⛺ 中庭特設グルメテント</span>
-                <div class="grid grid-cols-1 gap-1">
-                  <div onclick="clickMapShop(13)" class="bg-emerald-50/30 hover:bg-emerald-100 p-1.5 rounded-lg border border-slate-250 cursor-pointer transition flex justify-between items-center relative">
-                    <span class="text-[10px] font-black text-slate-700 flex items-center gap-1">2-6 パリパリ🍰 <span id="map-announce-indicator-13" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                    <span class="map-fav-heart-indicator" data-shop-id="13"></span>
+            <!-- LEFT TOP: 同窓会館 -->
+            <div class="col-span-3 space-y-2">
+              <div class="border-2 border-slate-700 bg-orange-50 rounded-2xl p-2 shadow-xs">
+                <span class="text-[10px] font-black text-slate-800 block border-b border-slate-300 pb-1">同窓会館</span>
+                <div class="grid grid-cols-2 gap-1.5 mt-1.5">
+                  <div onclick="clickMapShop(14)" class="bg-white hover:bg-orange-100 p-1.5 rounded-lg border border-slate-300 cursor-pointer text-center relative">
+                    <span class="text-[8px] text-orange-600 font-bold block">洋菓子</span>
+                    <span class="text-[9.5px] font-black text-slate-800">2-7 カワセミ🥐</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="14"></span>
                   </div>
-                  <div onclick="clickMapShop(9)" class="bg-emerald-50/30 hover:bg-emerald-100 p-1.5 rounded-lg border border-slate-250 cursor-pointer transition flex justify-between items-center relative">
-                    <span class="text-[10px] font-black text-slate-700 flex items-center gap-1">2-2 肉包🐼 <span id="map-announce-indicator-9" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                    <span class="map-fav-heart-indicator" data-shop-id="9"></span>
+                  <div onclick="clickMapShop(11)" class="bg-white hover:bg-orange-100 p-1.5 rounded-lg border border-slate-300 cursor-pointer text-center relative">
+                    <span class="text-[8px] text-orange-600 font-bold block">プリン</span>
+                    <span class="text-[9.5px] font-black text-slate-800">2-4 プリン屋さん🍮</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="11"></span>
                   </div>
                 </div>
+              </div>
+
+              <!-- 植木 & 1-3 (和宝) ＆ 3-1 (池田屋) -->
+              <div class="space-y-1.5 py-1">
+                <div class="flex justify-start pl-3">
+                  <span class="w-7 h-7 rounded-full bg-emerald-100 border border-emerald-400 text-emerald-700 flex items-center justify-center text-[8px] font-bold shadow-xs">植木</span>
+                </div>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <div onclick="clickMapShop(3)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs flex flex-col justify-center min-h-[50px]">
+                    <span class="text-[7.5px] text-orange-600 font-bold block">和菓子</span>
+                    <span class="text-[9.5px] font-black text-slate-800">1-3 和宝🍡</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="3"></span>
+                  </div>
+                  <div onclick="clickMapShop(15)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs flex flex-col justify-center min-h-[50px]">
+                    <span class="text-[7.5px] text-orange-600 font-bold block">大砲ラーメン</span>
+                    <span class="text-[9.5px] font-black text-slate-800">3-1 池田屋🍜</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="15"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- セミナーハウス (建物本体: 1-6 ＆ 茶道部) -->
+              <div class="border-2 border-slate-700 bg-amber-50/70 rounded-2xl p-2.5 text-center shadow-xs space-y-1.5">
+                <div class="border-b border-amber-200 pb-1 text-center">
+                  <span class="text-[10px] font-black text-slate-800">セミナーハウス（屋内）</span>
+                </div>
+                
+                <!-- 1-6 (セミナーハウス内) -->
+                <div onclick="clickMapShop(6)" class="bg-white hover:bg-orange-100 p-2 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs">
+                  <div class="flex justify-between items-center">
+                    <span class="text-[8px] text-orange-600 font-bold">クレープ</span>
+                    <span class="text-[7.5px] text-slate-500 font-bold">※入口：食堂側ドア</span>
+                  </div>
+                  <span class="text-[10.5px] font-black text-slate-800 block mt-0.5">1-6 買ってクレープ 🧁</span>
+                  <span class="map-fav-heart-indicator" data-shop-id="6"></span>
+                </div>
+
+                <div class="text-[8px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded text-center">
+                  1F 和室：茶道部 🍵
+                </div>
+              </div>
+
+              <!-- セミナーハウス〜メディアセンター間 屋外特設テント (2-5, 1-4) -->
+              <div class="border-2 border-dashed border-orange-400 bg-orange-50/40 rounded-2xl p-2 text-left space-y-1.5 shadow-xs">
+                <div class="flex justify-between items-center border-b border-orange-200 pb-1">
+                  <span class="text-[9px] font-black text-orange-800">⛺ 屋外スペース（セミナーハウス〜メディア間）</span>
+                </div>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <div onclick="clickMapShop(12)" class="bg-white hover:bg-orange-100 p-1.5 rounded-lg border-2 border-slate-700 cursor-pointer text-center relative">
+                    <span class="text-[7.5px] text-orange-600 font-bold block">ラーメン</span>
+                    <span class="text-[9.5px] font-black text-slate-800">2-5 志あわせ🍜</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="12"></span>
+                  </div>
+                  <div onclick="clickMapShop(4)" class="bg-white hover:bg-emerald-100 p-1.5 rounded-lg border-2 border-slate-700 cursor-pointer text-center relative">
+                    <span class="text-[7.5px] text-emerald-600 font-bold block">お茶・茶菓子</span>
+                    <span class="text-[9.5px] font-black text-slate-800">1-4 茶。🍵</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="4"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- メディアセンター -->
+              <div class="border-2 border-slate-700 bg-emerald-50 rounded-2xl p-2.5 text-center shadow-xs">
+                <span class="text-[10.5px] font-black text-slate-800 block">メディアセンター</span>
+                <span class="text-[8px] text-emerald-700 font-bold block mt-0.5">1F: 情報処理部・ワープロ部 💻</span>
               </div>
             </div>
 
-            <!-- Right: 雨天練習場 -->
-            <div class="col-span-4 bg-sky-50 border-2 border-sky-300 rounded-3xl p-3 flex flex-col justify-between shadow-sm min-h-[160px] relative text-left">
-              <div>
-                <span class="text-[10px] font-black text-sky-600 block"><i class="fa-solid fa-umbrella"></i> 雨天練習場 1F</span>
-                <span class="text-[8px] text-sky-500 font-bold block">校舎の南西(右上)の練習スペースです</span>
+            <!-- CENTER: 3棟 ➔ 2棟 ➔ 1棟 (校舎群) -->
+            <div class="col-span-6 space-y-3">
+              <!-- 3棟 -->
+              <div class="border-2 border-slate-700 bg-rose-50/70 rounded-2xl py-3 px-4 relative shadow-xs">
+                <span class="absolute top-1 left-2 text-[8px] font-black text-rose-600 bg-white px-1.5 rounded-full border border-rose-200">立入禁止</span>
+                <span class="text-xs font-black text-slate-800 tracking-wider">３ 棟</span>
               </div>
-              
-              <div class="bg-white/95 border border-sky-200 rounded-2xl p-3 text-center space-y-1">
-                <span class="font-black text-xs text-slate-700 block">憩いのイートインスペース🍽️</span>
-                <span class="text-[9px] text-slate-400 block">椅子・ゴミ箱完備でゆっくり食べられます 🗑️</span>
+
+              <!-- 2棟〜3棟間通路テント (中庭3店舗: 2-6, 2-2, 1-5, ゴミ) -->
+              <div class="grid grid-cols-11 gap-1.5 items-center bg-slate-50 p-2 rounded-2xl border border-slate-300">
+                <div onclick="clickMapShop(13)" class="col-span-4 bg-white hover:bg-orange-100 p-1.5 rounded-lg border-2 border-slate-700 cursor-pointer text-center relative shadow-xs">
+                  <span class="text-[7.5px] text-orange-600 font-bold block">焼き菓子</span>
+                  <span class="text-[10px] font-black text-slate-800">2-6 パリパリ🍰</span>
+                  <span class="map-fav-heart-indicator" data-shop-id="13"></span>
+                </div>
+                <div onclick="clickMapShop(9)" class="col-span-3 bg-white hover:bg-orange-100 p-1.5 rounded-lg border-2 border-slate-700 cursor-pointer text-center relative shadow-xs">
+                  <span class="text-[7.5px] text-orange-600 font-bold block">知味斉肉まん</span>
+                  <span class="text-[10px] font-black text-slate-800">2-2 肉包🐼</span>
+                  <span class="map-fav-heart-indicator" data-shop-id="9"></span>
+                </div>
+                <div onclick="clickMapShop(5)" class="col-span-3 bg-white hover:bg-orange-100 p-1.5 rounded-lg border-2 border-slate-700 cursor-pointer text-center relative shadow-xs">
+                  <span class="text-[7.5px] text-orange-600 font-bold block">ソフトドリンク</span>
+                  <span class="text-[9.5px] font-black text-slate-800">1-5 Drink Lab🥤</span>
+                  <span class="map-fav-heart-indicator" data-shop-id="5"></span>
+                </div>
+                <div class="col-span-1 bg-slate-200 border border-slate-400 rounded-lg p-1 text-[8px] font-bold text-slate-600 text-center">
+                  ゴミ
+                </div>
+              </div>
+
+              <!-- 2棟 -->
+              <div class="border-2 border-slate-700 bg-rose-50/70 rounded-2xl py-3 px-4 relative shadow-xs">
+                <span class="absolute top-1 left-2 text-[8px] font-black text-rose-600 bg-white px-1.5 rounded-full border border-rose-200">立入禁止</span>
+                <span class="text-xs font-black text-slate-800 tracking-wider">２ 棟</span>
+              </div>
+
+              <!-- 1棟〜2棟間通路テント (ゴミステーションを1-1の上に縦並び配置) -->
+              <div class="flex items-center justify-start bg-slate-50 p-2 rounded-2xl border border-slate-300">
+                <div class="flex flex-col gap-1.5 w-36">
+                  <!-- 上: ゴミステーション -->
+                  <div class="bg-slate-200 border border-slate-400 rounded-lg py-1 px-2 text-[8px] font-bold text-slate-600 text-center shadow-xs">
+                    ゴミ 🗑️
+                  </div>
+                  <!-- 下: 1-1 NTY -->
+                  <div onclick="clickMapShop(1)" class="bg-white hover:bg-emerald-100 py-1.5 px-2 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs">
+                    <span class="text-[7.5px] text-emerald-600 font-bold block">キーホルダー</span>
+                    <span class="text-[9.5px] font-black text-slate-800">1-1 NTY 🎒</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="1"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 1棟 -->
+              <div class="border-2 border-slate-700 bg-rose-50/70 rounded-2xl py-3 px-4 relative shadow-xs">
+                <span class="absolute top-1 left-2 text-[8px] font-black text-rose-600 bg-white px-1.5 rounded-full border border-rose-200">立入禁止</span>
+                <span class="text-xs font-black text-slate-800 tracking-wider">１ 棟 （本館）</span>
+              </div>
+            </div>
+
+            <!-- RIGHT: 部室棟 & 飲食スペース & トイレ -->
+            <div class="col-span-3 space-y-3">
+              <div class="border-2 border-slate-700 bg-slate-50 rounded-2xl p-3 min-h-[220px] flex flex-col justify-between shadow-xs">
+                <div class="text-center border-b pb-1">
+                  <span class="text-[11px] font-black text-slate-800 block">部 室 棟 １ 階</span>
+                </div>
+                <div class="bg-sky-50 border border-sky-300 rounded-xl p-2.5 my-2 text-center">
+                  <span class="text-[10px] font-black text-sky-800 block">🍽️ 飲食スペース</span>
+                  <span class="text-[8px] text-slate-500 block">ゆっくり座って食事できます</span>
+                </div>
+                <div class="text-[8px] text-slate-400 text-center font-bold">
+                  （部室棟周辺）
+                </div>
+              </div>
+
+              <div class="border-2 border-slate-700 bg-blue-50 rounded-xl p-2 text-center">
+                <span class="text-[10px] font-black text-blue-800">🚻 トイレ</span>
               </div>
             </div>
           </div>
 
-          <!-- ====== 🟩 MIDDLE ZONE (中央エリア): 東・西の駐車場 ➔ 校舎は一般立入禁止 ====== -->
-          <div class="grid grid-cols-12 gap-3 py-2 border-b border-dashed border-slate-300">
+          <!-- ====== MIDDLE-BOTTOM ZONE: 1棟南側テント列 ＆ 体育館 ＆ 各種模擬店 ====== -->
+          <div class="grid grid-cols-12 gap-3 mt-4 items-start pt-3 border-t border-dashed border-slate-300">
             
-            <!-- Far Left: 東駐車場テント列 (3-1, 3-2, 3-3, 3-4) -->
-            <div class="col-span-3 bg-orange-50/50 border-2 border-amber-200 rounded-3xl p-3 flex flex-col justify-between shadow-sm min-h-[240px] text-left">
-              <div>
-                <span class="text-[10px] font-black text-amber-700 block"><i class="fa-solid fa-square-parking"></i> 東駐車場 (グルメテント列)</span>
-                <span class="text-[8px] text-slate-400 font-bold block">校舎の東側(左端)の駐車場エリアです</span>
-              </div>
-              <div class="space-y-1 mt-2">
-                <div onclick="clickMapShop(15)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
-                  <div>
-                    <span class="text-[8px] text-slate-400 block font-bold">テント3 (3-1)</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">元祖池田屋🍜 <span id="map-announce-indicator-15" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
-                  <span class="map-fav-heart-indicator" data-shop-id="15"></span>
-                </div>
-                <div onclick="clickMapShop(16)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
-                  <div>
-                    <span class="text-[8px] text-slate-400 block font-bold">テント4 (3-2)</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">スパイスでナイス🍛 <span id="map-announce-indicator-16" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
-                  <span class="map-fav-heart-indicator" data-shop-id="16"></span>
-                </div>
-                <div onclick="clickMapShop(17)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
-                  <div>
-                    <span class="text-[8px] text-slate-400 block font-bold">テント5 (3-3)</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">今日タピいいじゃん🧋 <span id="map-announce-indicator-17" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
-                  <span class="map-fav-heart-indicator" data-shop-id="17"></span>
-                </div>
-                <div onclick="clickMapShop(18)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
-                  <div>
-                    <span class="text-[8px] text-slate-400 block font-bold">テント6 (3-4)</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">ISOROKU🥢 <span id="map-announce-indicator-18" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
-                  <span class="map-fav-heart-indicator" data-shop-id="18"></span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Center: 1棟・2棟・3棟校舎群 (一般立入禁止) -->
-            <div class="col-span-6 bg-red-50/70 border-2 border-red-300 rounded-3xl p-4 flex flex-col justify-center items-center shadow-sm min-h-[240px] relative text-center">
-              <span class="text-4xl">🚫</span>
-              <h4 class="text-base font-black text-red-700 mt-2">1棟・2棟・3棟 校舎内</h4>
-              <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full mt-2 tracking-wider">防犯上、校舎内一般立入禁止</span>
-              <p class="text-[9px] text-red-500 font-bold mt-2 leading-relaxed">
-                ※一般のお客様は校舎内には入れません。<br>各模擬店はすべて「屋外特設テント」や「同窓会館」、<br>「メディアセンター」で実施されています。
-              </p>
-            </div>
-
-            <!-- Far Right: 西駐車場テント列 (2-5, 3-5, 3-6, 3-7) -->
-            <div class="col-span-3 bg-orange-50/50 border-2 border-amber-200 rounded-3xl p-3 flex flex-col justify-between shadow-sm min-h-[240px] text-left">
-              <div>
-                <span class="text-[10px] font-black text-amber-700 block"><i class="fa-solid fa-square-parking"></i> 西駐車場 (グルメテント列)</span>
-                <span class="text-[8px] text-slate-400 font-bold block">校舎の西側(右端)の駐車場です</span>
-              </div>
-              <div class="space-y-1 mt-2">
-                <div onclick="clickMapShop(12)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
-                  <div>
-                    <span class="text-[8px] text-rose-500 block font-bold">テント1 (2-5)</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">志あわせラーメン🍜 <span id="map-announce-indicator-12" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
-                  <span class="map-fav-heart-indicator" data-shop-id="12"></span>
-                </div>
-                <div onclick="clickMapShop(19)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
-                  <div>
-                    <span class="text-[8px] text-indigo-500 block font-bold">テント7 (3-5)</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">立花うどん🥢 <span id="map-announce-indicator-19" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
+            <!-- LEFT BOTTOM: メディアセンターの横幅（col-span-3）に合わせて2×2で綺麗に収める -->
+            <div class="col-span-3 space-y-2 text-left">
+              <!-- メディアセンターの幅いっぱいに収まる2×2正方形グリッド -->
+              <div class="grid grid-cols-2 gap-1.5">
+                <!-- 左上: 3-5 立花うどん -->
+                <div onclick="clickMapShop(19)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs flex flex-col justify-center min-h-[58px]">
+                  <span class="text-[7.5px] text-orange-600 font-bold block">立花うどん</span>
+                  <span class="text-[9px] font-black text-slate-800 leading-tight">3-5 UDON🥢</span>
                   <span class="map-fav-heart-indicator" data-shop-id="19"></span>
                 </div>
-                <div onclick="clickMapShop(20)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
-                  <div>
-                    <span class="text-[8px] text-slate-400 block font-bold">テント8 (3-6)</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">よしゆきッチン🍗 <span id="map-announce-indicator-20" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
+
+                <!-- 右上: 3-6 からあげ -->
+                <div onclick="clickMapShop(20)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs flex flex-col justify-center min-h-[58px]">
+                  <span class="text-[7.5px] text-orange-600 font-bold block">からあげ</span>
+                  <span class="text-[9px] font-black text-slate-800 leading-tight">3-6 よしゆき🍗</span>
                   <span class="map-fav-heart-indicator" data-shop-id="20"></span>
                 </div>
-                <div onclick="clickMapShop(21)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border border-slate-150 cursor-pointer transition-all flex justify-between items-center relative">
-                  <div>
-                    <span class="text-[8px] text-slate-400 block font-bold">テント9 (3-7)</span>
-                    <span class="text-[11px] font-black text-slate-700 flex items-center gap-1">焼鳥友子🍡 <span id="map-announce-indicator-21" class="hidden text-rose-500 animate-pulse text-[10px]">📢</span></span>
-                  </div>
+
+                <!-- 左下: 3-2 カレー -->
+                <div onclick="clickMapShop(16)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs flex flex-col justify-center min-h-[58px]">
+                  <span class="text-[7.5px] text-orange-600 font-bold block">カレー</span>
+                  <span class="text-[9px] font-black text-slate-800 leading-tight">3-2 スパイス🍛</span>
+                  <span class="map-fav-heart-indicator" data-shop-id="16"></span>
+                </div>
+
+                <!-- 右下: 3-7 焼き鳥 -->
+                <div onclick="clickMapShop(21)" class="bg-white hover:bg-orange-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs flex flex-col justify-center min-h-[58px]">
+                  <span class="text-[7.5px] text-orange-600 font-bold block">焼き鳥</span>
+                  <span class="text-[9px] font-black text-slate-800 leading-tight">3-7 焼鳥友子🍡</span>
                   <span class="map-fav-heart-indicator" data-shop-id="21"></span>
                 </div>
               </div>
+
+              <!-- プール / シンボル旗（上） / 本部（下） -->
+              <div class="grid grid-cols-12 gap-1 items-stretch pt-1">
+                <!-- 左側: プール -->
+                <div class="col-span-7 bg-sky-100 border-2 border-slate-700 rounded-xl p-2 flex items-center justify-center font-black text-sky-800 text-[10px]">
+                  プール🏊
+                </div>
+                <!-- 右側: シンボル旗の下に本部を縦並びで配置 -->
+                <div class="col-span-5 flex flex-col gap-1">
+                  <!-- 上: シンボル旗 -->
+                  <div class="bg-rose-50 border-2 border-slate-700 rounded-xl py-1 px-1.5 text-center flex flex-col justify-center items-center">
+                    <span class="text-[7.5px] font-black text-rose-600 leading-tight">シンボル旗 🚩</span>
+                  </div>
+                  <!-- 下: 本部 -->
+                  <div onclick="clickMapShop(99)" class="bg-amber-400 hover:bg-amber-500 border-2 border-slate-700 rounded-xl py-1 px-1.5 text-center flex flex-col justify-center items-center cursor-pointer shadow-xs">
+                    <span class="text-[8px] font-black text-slate-900 leading-tight">本 部 🎁</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CENTER-BOTTOM: 植木, 1棟南側テント列, 体育館など（col-span-9で広々配置） -->
+            <div class="col-span-9 space-y-2">
+              
+              <!-- 1棟南側テント列 & 植木（左寄りに配置） -->
+              <div class="flex items-center gap-3">
+                <!-- パンフレット通り3-6の右側・筑後うどんの手前に植木を配置 -->
+                <div class="flex items-center">
+                  <span class="w-8 h-8 rounded-full bg-emerald-100 border border-emerald-400 text-emerald-700 flex items-center justify-center text-[9px] font-bold shadow-xs shrink-0">植木</span>
+                </div>
+                
+                <!-- 筑後うどん・あつシー・池口商店（左寄せ） -->
+                <div class="flex gap-2 items-center">
+                  <div class="w-24 bg-white p-1.5 rounded-xl border-2 border-slate-700 text-center text-[9px] font-black text-slate-700 shadow-xs shrink-0">
+                    筑後うどん 🥢
+                  </div>
+                  <div onclick="clickMapShop(10)" class="w-28 bg-white hover:bg-purple-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs shrink-0">
+                    <span class="text-[8px] text-purple-600 font-bold block">ボール遊戯</span>
+                    <span class="text-[10px] font-black text-slate-800">2-3 あつシー🎳</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="10"></span>
+                  </div>
+                  <div onclick="clickMapShop(8)" class="w-28 bg-white hover:bg-purple-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs shrink-0">
+                    <span class="text-[8px] text-purple-600 font-bold block">お菓子釣り</span>
+                    <span class="text-[10px] font-black text-slate-800">2-1 池口商店🏮</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="8"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 体育館北側テント列 (1-7, 1-2) ➔ 1-2の右端が上の池口商店の右端とピッタリ揃う配置 -->
+              <div class="flex items-center gap-2">
+                <!-- 上段の池口商店右端と1-2の右端を一致させるスペーサー（116px） -->
+                <div class="w-[116px] shrink-0"></div>
+                <div onclick="clickMapShop(7)" class="w-32 bg-white hover:bg-purple-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs shrink-0">
+                  <span class="text-[8px] text-purple-600 font-bold block">遊戯堂</span>
+                  <span class="text-[10px] font-black text-slate-800">1-7 セブン遊戯堂👾</span>
+                  <span class="map-fav-heart-indicator" data-shop-id="7"></span>
+                </div>
+                <div onclick="clickMapShop(2)" class="w-32 bg-white hover:bg-purple-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs shrink-0">
+                  <span class="text-[8px] text-purple-600 font-bold block">射的</span>
+                  <span class="text-[10px] font-black text-slate-800">1-2 キミの実力🎯</span>
+                  <span class="map-fav-heart-indicator" data-shop-id="2"></span>
+                </div>
+                <div class="bg-slate-200 border border-slate-400 rounded-lg px-2.5 py-1.5 text-[8px] font-bold text-slate-600 flex items-center shadow-xs">
+                  ゴミ 🗑️
+                </div>
+              </div>
+
+              <!-- 3-4/3-3/飲食スペース & 体育館 -->
+              <div class="grid grid-cols-12 gap-3 items-stretch">
+                <!-- 3-4, 3-3, 飲食スペース -->
+                <div class="col-span-4 border-2 border-slate-700 bg-sky-50/50 rounded-2xl p-2 space-y-1.5 text-center">
+                  <div onclick="clickMapShop(18)" class="bg-white hover:bg-orange-100 p-1.5 rounded-lg border border-slate-300 cursor-pointer relative">
+                    <span class="text-[8px] text-orange-600 font-bold block">お好み焼き・ポテト</span>
+                    <span class="text-[10px] font-black text-slate-800">3-4 ISOROKU🥢</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="18"></span>
+                  </div>
+                  <div class="bg-white border border-sky-300 rounded-lg p-2 text-center">
+                    <span class="text-[10px] font-black text-sky-800 block">🍽️ 飲食スペース</span>
+                  </div>
+                  <div onclick="clickMapShop(17)" class="bg-white hover:bg-orange-100 p-1.5 rounded-lg border border-slate-300 cursor-pointer relative">
+                    <span class="text-[8px] text-orange-600 font-bold block">タピオカ</span>
+                    <span class="text-[10px] font-black text-slate-800">3-3 今日タピ🧋</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="17"></span>
+                  </div>
+                  <div class="bg-slate-200 border border-slate-400 rounded-lg py-0.5 text-[8px] font-bold text-slate-600">
+                    ゴミ 🗑️
+                  </div>
+                </div>
+
+                <!-- 体育館 (ステージ発表) -->
+                <div onclick="switchTab('stage')" class="col-span-8 border-2 border-slate-700 bg-purple-100/70 hover:bg-purple-200/70 cursor-pointer rounded-2xl p-4 flex flex-col justify-center items-center shadow-xs transition">
+                  <span class="text-xl mb-1">🎭</span>
+                  <span class="text-sm font-black text-slate-900 block">体育館</span>
+                  <span class="text-[11px] font-extrabold text-purple-800 mt-0.5">（ステージ発表）</span>
+                  <span class="text-[8.5px] bg-white text-purple-700 px-2 py-0.5 rounded-full font-bold mt-2 shadow-xs">タップしてプログラムを見る ➔</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- ====== BOTTOM ROW: 入場門・弓道場・駐輪場所 ====== -->
+          <div class="grid grid-cols-12 gap-2 mt-4 pt-3 border-t border-slate-300">
+            <div class="col-span-4 border-2 border-slate-700 bg-amber-200 rounded-xl py-2 font-black text-xs text-slate-800">
+              入 場 門 🚪
+            </div>
+            <div class="col-span-5 border-2 border-slate-700 bg-amber-50 rounded-xl py-2 font-black text-xs text-amber-800">
+              弓 道 場 🎯
+            </div>
+            <div class="col-span-3 border-2 border-slate-700 bg-slate-100 rounded-xl py-2 font-black text-xs text-slate-700">
+              駐輪場所 🚲
             </div>
           </div>
 
-          <!-- ====== 🟦 NORTH ZONE (北エリア、下が北): メディアセンター(文化部) ＆ 体育館 ➔ 1・2年屋外模擬店 ====== -->
-          <div class="grid grid-cols-12 gap-3 pt-2">
-            
-            <!-- Left: 体育館＆体育館南側特設テント (1-3, 1-4, 1-5, 1-6) -->
-            <div class="col-span-4 bg-purple-50 border-2 border-purple-300 rounded-3xl p-3 shadow-sm min-h-[190px] flex flex-col justify-between text-left">
-              <div>
-                <span class="text-[10px] font-black text-purple-700 block flex items-center gap-1">
-                  <i class="fa-solid fa-building-user"></i> 体育館 ＆ 南側テント列
-                </span>
-                <span class="text-[8px] text-slate-400 font-bold block">ステージ会場＆1年生食品テントエリアです</span>
+          <!-- ====== CULTURAL CLUB EXHIBITION MAP (パンフレット掲載) ====== -->
+          <div class="mt-6 pt-5 border-t-2 border-slate-300 text-left space-y-3">
+            <div class="flex items-center gap-1.5">
+              <span class="text-base">🎨</span>
+              <h3 class="text-xs font-black text-slate-800">文化部・部活動展示 ＆ PTAバザーのご案内</h3>
+            </div>
+
+            <div class="grid grid-cols-12 gap-3">
+              <!-- 卓球場 -->
+              <div class="col-span-4 border-2 border-slate-700 bg-emerald-50/60 rounded-2xl p-3 space-y-1.5">
+                <span class="text-[10px] font-black text-emerald-800 block border-b border-emerald-300 pb-1">＜ 卓球場 ＞</span>
+                <div class="space-y-1 text-[9px] font-bold text-slate-700">
+                  <div class="bg-white p-1 rounded border">English Club</div>
+                  <div class="bg-white p-1 rounded border">写真部 📸</div>
+                  <div class="bg-white p-1 rounded border">華道部 🌸</div>
+                  <div class="bg-white p-1 rounded border">料理研究部 🍳</div>
+                  <div class="bg-white p-1 rounded border">簿記研究部 📊</div>
+                </div>
               </div>
-              
-              <div class="grid grid-cols-1 gap-1.5 mt-2">
-                <div class="bg-white p-2 rounded-xl border border-purple-200">
-                  <span class="text-[8px] font-black text-purple-600 block mb-1">⛺ 体育館南側特設テント</span>
-                  <div class="grid grid-cols-2 gap-1 text-[9.5px]">
-                    <div onclick="clickMapShop(3)" class="bg-slate-50 hover:bg-purple-50 p-1 rounded border border-slate-200 cursor-pointer font-bold text-slate-700 flex justify-between items-center relative">
-                      <span>1-3 和宝🍡</span>
-                      <span class="map-fav-heart-indicator" data-shop-id="3"></span>
-                    </div>
-                    <div onclick="clickMapShop(4)" class="bg-slate-50 hover:bg-purple-50 p-1 rounded border border-slate-200 cursor-pointer font-bold text-slate-700 flex justify-between items-center relative">
-                      <span>1-4 茶。🍵</span>
-                      <span class="map-fav-heart-indicator" data-shop-id="4"></span>
-                    </div>
-                    <div onclick="clickMapShop(5)" class="bg-slate-50 hover:bg-purple-50 p-1 rounded border border-slate-200 cursor-pointer font-bold text-slate-700 flex justify-between items-center relative">
-                      <span>1-5 Drink🥤</span>
-                      <span class="map-fav-heart-indicator" data-shop-id="5"></span>
-                    </div>
-                    <div onclick="clickMapShop(6)" class="bg-slate-50 hover:bg-purple-50 p-1 rounded border border-slate-200 cursor-pointer font-bold text-slate-700 flex justify-between items-center relative">
-                      <span>1-6 買って🍰</span>
-                      <span class="map-fav-heart-indicator" data-shop-id="6"></span>
-                    </div>
+
+              <!-- 剣道場 -->
+              <div class="col-span-4 border-2 border-slate-700 bg-purple-50/60 rounded-2xl p-3 space-y-1.5">
+                <span class="text-[10px] font-black text-purple-800 block border-b border-purple-300 pb-1">＜ 剣道場 ＞</span>
+                <div class="space-y-1 text-[9px] font-bold text-slate-700">
+                  <div class="bg-white p-1 rounded border">PTAバザー 🛍️</div>
+                  <div class="bg-white p-1 rounded border">書道部 🖌️</div>
+                  <div class="bg-white p-1 rounded border">美術部 🎨</div>
+                </div>
+              </div>
+
+              <!-- メディアセンター1F & セミナーハウス1F -->
+              <div class="col-span-4 border-2 border-slate-700 bg-amber-50/60 rounded-2xl p-3 space-y-2">
+                <div>
+                  <span class="text-[10px] font-black text-amber-800 block border-b border-amber-300 pb-0.5">＜ メディアセンター 1F ＞</span>
+                  <div class="text-[9px] font-bold text-slate-700 mt-1 space-y-1">
+                    <div class="bg-white p-1 rounded border">情報実務室 → 情報処理部 💻</div>
+                    <div class="bg-white p-1 rounded border">OA 1 → ワープロ部 ⌨️</div>
+                  </div>
+                </div>
+                <div>
+                  <span class="text-[10px] font-black text-amber-800 block border-b border-amber-300 pb-0.5">＜ セミナーハウス 1F ＞</span>
+                  <div class="text-[9px] font-bold text-slate-700 mt-1">
+                    <div class="bg-white p-1 rounded border">和 室 → 茶道部 🍵</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Middle: メディアセンター (北東エリア：文化部・部活動による出し物・展示) -->
-            <div class="col-span-4 bg-emerald-50 border-2 border-emerald-300 rounded-3xl p-3 shadow-sm min-h-[190px] flex flex-col justify-between text-left">
-              <div>
-                <span class="text-[10px] font-black text-emerald-700 block flex items-center gap-1">
-                  <i class="fa-solid fa-palette"></i> メディアセンター (文化部展示)
-                </span>
-                <span class="text-[8px] text-emerald-500 font-bold block">文化部が日頃の練習の成果をここで大発表！</span>
-              </div>
-
-              <!-- Media Center Inside Club Activities List -->
-              <div class="bg-white/95 border border-emerald-200 rounded-2xl p-2.5 mt-2 space-y-1.5 text-[9px] font-bold text-slate-600 shadow-sm">
-                <span class="text-slate-800 font-black block border-b pb-0.5"><i class="fa-solid fa-circle-info text-emerald-600"></i> 文化部の展示・出し物一覧</span>
-                <div class="grid grid-cols-2 gap-1 text-[8px]">
-                  <span class="bg-slate-50 p-1 rounded border">🍵 茶道部 (お茶会)</span>
-                  <span class="bg-slate-50 p-1 rounded border">📸 写真部 (作品展)</span>
-                  <span class="bg-slate-50 p-1 rounded border">🖌️ 書道部 (書道展)</span>
-                  <span class="bg-slate-50 p-1 rounded border">🎨 美術部 (絵画展)</span>
-                  <span class="bg-slate-50 p-1 rounded border">🧮 珠算・電卓部</span>
-                  <span class="bg-slate-50 p-1 rounded border">💻 ワープロ部</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: メディアセンター前 ＆ 運動場前・正門受付エリア -->
-            <div class="col-span-4 bg-gradient-to-br from-amber-50 to-amber-100 border-2 border-amber-400 rounded-3xl p-3 shadow-sm min-h-[190px] flex flex-col justify-between text-left">
-              <div>
-                <span class="text-[10px] font-black text-amber-800 block"><i class="fa-solid fa-circle-info"></i> メディア前＆正門前(北側)</span>
-                <span class="text-[8px] text-amber-600 font-bold block">屋外テントと来場受付のメインフロントエリア</span>
-              </div>
-              
-              <!-- Media Center Front / Ground-Front tent shortcuts -->
-              <div class="space-y-1 my-1">
-                <div class="grid grid-cols-2 gap-1 text-[8.5px] font-bold text-slate-700">
-                  <div onclick="clickMapShop(1)" class="bg-white hover:bg-amber-100 p-1 rounded border cursor-pointer flex justify-between items-center relative">
-                    <span>1-1 NTY🎒</span><span class="map-fav-heart-indicator" data-shop-id="1"></span>
-                  </div>
-                  <div onclick="clickMapShop(2)" class="bg-white hover:bg-amber-100 p-1 rounded border cursor-pointer flex justify-between items-center relative">
-                    <span>1-2 的当🎯</span><span class="map-fav-heart-indicator" data-shop-id="2"></span>
-                  </div>
-                  <div onclick="clickMapShop(8)" class="bg-white hover:bg-amber-100 p-1 rounded border cursor-pointer flex justify-between items-center relative">
-                    <span>2-1 池口🏮</span><span class="map-fav-heart-indicator" data-shop-id="8"></span>
-                  </div>
-                  <div onclick="clickMapShop(10)" class="bg-white hover:bg-amber-100 p-1 rounded border cursor-pointer flex justify-between items-center relative">
-                    <span>2-3 ボール🎳</span><span class="map-fav-heart-indicator" data-shop-id="10"></span>
-                  </div>
-                </div>
-                <!-- 1-7 (Sports ground front) -->
-                <div onclick="clickMapShop(7)" class="bg-white hover:bg-amber-100 p-1 rounded border cursor-pointer text-center text-[9px] font-black text-slate-700 flex justify-between items-center relative">
-                  <span>1-7 セブン遊戯堂👾 (運動場前・プール横付近)</span>
-                  <span class="map-fav-heart-indicator" data-shop-id="7"></span>
-                </div>
-              </div>
-
-              <!-- Main Entrance Headquarters -->
-              <div onclick="clickMapShop(99)" class="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 border-2 border-white p-2 rounded-xl flex items-center justify-center text-center cursor-pointer hover:shadow-md transition relative shadow-xs">
-                <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='kyachan.webp'" class="w-5 h-5 rounded-full border border-white absolute right-1.5 bottom-1 object-contain bg-white">
-                <span class="text-[9px] font-black flex items-center gap-1">総合本部・受付 🎁 <span class="text-[7.5px] font-medium">(景品引換所)</span></span>
-              </div>
+            <!-- パンフレットの「おねがい」注意事項 -->
+            <div class="bg-rose-50 border border-rose-200 p-3 rounded-2xl text-[10px] text-rose-800 space-y-0.5">
+              <span class="font-black block">📢 ご来場の皆様へのお願い</span>
+              <p>・校舎内（1棟・2棟・3棟）への立入は禁止です。</p>
+              <p>・ゴミは持ち帰りを推奨しています。不可能な場合は、ゴミ分別の上、ゴミステーションをご利用下さい。</p>
+              <p>・敷地内はすべて禁煙です。</p>
             </div>
           </div>
 
@@ -418,8 +552,8 @@
       <div class="bg-amber-50 border border-amber-200 p-3 rounded-2xl flex items-center space-x-3 text-xs text-amber-900 shadow-sm">
         <span class="text-xl">💡</span>
         <p class="font-medium leading-relaxed text-left">
-          <strong>校内配置図は、横スクロールして確認できます。</strong>（久留米商業高校では、下側の正門がある方向が「北」となります）<br>
-          マップ上の各看板や建物をタップすると、メニューの詳細、お気に入り登録、リアルタイムの混雑状況がその場でパッと確認できます！
+          <strong>校内配置図は横スクロールで全体を見渡せます。</strong><br>
+          各模擬店の看板をタップすると、メニューの詳細や現在の混雑時間（待ちなし・5分待ち等）がすぐに確認できます！
         </p>
       </div>
     </div>
@@ -455,15 +589,11 @@
       <!-- Quick Favorites Bar -->
       <div id="favorites-bar-container" class="hidden bg-rose-50 border border-rose-100 p-3 rounded-2xl">
         <span class="text-[10px] font-black text-rose-600 block mb-2"><i class="fa-solid fa-heart mr-1"></i> あなたのお気に入り</span>
-        <div id="favorites-list-row" class="flex gap-2 overflow-x-auto scrollbar-none pb-1">
-          <!-- Dynamic favorites go here -->
-        </div>
+        <div id="favorites-list-row" class="flex gap-2 overflow-x-auto scrollbar-none pb-1"></div>
       </div>
 
       <!-- DYNAMIC SHOP LIST -->
-      <div id="shop-list-container" class="space-y-3">
-        <!-- Rendered dynamically by javascript -->
-      </div>
+      <div id="shop-list-container" class="space-y-3"></div>
     </div>
 
     <!-- ================== TAB: STAGE ================== -->
@@ -478,9 +608,7 @@
       <!-- Stage Timeline Card -->
       <div class="bg-white/80 backdrop-blur-sm p-4 rounded-3xl border border-slate-200 shadow-sm space-y-4 relative">
         <div class="border-l-4 border-dashed border-purple-300 absolute left-8 top-10 bottom-10 -z-10"></div>
-        <div id="stage-timeline-container" class="space-y-5">
-          <!-- Dynamic stage items here -->
-        </div>
+        <div id="stage-timeline-container" class="space-y-5"></div>
       </div>
     </div>
 
@@ -492,7 +620,7 @@
         <h2 class="text-xl font-black mt-2">きゅうちゃんの校内クイズラリー</h2>
         <p class="text-[11px] text-emerald-100/90 mt-1.5 leading-relaxed">
           校内の5つのスポットをまわって、<strong>「その場所に行くと答えがわかるクイズ」</strong>に挑戦しよう！<br>
-          すべての謎を解き明かして、久商博士になろう！🎁
+          すべての謎を解き明かして、本部できゅうちゃんの特別記念品をゲットしよう！🎁
         </p>
         <div class="mt-4 inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-2xl border border-white/20">
           <span class="text-lg font-black" id="rally-progress-text">0 / 5</span>
@@ -503,9 +631,7 @@
       <!-- Quiz Cards Grid -->
       <div class="bg-white p-4 rounded-3xl border border-slate-200 shadow-sm space-y-4">
         <h3 class="text-xs font-black text-slate-500 uppercase tracking-wider text-center">クイズ設置スポット一覧</h3>
-        <div class="grid grid-cols-1 gap-3" id="rally-spots-grid">
-          <!-- Dynamic quiz spots generated here -->
-        </div>
+        <div class="grid grid-cols-1 gap-3" id="rally-spots-grid"></div>
       </div>
 
       <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl space-y-2 text-center">
@@ -639,7 +765,6 @@
   <div id="news-board-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 hidden transition-opacity duration-300">
     <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl shadow-xl overflow-hidden transform translate-y-full transition-transform duration-300 flex flex-col max-h-[85vh]">
       
-      <!-- Modal Header Banner -->
       <div class="bg-gradient-to-r from-rose-500 to-amber-500 text-white p-4 relative shrink-0">
         <button onclick="closeNewsModal()" class="absolute top-4 right-4 bg-black/20 hover:bg-black/30 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm transition">
           <i class="fa-solid fa-xmark"></i>
@@ -647,7 +772,6 @@
         <h3 class="text-lg font-black flex items-center gap-1"><i class="fa-solid fa-bullhorn"></i> リアルタイム情報局</h3>
         <p class="text-[10px] text-white/90">各模擬店からの最新ニュースや、みんなの掲示板です！</p>
         
-        <!-- Modal Tabs -->
         <div class="grid grid-cols-2 gap-2 mt-3 bg-black/10 p-1 rounded-xl text-xs font-black">
           <button onclick="switchNewsTab('notices')" id="news-tab-notices" class="py-1.5 rounded-lg text-center bg-white text-slate-800 shadow-sm">
             📢 お店からの速報一覧
@@ -658,22 +782,15 @@
         </div>
       </div>
 
-      <!-- Scrollable Tab Content Area -->
       <div class="p-4 overflow-y-auto flex-1 space-y-4 bg-slate-50 min-h-[300px]" id="news-modal-scroll-area">
-        
-        <!-- Tab 1: Notices & Shop Alerts -->
         <div id="news-tab-content-notices" class="space-y-3">
           <div class="space-y-2.5">
             <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider block">運営・模擬店からのニュース</span>
-            <div class="space-y-2" id="announcements-container">
-              <!-- Rendered Dynamically -->
-            </div>
+            <div class="space-y-2" id="announcements-container"></div>
           </div>
         </div>
 
-        <!-- Tab 2: User Bulletin Board -->
         <div id="news-tab-content-bulletin" class="hidden space-y-4">
-          <!-- Submission Form -->
           <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm space-y-2.5">
             <span class="text-[10px] font-black text-slate-500 block">掲示板にメッセージを書き込む（全員に同期されます）</span>
             
@@ -693,15 +810,10 @@
             </button>
           </div>
 
-          <!-- Bulletin Posts Flow -->
-          <div class="space-y-2" id="bulletin-posts-container">
-            <!-- Dynamic board posts here -->
-          </div>
+          <div class="space-y-2" id="bulletin-posts-container"></div>
         </div>
-
       </div>
 
-      <!-- Modal Action Close Footer -->
       <div class="p-4 bg-white border-t border-slate-100 shrink-0">
         <button onclick="closeNewsModal()" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-2xl text-xs font-black shadow-sm transition">
           閉じる
@@ -714,7 +826,6 @@
   <div id="shop-detail-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 hidden transition-opacity duration-300">
     <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl shadow-xl overflow-hidden transform translate-y-full transition-transform duration-300">
       
-      <!-- Modal Header Banner -->
       <div id="modal-header-banner" class="bg-gradient-to-r from-rose-400 to-amber-400 text-white p-5 relative">
         <button onclick="closeShopModal()" class="absolute top-4 right-4 bg-black/20 hover:bg-black/30 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm transition">
           <i class="fa-solid fa-xmark"></i>
@@ -726,10 +837,7 @@
         </p>
       </div>
 
-      <!-- Modal Content Body -->
       <div class="p-5 space-y-4">
-        
-        <!-- Shop-specific Announcement box -->
         <div id="modal-shop-announcement-box" class="hidden shop-announce-blink border-2 border-rose-500 p-3.5 rounded-2xl flex items-start space-x-2.5 text-xs text-rose-800">
           <span class="text-xl">📢</span>
           <div>
@@ -749,15 +857,13 @@
             <span id="modal-status-badge" class="inline-block mt-1 px-3 py-1 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800">待ちなし</span>
           </div>
           
-          <!-- Favorite Action Button -->
           <button id="modal-fav-action-btn" onclick="toggleFavoriteFromModal()" class="flex items-center gap-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 px-4 py-2.5 rounded-xl border border-rose-100 transition-all font-black text-xs">
             <i class="fa-regular fa-heart"></i> お気に入り
           </button>
         </div>
 
-        <!-- Mascot Tip inside details -->
         <div class="bg-amber-50/50 border border-amber-100 p-3 rounded-2xl flex items-start space-x-2 text-[11px] text-amber-900">
-          <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='kyuchan.webp'" class="w-8 h-8 rounded-full object-contain bg-white border border-amber-200">
+          <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='https://placehold.co/80x80/f43f5e/ffffff?text=%E3%81%8D%E3%82%85%E3%81%86'" class="w-8 h-8 rounded-full object-contain bg-white border border-amber-200">
           <div>
             <span class="font-black block text-amber-800 text-[10px]">きゅうちゃんのワンポイント📝</span>
             <p id="modal-mascot-tip">売り切れになる前に、お早めに並ぶのがおすすめです！</p>
@@ -765,7 +871,6 @@
         </div>
       </div>
 
-      <!-- Modal Action Close Footer -->
       <div class="p-4 bg-slate-50 border-t border-slate-100 text-center">
         <button onclick="closeShopModal()" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-2xl text-xs font-black shadow-sm transition">
           閉じる
@@ -778,7 +883,6 @@
   <div id="quiz-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 hidden transition-opacity duration-300">
     <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl shadow-xl overflow-hidden transform translate-y-full transition-transform duration-300">
       
-      <!-- Modal Header -->
       <div class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white p-5 relative">
         <button onclick="closeQuizModal()" class="absolute top-4 right-4 bg-black/20 hover:bg-black/30 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm transition">
           <i class="fa-solid fa-xmark"></i>
@@ -790,35 +894,25 @@
         </p>
       </div>
 
-      <!-- Content -->
       <div class="p-5 space-y-4">
-        <!-- Mascot Outbox -->
         <div class="bg-amber-50 border border-amber-200 p-3 rounded-2xl flex items-start space-x-3 text-xs text-amber-900">
-          <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='kyuchan.webp'" class="w-10 h-10 rounded-full object-contain bg-white border border-amber-200 shrink-0">
+          <img src="kyuchan.webp" alt="きゅうちゃん" onerror="this.src='https://placehold.co/80x80/f43f5e/ffffff?text=%E3%81%8D%E3%82%85%E3%81%86'" class="w-10 h-10 rounded-full object-contain bg-white border border-amber-200 shrink-0">
           <div class="space-y-1">
             <span class="font-black block text-amber-800 text-[10px]">きゅうちゃんからの出題！🎤</span>
             <p id="quiz-modal-question" class="font-extrabold text-slate-800 leading-normal text-xs">問題がここに表示されます。</p>
           </div>
         </div>
 
-        <!-- Hint Box -->
         <div class="bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-[10px] text-slate-500 font-bold">
           <span class="text-rose-500"><i class="fa-solid fa-magnifying-glass"></i> 現地探索ヒント：</span>
           <span id="quiz-modal-hint">ここにヒントが表示されます。</span>
         </div>
 
-        <!-- Option Buttons -->
-        <div class="space-y-2" id="quiz-options-container">
-          <!-- Rendered dynamically -->
-        </div>
+        <div class="space-y-2" id="quiz-options-container"></div>
 
-        <!-- Correct/Incorrect Splash -->
-        <div id="quiz-result-feedback" class="hidden text-center p-3 rounded-2xl font-black text-xs transition duration-300">
-          <!-- Feedback message here -->
-        </div>
+        <div id="quiz-result-feedback" class="hidden text-center p-3 rounded-2xl font-black text-xs transition duration-300"></div>
       </div>
 
-      <!-- Footer -->
       <div class="p-4 bg-slate-50 border-t border-slate-100 text-center">
         <button onclick="closeQuizModal()" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-2xl text-xs font-black shadow-sm transition">
           閉じる
@@ -842,7 +936,7 @@
       </div>
       <div>
         <h3 class="text-sm font-black text-slate-800">管理者・実演用ログインロック</h3>
-        <p class="text-[10px] text-slate-400 mt-1">模擬店お知らせや待ち時間を更新できます。<br>（デモパスコード: <span class="font-bold text-rose-500">0000</span>）</p>
+        <p class="text-[10px] text-slate-400 mt-1">模擬店お知らせや待ち時間を更新できます。<br>（デモパスコード: <span class="font-bold text-rose-500">2026</span>）</p>
       </div>
       <div class="space-y-2">
         <input type="password" id="admin-passcode-input" placeholder="パスコードを入力..." class="w-full text-center tracking-widest px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm font-black">
@@ -974,15 +1068,11 @@
         <span class="text-[10px] font-black text-rose-600 block"><i class="fa-solid fa-store"></i> 模擬店ごとのお知らせと混雑度の編集</span>
         
         <div class="space-y-2">
-          <!-- Select Shop -->
           <div>
             <label class="text-[8.5px] font-black text-slate-400 block mb-1">対象の模擬店クラス</label>
-            <select id="admin-shop-select" onchange="loadSelectedShopAdminData()" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-black text-slate-700 outline-none">
-              <!-- Dynamically populated in js -->
-            </select>
+            <select id="admin-shop-select" onchange="loadSelectedShopAdminData()" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-black text-slate-700 outline-none"></select>
           </div>
 
-          <!-- Select Status -->
           <div class="grid grid-cols-1 gap-2">
             <div>
               <label class="text-[8.5px] font-black text-slate-400 block mb-1">待ち時間・状況</label>
@@ -997,14 +1087,12 @@
             </div>
           </div>
 
-          <!-- Shop Announcement text -->
           <div>
             <label class="text-[8.5px] font-black text-slate-400 block mb-1">お店からのお知らせメッセージ（速報・即時配信）</label>
             <input type="text" id="admin-shop-announce-text" placeholder="例: 大好評につき残りあと少しです！" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-rose-400">
             <p class="text-[8px] text-slate-400 font-bold mt-1">※空欄にして更新すると、個別お知らせを非表示に戻せます。</p>
           </div>
 
-          <!-- Update Button -->
           <button onclick="updateShopDetailsFromAdmin()" class="w-full bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black py-2 rounded-xl text-xs shadow-sm active:scale-95 transition-all flex items-center justify-center gap-1">
             <i class="fa-solid fa-circle-check"></i> この模擬店の情報を即時反映する
           </button>
@@ -1015,15 +1103,15 @@
       <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-2">
         <span class="text-[10px] font-black text-slate-500 block"><i class="fa-solid fa-stamp"></i> クイズ回答の強制クリアシミュレータ</span>
         <div class="grid grid-cols-5 gap-1 text-[8px] font-bold">
-          <button onclick="simSolveQuiz(1)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">1.正門</button>
-          <button onclick="simSolveQuiz(2)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">2.体育館</button>
-          <button onclick="simSolveQuiz(3)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">3.同窓会</button>
-          <button onclick="simSolveQuiz(4)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">4.中庭</button>
-          <button onclick="simSolveQuiz(5)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">5.東駐</button>
+          <button onclick="simSolveQuiz(1)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">1.校歌</button>
+          <button onclick="simSolveQuiz(2)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">2.自販機</button>
+          <button onclick="simSolveQuiz(3)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">3.校訓</button>
+          <button onclick="simSolveQuiz(4)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">4.丸房露</button>
+          <button onclick="simSolveQuiz(5)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">5.歴史</button>
         </div>
       </div>
 
-      <!-- Database Wipe buttons -->
+      <!-- Database Reset buttons -->
       <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-2">
         <span class="text-[10px] font-black text-slate-500 block"><i class="fa-solid fa-trash-can"></i> データの初期化</span>
         <div class="grid grid-cols-3 gap-1.5 text-[8.5px] font-black">
@@ -1042,50 +1130,49 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT: CRITICAL BUG-FREE SAFE SCRIPTS WITH FIREBASE REALTIME SYNC -->
   <script>
     // ----------------------------------------------------
-    // 🏠 MASTER DATABASE INITIAL DEFAULTS (Corrected for Outdoor Tents / MC Display)
+    // 🏠 MASTER DATABASE INITIAL DEFAULTS
     // ----------------------------------------------------
     const initialShops = [
-      { id: 1, class: "1-1", name: "NTY〜あなたのとなりに〜", category: "goods", location: "メディアセンター前 屋外テント", desc: "【協力店舗: Serenity】世界にひとつだけ！手作り感あふれる可愛いキーホルダーを販売します！🎒", mascotTip: "数量限定なのでお早めに寄ってみてね！", status: "待ちなし" },
-      { id: 2, class: "1-2", name: "キミの実力試してみる！？", category: "play", location: "メディアセンター前 屋外テント", desc: "【遊戯・サービス】的を狙ってハイスコアを目指そう！大人気の体験型遊戯ゲームコーナー！🎯", mascotTip: "気軽に挑戦できて面白い景品も用意されているよ！", status: "待ちなし" },
-      { id: 3, class: "1-3", name: "和宝", category: "food", location: "体育館南側 特設テント", desc: "【協力店舗: とらや】上品な甘さともちもちの食感がたまらない絶品の老舗和菓子を販売しています。🍡", mascotTip: "お茶と一緒に楽しむとさらに美味しいよ！", status: "５分" },
-      { id: 4, class: "1-4", name: "茶。-お茶の深みについて-", category: "goods", location: "体育館南側 特設テント", desc: "【協力店舗: 茶舗ふりゅう】お茶の深みについての展示や特別な日本茶の体験・販売スペースです。🍵", mascotTip: "ホッと一息つきたい時に最高の隠れ家スポットだよ！", status: "待ちなし" },
-      { id: 5, class: "1-5", name: "Drink Lab", category: "food", location: "体育館南側 特設テント", desc: "【ドリンク】冷たくて爽快なソフトドリンク各種が勢揃い！喉を潤してフェスを楽しもう！🥤", mascotTip: "お好みの冷たいジュースで疲れを吹き飛ばそう！", status: "待ちなし" },
-      { id: 6, class: "1-6", name: "買ってクレープ", category: "food", location: "体育館南側 特設テント", desc: "【協力店舗: シュシュクレープ】もっちもちの皮にクリームとフルーツをたっぷり包んだ大人気クレープ！🧁", mascotTip: "甘党の人には絶対に見逃してほしくない一品だよ！", status: "待ちなし" },
-      { id: 7, class: "1-7", name: "球式会社 セブン遊戯堂", category: "play", location: "運動場前・プール横付近 屋外", desc: "【遊戯】セブン遊戯堂が提供する、みんなで盛り上がれるハラハラドキドキのゲームアトラクション！👾", mascotTip: "友達と一緒に遊ぶとさらにエキサイトすること間違いなし！", status: "20分" },
-      { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "メディアセンター前 屋外テント", desc: "【遊戯】昭和レトロでエモい雰囲気が漂う池口商店のおもしろゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "待ちなし" },
-      { id: 9, class: "2-2", name: "肉包", category: "food", location: "中庭特設テント", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る中華肉まんです。🐼", mascotTip: "中庭のベンチでハフハフしながら食べてみてね！", status: "待ちなし" },
-      { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "運動場前・プール横付近 屋外", desc: "【遊戯】手に汗握る面白さ！慎重にボールをゴールへ運ぶ特製ボール転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分" },
-      { id: 11, class: "2-4", name: "ぷりぷりーんぷりぷりーん　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろめます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
-      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "西駐車場 テント1", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！濃厚スープと極細ストレート麺が絡むテイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず西駐車場へ向かおう！", status: "10分" },
-      { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "中庭特設テント", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品洋菓子スイーツをお届け！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
-      { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F 食堂", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュです！🥐", mascotTip: "食堂内のおしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし" },
-      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "東駐車場 テント3", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お腹がすいたら迷わず東駐車場へ向かおう！", status: "10分" },
-      { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "東駐車場 テント4", desc: "【協力店舗: BELLE CURRY】スパイス of ライフ！じっくり煮込まれた旨辛本格カレーライス🍛", mascotTip: "スパイスのコクと程よい辛さでお腹いっぱいになれるよ！", status: "待ちなし" },
-      { id: 17, class: "3-3", name: "今日タピいいじゃん", category: "food", location: "東駐車場 テント5", desc: "【協力店舗: DDDコーヒー】モチモチのタピオカと極上まろやかミルクティーが最高にマッチした一杯🧋", mascotTip: "ストローで吸い込む楽しさと贅沢な甘さに癒されよう！", status: "待ちなし" },
-      { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "東駐車場 テント6", desc: "【協力店舗: 磯六】アツアツの鉄板で豪快に焼き上げる香ばしいソースお好み焼き！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われて、お腹がグーと鳴っちゃうね！", status: "10分" },
-      { id: 19, class: "3-5", name: "UDON販売作戦 〜立花のプライド〜", category: "food", location: "西駐車場 テント7", desc: "【協力店舗: 立花うどん】お出汁の香りがふんわり広がる！コシと喉越しにプライドをかけた究極の手打ちうどん🥢", mascotTip: "温かいおつゆが疲れた体にじんわり染み渡る極上の味！", status: "５分" },
-      { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "food", location: "西駐車場 テント8", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "待ちなし" },
-      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "西駐車場 テント9", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めたつくね串＆皮焼きコンボ！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて長蛇の列ができるよ！", status: "20分" }
+      { id: 1, class: "1-1", name: "NTY〜あなたのとなりに〜", category: "goods", location: "1棟〜2棟間 通路", desc: "【協力店舗: Serenity】世界にひとつだけ！手作り感あふれる可愛いキーホルダーを販売します！🎒", mascotTip: "数量限定なのでお早めに寄ってみてね！", status: "待ちなし" },
+      { id: 2, class: "1-2", name: "キミの実力試してみる！？", category: "play", location: "体育館北側 テント", desc: "【協力店舗: 遊戲】的を狙ってハイスコアを目指そう！大人気の射的ゲームコーナー！🎯", mascotTip: "気軽に挑戦できて面白い景品も用意されているよ！", status: "待ちなし" },
+      { id: 3, class: "1-3", name: "和宝", category: "food", location: "植木周辺 テント", desc: "【協力店舗: とらや】上品な甘さともちもちの食感がたまらない絶品の老舗和菓子を販売しています。🍡", mascotTip: "お茶と一緒に楽しむとさらに美味しいよ！", status: "５分" },
+      { id: 4, class: "1-4", name: "茶。-お茶の深みについて-", category: "goods", location: "セミナーハウス〜メディアセンター間 (屋外)", desc: "【協力店舗: 茶舗ふりゅう】お茶の深みについての展示やお茶・茶菓子の体験・販売スペースです。🍵", mascotTip: "ホッと一息つきたい時に最高の隠れ家スポットだよ！", status: "待ちなし" },
+      { id: 5, class: "1-5", name: "Drink Lab", category: "food", location: "2棟〜3棟間 通路", desc: "【協力店舗: ドリンク】冷たくて爽快なソフトドリンク各種が勢揃い！喉を潤してフェスを楽しもう！🥤", mascotTip: "お好みの冷たいジュースで疲れを吹き飛ばそう！", status: "待ちなし" },
+      { id: 6, class: "1-6", name: "買ってクレープ", category: "food", location: "セミナーハウス 1F (屋内)", desc: "【協力店舗: シュシュクレープ】もっちもちの皮にクリームとフルーツをたっぷり包んだ大人気クレープ！🧁（※入口は食堂側ドアからお入りください）", mascotTip: "甘党の人には絶対に見逃してほしくない一品だよ！食堂側ドアから入ってね！", status: "待ちなし" },
+      { id: 7, class: "1-7", name: "球式会社 セブン遊戯堂", category: "play", location: "体育館北側 テント", desc: "【協力店舗: 遊戲】セブン遊戯堂が提供する、ストラックアウト・ボールすくい！👾", mascotTip: "友達と一緒に遊ぶとさらにエキサイトすること間違いなし！", status: "20分" },
+      { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "1棟南側 テント", desc: "【協力店舗: 遊戲】昭和レトロでエモい雰囲気！お菓子釣り・たこ焼きゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "待ちなし" },
+      { id: 9, class: "2-2", name: "肉包", category: "food", location: "2棟〜3棟間 通路", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る本格肉まんです。🐼", mascotTip: "ベンチでハフハフしながら食べてみてね！", status: "待ちなし" },
+      { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "1棟南側 テント", desc: "【協力店舗: 遊戲】手に汗握る面白さ！ボール投げ・転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分" },
+      { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
+      { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "セミナーハウス〜メディアセンター間 (屋外)", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！テイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず寄ってみよう！", status: "10分" },
+      { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "2棟〜3棟間 通路", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品焼き菓子スイーツ！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
+      { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュ！🥐", mascotTip: "おしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし" },
+      { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "2棟〜3棟間 西側", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お腹がすいたら迷わず食べにいこう！", status: "10分" },
+      { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "プール北側 テント", desc: "【協力店舗: BELLE CURRY】スパイス of ライフ！じっくり煮込まれた旨辛本格カレーライス🍛", mascotTip: "スパイスのコクと程よい辛さでお腹いっぱいになれるよ！", status: "待ちなし" },
+      { id: 17, class: "3-3", name: "今日タピいいじゃん", category: "food", location: "体育館西側 飲食広場", desc: "【協力店舗: DDDコーヒー】モチモチのタピオカと極上まろやかミルクティーが最高にマッチした一杯🧋", mascotTip: "ストローで吸い込む楽しさと贅沢な甘さに癒されよう！", status: "待ちなし" },
+      { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "体育館西側 飲食広場", desc: "【協力店舗: 磯六】アツアツの鉄板で焼き上げる香ばしいお好み焼き＆フライドポテト！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われちゃうね！", status: "10分" },
+      { id: 19, class: "3-5", name: "UDON販売作戦 〜立花のプライド〜", category: "food", location: "西側外周 テント", desc: "【協力店舗: 立花うどん】お出汁の香りがふんわり広がる！コシと喉越しにプライドをかけた究極の手打ちうどん🥢", mascotTip: "温かいおつゆが疲れた体にじんわり染み渡る極上の味！", status: "５分" },
+      { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "food", location: "メディアセンター南側 テント", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "待ちなし" },
+      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "プール北側 テント", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めた絶品焼き鳥串！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて並んじゃう！", status: "20分" }
     ];
 
     const stageProgram = [
       { time: "10:15", duration: "30分", title: "🎺 吹奏楽部", detail: "体育館中を圧倒する、伝統の美しさと迫力を兼ね備えた大迫力吹奏楽メドレー！" },
-      { time: "10:45", duration: "35分", title: "💡 【Quest発表】", detail: "「総合的な探究の時間」で各クラスが地域・社会の課題解決のために練り上げた、感動のプレゼン発表！" },
-      { time: "11:20", duration: "10分", title: "🥋 【演舞部門】", detail: " 気迫と統一された美しさに満ちた迫真のパフォーマンス！" },
-      { time: "11:30", duration: "10分", title: "💃 【ダンス部門】", detail: "流行のトレンド曲に合わせた一糸乱れぬキレキレダンスステージ！会場を一気に盛り上げます！" },
-      { time: "11:40", duration: "35分", title: "🎤 【有志部門】", detail: "事前オーディションを実力で突破した5つの精鋭有志による、音楽・バンド・歌唱の夢の競演！" },
-      { time: "12:25", duration: "30分", title: "🖌️ 書道部", detail: "音楽に合わせて巨大な紙に想いを力強く書き紡ぐ、久商祭クライマックスの大感動書道パフォーマンス！" }
+      { time: "10:45", duration: "35分", title: "💡 【Quest 部門】", detail: "発表順：旧1-4 ➔ 旧1-6 ➔ 旧1-1 ➔ 旧1-3 ➔ 旧1-2 ➔ 旧1-7 ➔ 旧1-5。探究の成果を発表します！" },
+      { time: "11:20", duration: "10分", title: "🥋 【演武部門】", detail: "気迫と統一された美しさに満ちた迫真の演武パフォーマンス！" },
+      { time: "11:30", duration: "10分", title: "💃 【ダンス部門】", detail: "トレンド曲に合わせた一糸乱れぬキレキレダンスステージ！" },
+      { time: "11:40", duration: "45分", title: "🎤 【有志部門】", detail: "出演：① 4POP ② Q-POP ③ QLLIT ④ きゅん商♡ による白熱のステージ！" },
+      { time: "12:25", duration: "35分", title: "🖌️ 書道部", detail: "音楽に合わせて巨大な紙に想いを紡ぐ、久商祭クライマックスの大感動パフォーマンス！" }
     ];
 
     const rallySpots = [
       { id: 1, name: "体育館・校門付近", icon: "🏫", loc: "体育館・校門周辺", question: "久留米商業の校歌に出てくる山の名前は？", options: ["高牟礼山", "成田山", "高良山"], answer: 0, hint: "体育館・校門付近を見てみてね！" },
-      { id: 2, name: "同窓会館（食堂周り）", icon: "🥤", loc: "食堂・同窓会館周辺", question: "久留米商業高校の屋外にある自販機（飲み物）の数は？？？", options: ["3", "1", "4"], answer: 0, hint: "食堂周りをよく見渡してみてね！" },
+      { id: 2, name: "同窓会館（食堂周り）", icon: "🥤", loc: "食堂・同窓会館周辺", question: "久留米商業高校の屋外にある自販機（飲み物）の数は？？？", options: ["3", "1", "4"], answer: 2, hint: "食堂周りをよく見渡してみてね！" },
       { id: 3, name: "校門・校舎付近", icon: "📜", loc: "校門・教室周辺", question: "次の中で、正しい学校の校訓はどれでしょう？", options: ["謹厳実直", "誠実勤勉", "質実剛健"], answer: 1, hint: "教室や校門付近をよく探してみてね！" },
       { id: 4, name: "1-3「和宝」模擬店", icon: "🍡", loc: "体育館南側特設テント", question: "1年3組「和宝」で売られている丸房露の値段はいくらか。", options: ["90円", "100円", "80円"], answer: 0, hint: "1-3「和宝」の模擬店看板やメニューを見てね！" },
-      { id: 5, name: "正門前（歴史案内）", icon: "🏛️", loc: "正門前エリア", question: "久商は今年で130周年です。そんな久商は福岡県内の何かで「初」を記録しています。久商が記録し「初」とは何でしょう", options: ["福岡県内で「最も古くに設立された」公立の商業学校", "福岡県内で「初めてそろばん（珠算）の授業を導入した」学校", "福岡県内で「初めて女子生徒の入学を認めた」商業学校"], answer: 2, hint: "正門付近や久商の歴史に関する案内を調べてみてね！" }
+      { id: 5, name: "正門前（歴史案内）", icon: "🏛️", loc: "正門前エリア", question: "久商は今年で130周年です。そんな久商は福岡県内の何かで「初」を記録しています。久商が記録した「初」とは何でしょう", options: ["福岡県内で「最も古くに設立された」公立の商業学校", "福岡県内で「初めてそろばん（珠算）の授業を導入した」学校", "福岡県内で「初めて女子生徒の入学を認めた」商業学校"], answer: 2, hint: "正門付近や久商の歴史に関する案内を調べてみてね！" }
     ];
 
     let shops = JSON.parse(JSON.stringify(initialShops));
@@ -1139,13 +1226,10 @@
           firebase.initializeApp(firebaseConfig);
           db = firebase.database();
           isFirebaseReady = true;
-          console.log("Firebase Connected Successfully!");
           setupFirebaseListeners();
-        } else {
-          console.warn("Firebase SDK not loaded, running in offline fallback mode.");
         }
       } catch (e) {
-        console.error("Firebase init failed, fallback to local:", e);
+        console.warn("Fallback to local storage mode:", e);
       }
     }
 
@@ -1224,9 +1308,6 @@
       }, (err) => console.warn("Votes fetch failed:", err));
     }
 
-    // ----------------------------------------------------
-    // 💾 LOCAL STORAGE BACKUP
-    // ----------------------------------------------------
     function loadSavedStates() {
       try {
         const storedFavs = localStorage.getItem(LS_FAV_KEY);
@@ -1265,9 +1346,6 @@
       }
     }
 
-    // ----------------------------------------------------
-    // ⏰ TIME & CLOCK LOGIC
-    // ----------------------------------------------------
     function getAppTime() {
       if (clockMode === 'auto') {
         return new Date();
@@ -1325,9 +1403,6 @@
       updateClock();
     }
 
-    // ----------------------------------------------------
-    // 🎛️ TAB CONTROLLER
-    // ----------------------------------------------------
     function switchTab(tabId) {
       currentTab = tabId;
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -1339,8 +1414,10 @@
       });
 
       const activeBtn = document.getElementById(`tab-btn-${tabId}`);
-      activeBtn.classList.remove('text-slate-500', 'hover:bg-slate-100');
-      activeBtn.classList.add('bg-rose-500', 'text-white', 'shadow-sm');
+      if (activeBtn) {
+        activeBtn.classList.remove('text-slate-500', 'hover:bg-slate-100');
+        activeBtn.classList.add('bg-rose-500', 'text-white', 'shadow-sm');
+      }
 
       if (tabId === 'shops') {
         renderShopList();
@@ -1351,9 +1428,6 @@
       }
     }
 
-    // ----------------------------------------------------
-    // 🍔 SHOPS MANAGEMENT RENDERERS
-    // ----------------------------------------------------
     function getStatusConfig(status) {
       let cssClass = "bg-slate-100 text-slate-700";
       let text = status;
@@ -1480,10 +1554,12 @@
       });
 
       const activeBtn = document.getElementById(`filter-btn-${cat}`);
-      if (cat === 'all') {
-        activeBtn.className = "py-2 rounded-xl border text-center transition bg-rose-500 border-rose-500 text-white";
-      } else {
-        activeBtn.className = "py-2 rounded-xl border text-center transition bg-rose-500 border-rose-500 text-white flex flex-col items-center justify-center";
+      if (activeBtn) {
+        if (cat === 'all') {
+          activeBtn.className = "py-2 rounded-xl border text-center transition bg-rose-500 border-rose-500 text-white";
+        } else {
+          activeBtn.className = "py-2 rounded-xl border text-center transition bg-rose-500 border-rose-500 text-white flex flex-col items-center justify-center";
+        }
       }
       renderShopList();
     }
@@ -1492,9 +1568,6 @@
       renderShopList();
     }
 
-    // ----------------------------------------------------
-    // ❤️ FAVORITES LOGIC
-    // ----------------------------------------------------
     function toggleFavorite(shopId) {
       const index = favorites.indexOf(shopId);
       if (index === -1) {
@@ -1560,9 +1633,6 @@
       });
     }
 
-    // ----------------------------------------------------
-    // 🗺️ INTERACTIVE MAP CONTROLS
-    // ----------------------------------------------------
     function clickMapShop(id) {
       if (id === 99) {
         showHQModal();
@@ -1573,9 +1643,6 @@
       openShopModal(shop);
     }
 
-    // ----------------------------------------------------
-    // 💬 DETAIL MODALS SYSTEM
-    // ----------------------------------------------------
     let activeShopModalId = null;
 
     function openShopModal(shop) {
@@ -1589,11 +1656,13 @@
 
       const modalAnnounceBox = document.getElementById('modal-shop-announcement-box');
       const customAnnounce = shopAnnouncements[shop.id];
-      if (customAnnounce && customAnnounce.trim() !== "") {
-        modalAnnounceBox.classList.remove('hidden');
-        document.getElementById('modal-shop-announcement-text').innerText = customAnnounce;
-      } else {
-        modalAnnounceBox.classList.add('hidden');
+      if (modalAnnounceBox) {
+        if (customAnnounce && customAnnounce.trim() !== "") {
+          modalAnnounceBox.classList.remove('hidden');
+          document.getElementById('modal-shop-announcement-text').innerText = customAnnounce;
+        } else {
+          modalAnnounceBox.classList.add('hidden');
+        }
       }
 
       const statusConfig = getStatusConfig(shop.status);
@@ -1656,17 +1725,14 @@
         class: "本部",
         name: "🚧 正門前特設 総合本部・受付",
         category: "other",
-        location: "正面玄関前エリア",
-        desc: "落とし物やお困りごとがございましたらお気軽にお立ち寄りください。🎁",
-        mascotTip: "5問すべて正解を目指してクイズにチャレンジ！久商博士になろう！",
+        location: "入場門横 エリア",
+        desc: "クイズラリークリア記念品の引き換えを行っております！その他、落とし物やお困りごとがございましたらお気軽にお立ち寄りください。🎁",
+        mascotTip: "クイズが5問すべて正解になったら私の特製グッズが貰えるよ！楽しんでいってね！",
         status: "待ちなし"
       };
       openShopModal(hqShopObj);
     }
 
-    // ----------------------------------------------------
-    // 🎭 STAGE MONITOR SYSTEM
-    // ----------------------------------------------------
     function checkActiveStageProgress() {
       const now = getAppTime();
       const nowMin = now.getHours() * 60 + now.getMinutes();
@@ -1752,9 +1818,6 @@
       });
     }
 
-    // ----------------------------------------------------
-    // 🏅 QUIZ RALLY CONTROLLER
-    // ----------------------------------------------------
     let activeQuizSpotId = null;
 
     function renderRallySpots() {
@@ -1902,9 +1965,6 @@
       renderRallySpots();
     }
 
-    // ----------------------------------------------------
-    // 🗳️ REALTIME VOTE SYSTEM (FIREBASE COLLABORATIVE)
-    // ----------------------------------------------------
     function castVote(type, block) {
       if (type === 'flag') {
         if (userVoteFlag) return;
@@ -1986,7 +2046,6 @@
         if (artResults) artResults.classList.add('hidden');
       }
 
-      // 管理者パネル内の投票統計グラフを更新
       const totalFlag = votesFlagSummary.red + votesFlagSummary.blue + votesFlagSummary.yellow;
       const fRedPct = totalFlag > 0 ? Math.round((votesFlagSummary.red / totalFlag) * 100) : 0;
       const fBluePct = totalFlag > 0 ? Math.round((votesFlagSummary.blue / totalFlag) * 100) : 0;
@@ -2051,9 +2110,6 @@
       showVoteToast("投票データを初期状態にリセットしました！");
     }
 
-    // ----------------------------------------------------
-    // 📢 NEWS & REALTIME BULLETIN SYSTEM
-    // ----------------------------------------------------
     function openNewsModal() {
       const modal = document.getElementById('news-board-modal');
       const inner = modal.querySelector('div');
@@ -2212,9 +2268,6 @@
       showVoteToast("掲示板にメッセージを投稿しました！💬");
     }
 
-    // ----------------------------------------------------
-    // 🔑 ADMIN PASSCODE GATE
-    // ----------------------------------------------------
     function openAdminGate() {
       const isAdminLoggedIn = sessionStorage.getItem('kyushofes_admin_logged_in');
       if (isAdminLoggedIn === 'true') {
@@ -2250,9 +2303,6 @@
       showVoteToast("ログアウトしました 🔒");
     }
 
-    // ----------------------------------------------------
-    // 🛠️ ADMIN DRAWER PANEL ACTIONS
-    // ----------------------------------------------------
     function openAdminPanel() {
       const panel = document.getElementById('admin-panel');
       panel.classList.remove('hidden');
@@ -2320,19 +2370,14 @@
     }
 
     function clearAllAppStatusData() {
-      const confirmation = confirm("クイズ、投票、お気に入り、模擬店の編集情報を含むすべてのアプリの状態を完全に初期化します。よろしいですか？");
-      if (confirmation) {
-        localStorage.clear();
-        if (isFirebaseReady) {
-          db.ref().remove();
-        }
-        location.reload();
+      localStorage.clear();
+      if (isFirebaseReady) {
+        db.ref().remove();
       }
+      showVoteToast("全データを初期化しました！");
+      setTimeout(() => location.reload(), 1000);
     }
 
-    // ----------------------------------------------------
-    // 🚀 BOOTSTRAP INITIALIZATION ON LOAD
-    // ----------------------------------------------------
     window.addEventListener('DOMContentLoaded', () => {
       loadSavedStates();
       initFirebase();
@@ -2351,7 +2396,7 @@
       updateVoteNotificationBadge();
     });
 
-    // Expose functions globally to bypass module scope restrictions
+    // Expose functions globally for interactive HTML elements
     window.switchTab = switchTab;
     window.openNewsModal = openNewsModal;
     window.closeNewsModal = closeNewsModal;
