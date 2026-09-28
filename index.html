@@ -93,7 +93,7 @@
             <h1 class="text-base font-black tracking-tight text-rose-600 flex items-center">
               久商祭デジナビ <span class="text-[10px] bg-rose-100 text-rose-700 ml-1 px-1 py-0.2 rounded font-bold">2026</span>
             </h1>
-            <p class="text-[9px] text-slate-500 font-medium">Blooming </p>
+            <p class="text-[9px] text-slate-500 font-medium">Blooming</p>
           </div>
         </div>
         
@@ -109,12 +109,12 @@
       <!-- Bulletin & News Quick Bar -->
       <div class="flex justify-between items-center bg-slate-50 p-1.5 rounded-xl border border-slate-150">
         <span class="text-[10px] font-bold text-slate-500 pl-1">💬 各模擬店のリアルタイム速報</span>
-        <button onclick="openNewsModal()" class="relative bg-gradient-to-r from-rose-500 to-amber-500 text-white px-3 py-1 rounded-xl transition-all font-black text-[10px] flex items-center gap-1 shadow-sm active:scale-95">
+        <button onclick="openNewsModal()" id="header-news-btn" class="relative bg-gradient-to-r from-rose-500 to-amber-500 text-white px-3 py-1 rounded-xl transition-all font-black text-[10px] flex items-center gap-1 shadow-sm active:scale-95">
           <span class="relative flex h-1.5 w-1.5 mr-0.5">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
             <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-rose-200"></span>
           </span>
-          <i class="fa-solid fa-bullhorn"></i> 掲示板＆最新速報を開く
+          <span id="header-news-btn-text"><i class="fa-solid fa-bullhorn"></i> 掲示板＆最新速報を開く</span>
         </button>
       </div>
     </div>
@@ -1400,37 +1400,6 @@
       }
     }
 
-    function zoomPdf(delta) {
-      const nextScale = pdfScale + delta;
-      if (nextScale >= 0.6 && nextScale <= 2.5) {
-        pdfScale = nextScale;
-        renderPdfPage(currentPdfPage);
-      }
-    }
-
-    function loadPdfFromFile(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const fileUrl = URL.createObjectURL(file);
-      const loadingIndicator = document.getElementById('pdf-loading-indicator');
-      if (loadingIndicator) {
-        loadingIndicator.classList.remove('hidden');
-        loadingIndicator.querySelector('p').innerText = `『${file.name}』を読み込み中...`;
-      }
-
-      pdfjsLib.getDocument(fileUrl).promise.then(pdf => {
-        pdfDoc = pdf;
-        totalPdfPages = pdf.numPages;
-        document.getElementById('pdf-page-count').innerText = totalPdfPages;
-        currentPdfPage = 1;
-        renderPdfPage(currentPdfPage);
-        showVoteToast(`『${file.name}』を全${totalPdfPages}ページ読み込みました！📖`);
-      }).catch(err => {
-        showVoteToast("PDFの読み込みに失敗しました。ファイル形式をご確認ください。");
-      });
-    }
-
     function showPdfFallbackNotice() {
       const indicator = document.getElementById('pdf-loading-indicator');
       if (!indicator) return;
@@ -1798,12 +1767,17 @@
         const shop = shops.find(s => s.id === id);
         if (!shop) return;
         
+        const hasAnnounce = shopAnnouncements[id] && shopAnnouncements[id].trim() !== "";
+
         const badge = document.createElement('div');
         badge.onclick = () => clickMapShop(id);
-        badge.className = "flex-shrink-0 bg-white border border-rose-200 px-3 py-1.5 rounded-2xl flex items-center space-x-1 cursor-pointer hover:bg-rose-100/50 transition";
+        badge.className = `flex-shrink-0 bg-white border px-3 py-1.5 rounded-2xl flex items-center space-x-1 cursor-pointer transition ${
+          hasAnnounce ? 'border-rose-400 bg-rose-50/60 shadow-xs ring-1 ring-rose-300' : 'border-rose-200 hover:bg-rose-100/50'
+        }`;
         badge.innerHTML = `
+          ${hasAnnounce ? '<span class="text-[9px] animate-bounce">📢</span>' : ''}
           <span class="text-[9px] font-black text-rose-500">${shop.class}</span>
-          <span class="text-[10px] font-extrabold text-slate-700 truncate max-w-[80px]">${shop.name}</span>
+          <span class="text-[10px] font-extrabold text-slate-700 truncate max-w-[85px]">${shop.name}</span>
         `;
         row.appendChild(badge);
       });
@@ -2153,7 +2127,6 @@
       showVoteToast("クイズラリーの進行を初期化しました！");
     }
 
-    // 投票前の確認画面トリガー
     function requestVoteConfirm(type, block) {
       if (type === 'flag' && userVoteFlag) {
         showVoteToast("ブロック旗には既に投票済みです！");
@@ -2397,33 +2370,90 @@
       if (announceContainer) {
         announceContainer.innerHTML = '';
         
-        const customAlerts = [];
+        const favAlerts = [];
+        const otherAlerts = [];
+
         Object.keys(shopAnnouncements).forEach(shopId => {
           const shop = shops.find(s => s.id == shopId);
           const txt = shopAnnouncements[shopId];
           if (shop && txt && txt.trim() !== "") {
-            customAlerts.push({
+            const isFav = favorites.includes(shop.id);
+            const alertItem = {
               id: "shop-" + shopId,
               time: "配信中",
               badge: `${shop.class} 速報`,
+              shopClass: shop.class,
+              shopName: shop.name,
               text: `【${shop.name}】${txt}`,
-              isUrgent: true
-            });
+              isUrgent: true,
+              isFavorite: isFav
+            };
+
+            if (isFav) {
+              favAlerts.push(alertItem);
+            } else {
+              otherAlerts.push(alertItem);
+            }
           }
         });
 
-        const allAnnounces = [...customAlerts, ...announcements];
+        // ヘッダー速報ボタンにお気に入り新着の強調表示を連動
+        const headerNewsText = document.getElementById('header-news-btn-text');
+        if (headerNewsText) {
+          if (favAlerts.length > 0) {
+            headerNewsText.innerHTML = `<i class="fa-solid fa-heart text-amber-200"></i> お気に入り速報あり！(${favAlerts.length}件)`;
+          } else {
+            headerNewsText.innerHTML = `<i class="fa-solid fa-bullhorn"></i> 掲示板＆最新速報を開く`;
+          }
+        }
 
-        if (allAnnounces.length === 0) {
+        const totalAnnounceCount = favAlerts.length + otherAlerts.length + announcements.length;
+
+        if (totalAnnounceCount === 0) {
           announceContainer.innerHTML = `
             <div class="text-center py-8 text-slate-400 text-[11px]">
                現在、店舗や本部からのニュースはありません。
             </div>
           `;
         } else {
-          allAnnounces.forEach(a => {
+          // 1. お気に入り店舗の速報（最優先セクション）
+          if (favAlerts.length > 0) {
+            const favSectionHeader = document.createElement('div');
+            favSectionHeader.className = "flex items-center gap-1.5 pb-1 pt-0.5 text-[10px] font-black text-rose-600";
+            favSectionHeader.innerHTML = `<i class="fa-solid fa-heart"></i> お気に入り店舗からの最新速報`;
+            announceContainer.appendChild(favSectionHeader);
+
+            favAlerts.forEach(a => {
+              const card = document.createElement('div');
+              card.className = "p-3 rounded-2xl border-2 border-rose-400 bg-gradient-to-r from-rose-50 to-pink-50/60 shadow-sm space-y-1 relative";
+              card.innerHTML = `
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[8px] font-black bg-rose-500 text-white px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <i class="fa-solid fa-heart text-[7px]"></i> お気に入り
+                    </span>
+                    <span class="text-[8px] font-black bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded-md">${a.badge}</span>
+                  </div>
+                  <span class="text-[9px] font-black font-mono text-rose-400">${a.time}</span>
+                </div>
+                <p class="text-[11px] text-slate-800 leading-relaxed font-black">${a.text}</p>
+              `;
+              announceContainer.appendChild(card);
+            });
+
+            if (otherAlerts.length > 0 || announcements.length > 0) {
+              const divider = document.createElement('div');
+              divider.className = "pt-2 pb-1 text-[10px] font-bold text-slate-400 border-t border-dashed border-slate-200 mt-2";
+              divider.innerText = "その他の模擬店速報・本部連絡";
+              announceContainer.appendChild(divider);
+            }
+          }
+
+          // 2. その他の店舗速報 ＆ 本部からのお知らせ
+          const remainingAlerts = [...otherAlerts, ...announcements];
+          remainingAlerts.forEach(a => {
             const isUrgent = a.isUrgent;
-            const cardBg = isUrgent ? 'bg-rose-50 border-rose-200' : 'bg-white border-slate-200';
+            const cardBg = isUrgent ? 'bg-rose-50/70 border-rose-200' : 'bg-white border-slate-200';
             const badgeColor = isUrgent ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-300';
             
             const card = document.createElement('div');
@@ -2760,8 +2790,6 @@
     window.prevPdfPage = prevPdfPage;
     window.nextPdfPage = nextPdfPage;
     window.jumpPdfToPage = jumpPdfToPage;
-    window.zoomPdf = zoomPdf;
-    window.loadPdfFromFile = loadPdfFromFile;
   </script>
 </body>
 </html>
