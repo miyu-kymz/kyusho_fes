@@ -206,7 +206,7 @@
                   </div>
                   <div onclick="clickMapShop(11)" class="bg-white hover:bg-orange-100 p-1.5 rounded-lg border border-slate-300 cursor-pointer text-center relative">
                     <span class="text-[8px] text-orange-600 font-bold block">プリン</span>
-                    <span class="text-[9.5px] font-black text-slate-800">2-4 ぷりん屋さん🍮</span>
+                    <span class="text-[9.5px] font-black text-slate-800">2-4 プリン屋さん🍮</span>
                     <span class="map-fav-heart-indicator" data-shop-id="11"></span>
                   </div>
                 </div>
@@ -847,11 +847,6 @@
 
   </main>
 
-  <!-- 画面右下に常駐する歯車（セッティング）フローティングボタン ⚙️ -->
-  <button onclick="openAdminGate()" class="fixed bottom-5 right-5 z-40 w-12 h-12 bg-slate-900/90 hover:bg-slate-900 text-white rounded-full shadow-2xl border border-white/20 flex items-center justify-center active:scale-90 transition backdrop-blur-xs" title="管理者・本部専用設定">
-    <i class="fa-solid fa-gear text-lg text-amber-300"></i>
-  </button>
-
   <!-- 投票確定確認モーダル -->
   <div id="modal-vote-confirm" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
     <div class="bg-white w-full max-w-xs rounded-3xl p-5 shadow-2xl border border-slate-200 text-center space-y-3.5">
@@ -1237,7 +1232,7 @@
       { id: 8, class: "2-1", name: "おもいで横丁 池口商店", category: "play", location: "1棟南側 テント", desc: "【協力店舗: 遊戲】昭和レトロでエモい雰囲気！お菓子釣り・たこ焼きゲームコーナー！🏮", mascotTip: "懐かしいゲームに挑戦して駄菓子風の景品を狙おう！", status: "待ちなし" },
       { id: 9, class: "2-2", name: "肉包", category: "food", location: "2棟〜3棟間 通路", desc: "【協力店舗: 知味斉】あつあつホカホカでジューシー！肉汁がたっぷり溢れ出る本格肉まんです。🐼", mascotTip: "ベンチでハフハフしながら食べてみてね！", status: "待ちなし" },
       { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "1棟南側 テント", desc: "【協力店舗: 遊戲】手に汗握る面白さ！ボール投げ・転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分" },
-      { id: 11, class: "2-4", name: "プリプリーんプリプリーん　オラ ぷりん屋さんだゾ", category: "food", location: "同窓会館 1F", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
+      { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
       { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "セミナーハウス〜メディアセンター間 (屋外)", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！テイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず寄ってみよう！", status: "10分" },
       { id: 13, class: "2-6", name: "バリパリ", category: "food", location: "2棟〜3棟間 通路", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品焼き菓子スイーツ！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
       { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュ！🥐", mascotTip: "おしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし" },
