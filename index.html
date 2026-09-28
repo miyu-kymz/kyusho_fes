@@ -20,7 +20,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
-  <!-- PDF.js for high-fidelity original student pamphlet rendering -->
+  <!-- PDF.js for original student pamphlet rendering -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
     if (typeof pdfjsLib !== 'undefined') {
@@ -32,6 +32,7 @@
     body {
       font-family: 'Zen Maru Gothic', sans-serif;
       -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
     .scrollbar-none::-webkit-scrollbar {
       display: none;
@@ -39,6 +40,14 @@
     .scrollbar-none {
       -ms-overflow-style: none;
       scrollbar-width: none;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
     }
     @keyframes bounce-slow {
       0%, 100% { transform: translateY(0); }
@@ -675,7 +684,7 @@
         
         <div id="flag-vote-form" class="space-y-2">
           <!-- 赤 -->
-          <button onclick="castVote('flag', 'red')" class="w-full bg-gradient-to-r from-rose-50 to-red-100/50 hover:from-rose-100 hover:to-red-100 border-2 border-rose-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
+          <button onclick="requestVoteConfirm('flag', 'red')" class="w-full bg-gradient-to-r from-rose-50 to-red-100/50 hover:from-rose-100 hover:to-red-100 border-2 border-rose-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
             <div class="flex items-center space-x-2.5 text-left">
               <span class="text-xl">🔥</span>
               <div>
@@ -686,7 +695,7 @@
             <span class="text-[10px] font-black bg-rose-500 text-white px-3 py-1.5 rounded-xl shadow-sm">投票 <i class="fa-solid fa-check"></i></span>
           </button>
           <!-- 青 -->
-          <button onclick="castVote('flag', 'blue')" class="w-full bg-gradient-to-r from-sky-50 to-blue-100/50 hover:from-sky-100 hover:to-blue-100 border-2 border-blue-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
+          <button onclick="requestVoteConfirm('flag', 'blue')" class="w-full bg-gradient-to-r from-sky-50 to-blue-100/50 hover:from-sky-100 hover:to-blue-100 border-2 border-blue-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
             <div class="flex items-center space-x-2.5 text-left">
               <span class="text-xl">🌊</span>
               <div>
@@ -697,7 +706,7 @@
             <span class="text-[10px] font-black bg-blue-500 text-white px-3 py-1.5 rounded-xl shadow-sm">投票 <i class="fa-solid fa-check"></i></span>
           </button>
           <!-- 黄 -->
-          <button onclick="castVote('flag', 'yellow')" class="w-full bg-gradient-to-r from-amber-50 to-yellow-100/50 hover:from-amber-100 hover:to-yellow-100 border-2 border-yellow-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
+          <button onclick="requestVoteConfirm('flag', 'yellow')" class="w-full bg-gradient-to-r from-amber-50 to-yellow-100/50 hover:from-amber-100 hover:to-yellow-100 border-2 border-yellow-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
             <div class="flex items-center space-x-2.5 text-left">
               <span class="text-xl">🌟</span>
               <div>
@@ -726,7 +735,7 @@
         
         <div id="art-vote-form" class="space-y-2">
           <!-- 赤 -->
-          <button onclick="castVote('art', 'red')" class="w-full bg-gradient-to-r from-rose-50 to-red-100/50 hover:from-rose-100 hover:to-red-100 border-2 border-rose-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
+          <button onclick="requestVoteConfirm('art', 'red')" class="w-full bg-gradient-to-r from-rose-50 to-red-100/50 hover:from-rose-100 hover:to-red-100 border-2 border-rose-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
             <div class="flex items-center space-x-2.5 text-left">
               <span class="text-xl">🔥</span>
               <div>
@@ -737,7 +746,7 @@
             <span class="text-[10px] font-black bg-rose-500 text-white px-3 py-1.5 rounded-xl shadow-sm">投票 <i class="fa-solid fa-check"></i></span>
           </button>
           <!-- 青 -->
-          <button onclick="castVote('art', 'blue')" class="w-full bg-gradient-to-r from-sky-50 to-blue-100/50 hover:from-sky-100 hover:to-blue-100 border-2 border-blue-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
+          <button onclick="requestVoteConfirm('art', 'blue')" class="w-full bg-gradient-to-r from-sky-50 to-blue-100/50 hover:from-sky-100 hover:to-blue-100 border-2 border-blue-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
             <div class="flex items-center space-x-2.5 text-left">
               <span class="text-xl">🌊</span>
               <div>
@@ -748,7 +757,7 @@
             <span class="text-[10px] font-black bg-blue-500 text-white px-3 py-1.5 rounded-xl shadow-sm">投票 <i class="fa-solid fa-check"></i></span>
           </button>
           <!-- 黄 -->
-          <button onclick="castVote('art', 'yellow')" class="w-full bg-gradient-to-r from-amber-50 to-yellow-100/50 hover:from-amber-100 hover:to-yellow-100 border-2 border-yellow-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
+          <button onclick="requestVoteConfirm('art', 'yellow')" class="w-full bg-gradient-to-r from-amber-50 to-yellow-100/50 hover:from-amber-100 hover:to-yellow-100 border-2 border-yellow-300 rounded-2xl p-3 flex justify-between items-center transition active:scale-[0.98]">
             <div class="flex items-center space-x-2.5 text-left">
               <span class="text-xl">🌟</span>
               <div>
@@ -789,7 +798,7 @@
 
         <!-- Direct Page Jump -->
         <div class="flex items-center space-x-1">
-          <select id="pdf-section-jump" onchange="jumpPdfToPage(this.value)" class="bg-slate-50 border border-slate-200 text-[10.5px] font-bold rounded-xl px-2 py-1.5 text-slate-700 outline-none">
+          <select id="pdf-section-jump" onchange="jumpPdfToPage(this.value)" class="bg-slate-50 border border-slate-200 text-[10.5px] font-bold rounded-xl px-2.5 py-1.5 text-slate-700 outline-none">
             <option value="1">目次 (P.1)</option>
             <option value="2">ごあいさつ (P.2)</option>
             <option value="3">諸注意 (P.3)</option>
@@ -807,20 +816,6 @@
             <option value="21">部活動 (P.21)</option>
           </select>
         </div>
-
-        <!-- Zoom & PDF Select -->
-        <div class="flex items-center space-x-1">
-          <button onclick="zoomPdf(-0.2)" title="縮小" class="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition">
-            <i class="fa-solid fa-minus text-[10px]"></i>
-          </button>
-          <button onclick="zoomPdf(0.2)" title="拡大" class="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition">
-            <i class="fa-solid fa-plus text-[10px]"></i>
-          </button>
-          <label title="PDFファイルを選択" class="w-7 h-7 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 flex items-center justify-center cursor-pointer transition ml-0.5">
-            <i class="fa-solid fa-folder-open text-[11px]"></i>
-            <input type="file" id="pdf-file-input" accept="application/pdf" class="hidden" onchange="loadPdfFromFile(event)">
-          </label>
-        </div>
       </div>
 
       <!-- Pure PDF Canvas Container -->
@@ -837,7 +832,7 @@
 
     </div>
 
-    <!-- FOOTER WITH ADMIN TRIGGER -->
+    <!-- FOOTER -->
     <footer class="text-center pt-6 pb-4 space-y-2 border-t border-slate-200/60 mt-6">
       <p class="text-[10px] text-slate-400 font-bold">
         福岡県立久留米商業高等学校 創立130周年記念久商祭 2026<br>
@@ -852,15 +847,46 @@
 
   </main>
 
-  <!-- ================== ADMIN PASSCODE LOCK SCREEN ================== -->
+  <!-- 画面右下に常駐する歯車（セッティング）フローティングボタン ⚙️ -->
+  <button onclick="openAdminGate()" class="fixed bottom-5 right-5 z-40 w-12 h-12 bg-slate-900/90 hover:bg-slate-900 text-white rounded-full shadow-2xl border border-white/20 flex items-center justify-center active:scale-90 transition backdrop-blur-xs" title="管理者・本部専用設定">
+    <i class="fa-solid fa-gear text-lg text-amber-300"></i>
+  </button>
+
+  <!-- 投票確定確認モーダル -->
+  <div id="modal-vote-confirm" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white w-full max-w-xs rounded-3xl p-5 shadow-2xl border border-slate-200 text-center space-y-3.5">
+      <div class="w-12 h-12 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center text-xl mx-auto border border-rose-200">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+      <div>
+        <span id="vote-confirm-category-badge" class="text-[9px] font-black px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700">演舞部門</span>
+        <h3 class="text-sm font-black text-slate-800 mt-1.5">このブロックに投票しますか？</h3>
+        <p id="vote-confirm-target-name" class="text-base font-black text-rose-600 mt-1">赤ブロック（紅炎万丈）</p>
+      </div>
+      <p class="text-[10px] text-slate-500 font-bold bg-slate-50 p-2.5 rounded-xl border border-slate-150 leading-relaxed">
+        ※投票は各部門1人1回のみです。<br>確定後は変更やお取り消しができません。
+      </p>
+      <div class="grid grid-cols-2 gap-2 text-xs font-black">
+        <button onclick="closeVoteConfirm()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 py-2.5 rounded-xl active:scale-95 transition">
+          戻る
+        </button>
+        <button onclick="executeConfirmedVote()" class="bg-rose-600 hover:bg-rose-700 text-white py-2.5 rounded-xl active:scale-95 transition shadow-sm">
+          投票を確定
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================== ADMIN PASSCODE LOCK SCREEN (第1段階: 教員全員 2026) ================== -->
   <div id="admin-lock-screen" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-md hidden flex items-center justify-center p-4">
     <div class="bg-white max-w-xs w-full p-6 rounded-3xl shadow-2xl space-y-4 text-center">
       <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto text-xl font-black">
         <i class="fa-solid fa-shield-halved"></i>
       </div>
       <div>
-        <h3 class="text-sm font-black text-slate-800">管理者認証</h3>
-        <p class="text-[10px] text-slate-500 mt-1 font-bold">久商祭本部・係員用の4桁パスコードを入力してください。</p>
+        <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-rose-50 text-rose-700">第1段階認証</span>
+        <h3 class="text-sm font-black text-slate-800 mt-1">教員用パスコード</h3>
+        <p class="text-[10px] text-slate-500 mt-1 font-bold">待ち時間・お知らせ更新用（初期値: 2026）</p>
       </div>
 
       <div class="space-y-2">
@@ -876,21 +902,20 @@
           解除する
         </button>
       </div>
-      <p class="text-[8.5px] text-slate-400">※初期パスコード: <span class="font-mono font-bold">0000</span></p>
     </div>
   </div>
 
-  <!-- ================== ADMIN PANEL DRAWER ================== -->
+  <!-- ================== ADMIN PANEL DRAWER (2段階コントロール) ================== -->
   <div id="admin-panel" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-md hidden flex items-end sm:items-center justify-center">
-    <div class="bg-white w-full max-w-md max-h-[90vh] rounded-t-3xl sm:rounded-3xl p-5 overflow-y-auto space-y-4 shadow-2xl">
+    <div class="bg-white w-full max-w-md max-h-[90vh] rounded-t-3xl sm:rounded-3xl p-5 overflow-y-auto space-y-4 shadow-2xl custom-scrollbar">
       
       <!-- Panel Header -->
       <div class="flex justify-between items-center border-b pb-3">
         <div class="flex items-center space-x-2">
           <span class="text-xl">🛠️</span>
           <div>
-            <h3 class="text-sm font-black text-slate-800">本部・管理者コントロールパネル</h3>
-            <span class="text-[9px] text-emerald-600 font-bold">● 認証済みセッション</span>
+            <h3 class="text-sm font-black text-slate-800">管理者コントロールパネル</h3>
+            <span class="text-[9px] text-emerald-600 font-bold">● 教員メニュー認証済み</span>
           </div>
         </div>
         <button onclick="logoutAdmin()" class="text-xs bg-slate-100 hover:bg-rose-100 hover:text-rose-600 text-slate-600 px-3 py-1.5 rounded-xl font-black transition">
@@ -898,50 +923,11 @@
         </button>
       </div>
 
-      <!-- Live Voting Results -->
-      <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-3">
-        <span class="text-[10px] font-black text-slate-600 block"><i class="fa-solid fa-chart-column mr-1"></i> リアルタイム投票集計データ</span>
-        
-        <!-- Flag Votes Summary -->
-        <div class="space-y-1.5 text-[9px] font-bold">
-          <div class="flex justify-between text-slate-700">
-            <span>🚩 ブロック旗 部門</span>
-            <span class="text-slate-400">赤 / 青 / 黄</span>
-          </div>
-          <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden flex">
-            <div id="admin-flag-red-bar" class="bg-rose-500 h-full transition-all" style="width: 33%"></div>
-            <div id="admin-flag-blue-bar" class="bg-blue-500 h-full transition-all" style="width: 33%"></div>
-            <div id="admin-flag-yellow-bar" class="bg-amber-400 h-full transition-all" style="width: 34%"></div>
-          </div>
-          <div class="grid grid-cols-3 gap-1 text-[8px] text-center pt-0.5">
-            <span class="text-rose-600 font-bold" id="admin-flag-red">赤: --票</span>
-            <span class="text-blue-600 font-bold" id="admin-flag-blue">青: --票</span>
-            <span class="text-amber-600 font-bold" id="admin-flag-yellow">黄: --票</span>
-          </div>
-        </div>
-
-        <!-- Art Votes Summary -->
-        <div class="space-y-1.5 text-[9px] font-bold pt-2 border-t border-slate-200">
-          <div class="flex justify-between text-slate-700">
-            <span>📍 つまようじアート 部門</span>
-            <span class="text-slate-400">赤 / 青 / 黄</span>
-          </div>
-          <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden flex">
-            <div id="admin-art-red-bar" class="bg-rose-500 h-full transition-all" style="width: 33%"></div>
-            <div id="admin-art-blue-bar" class="bg-blue-500 h-full transition-all" style="width: 33%"></div>
-            <div id="admin-art-yellow-bar" class="bg-amber-400 h-full transition-all" style="width: 34%"></div>
-          </div>
-          <div class="grid grid-cols-3 gap-1 text-[8px] text-center pt-0.5">
-            <span class="text-rose-600 font-bold" id="admin-art-red">赤: --票</span>
-            <span class="text-blue-600 font-bold" id="admin-art-blue">青: --票</span>
-            <span class="text-amber-600 font-bold" id="admin-art-yellow">黄: --票</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Shop Status & Announcement Management -->
+      <!-- 第1段階機能: 模擬店の混雑状況・速報配信の管理 (全教員利用可) -->
       <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-2.5">
-        <span class="text-[10px] font-black text-slate-600 block"><i class="fa-solid fa-store mr-1"></i> 各模擬店の混雑状況・速報配信の管理</span>
+        <span class="text-[10px] font-black text-slate-700 block flex items-center gap-1">
+          <i class="fa-solid fa-store text-rose-500"></i> 各模擬店の混雑状況・速報配信の管理
+        </span>
         
         <div class="space-y-2">
           <div>
@@ -973,30 +959,112 @@
         </div>
       </div>
 
-      <!-- Quick Stamp Simulation -->
-      <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-2">
-        <span class="text-[10px] font-black text-slate-500 block"><i class="fa-solid fa-stamp"></i> クイズ回答の強制クリアシミュレータ</span>
-        <div class="grid grid-cols-5 gap-1 text-[8px] font-bold">
-          <button onclick="simSolveQuiz(1)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">1.校歌</button>
-          <button onclick="simSolveQuiz(2)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">2.自販機</button>
-          <button onclick="simSolveQuiz(3)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">3.校訓</button>
-          <button onclick="simSolveQuiz(4)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">4.丸房露</button>
-          <button onclick="simSolveQuiz(5)" class="p-1.5 bg-white hover:bg-slate-100 border rounded-lg">5.歴史</button>
+      <!-- ================== 第2段階: 本部・特定教員専用エリア (パスワード: 1285) ================== -->
+      <div class="border-2 border-indigo-200 rounded-2xl p-3 space-y-3 bg-indigo-50/40">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-key text-amber-500 text-xs"></i>
+            <h4 class="text-xs font-black text-indigo-950">第2段階: 本部・管理責任者専用</h4>
+          </div>
+          <span id="admin-stage2-badge" class="text-[8px] bg-slate-200 text-slate-600 font-black px-2 py-0.5 rounded-full">未認証</span>
         </div>
-      </div>
 
-      <!-- Database Reset buttons -->
-      <div class="bg-slate-50 border border-slate-200 p-3 rounded-2xl space-y-2">
-        <span class="text-[10px] font-black text-slate-500 block"><i class="fa-solid fa-trash-can"></i> データの初期化</span>
-        <div class="grid grid-cols-3 gap-1.5 text-[8.5px] font-black">
-          <button onclick="resetRally()" class="p-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-250 rounded-xl flex items-center justify-center">
-             クイズリセット
-          </button>
-          <button onclick="resetVotes()" class="p-2 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-250 rounded-xl flex items-center justify-center">
-             投票リセット
-          </button>
-          <button onclick="clearAllAppStatusData()" class="p-2 bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-250 rounded-xl flex items-center justify-center">
-             全設定を初期化
+        <!-- 第2段階 未認証時ロック画面 -->
+        <div id="admin-stage2-lock" class="space-y-2 text-center py-2 bg-white/70 rounded-xl p-3 border border-indigo-100">
+          <p class="text-[9.5px] text-slate-600 font-bold">掲示板削除・投票集計・データリセット（パスワード: 1285）</p>
+          <div class="flex gap-1.5 max-w-[210px] mx-auto">
+            <input type="password" id="admin-pass2-input" placeholder="本部専用Pass" class="text-xs font-mono font-black text-center bg-white border border-slate-300 rounded-xl px-2 py-1.5 w-full focus:outline-none focus:border-indigo-500">
+            <button onclick="verifyStage2Admin()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black px-3.5 py-1.5 rounded-xl active:scale-95 transition shrink-0">解除</button>
+          </div>
+        </div>
+
+        <!-- 第2段階 解除後コンテンツ -->
+        <div id="admin-stage2-content" class="hidden space-y-3 pt-1">
+          
+          <!-- 来場者掲示板の監視・削除機能 -->
+          <div class="bg-white border border-slate-200 rounded-xl p-2.5 space-y-2">
+            <div class="flex items-center justify-between border-b pb-1.5">
+              <span class="text-[10px] font-black text-rose-600 flex items-center gap-1">
+                <i class="fa-solid fa-trash-can"></i> 掲示板投稿の監視・ワンタップ削除
+              </span>
+              <span class="text-[8px] text-slate-400 font-bold">即時同期</span>
+            </div>
+            <div id="admin-bulletin-list" class="space-y-1.5 max-h-44 overflow-y-auto custom-scrollbar text-[9px]">
+              <!-- JSで掲示板投稿と削除ボタンを生成 -->
+            </div>
+          </div>
+
+          <!-- Live Voting Results -->
+          <div class="bg-white border border-slate-200 p-3 rounded-xl space-y-3">
+            <span class="text-[10px] font-black text-slate-700 block"><i class="fa-solid fa-chart-column mr-1 text-indigo-600"></i> リアルタイム投票集計データ</span>
+            
+            <!-- Flag Votes Summary -->
+            <div class="space-y-1.5 text-[9px] font-bold">
+              <div class="flex justify-between text-slate-700">
+                <span>🚩 ブロック旗 部門</span>
+                <span class="text-slate-400">赤 / 青 / 黄</span>
+              </div>
+              <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden flex">
+                <div id="admin-flag-red-bar" class="bg-rose-500 h-full transition-all" style="width: 33%"></div>
+                <div id="admin-flag-blue-bar" class="bg-blue-500 h-full transition-all" style="width: 33%"></div>
+                <div id="admin-flag-yellow-bar" class="bg-amber-400 h-full transition-all" style="width: 34%"></div>
+              </div>
+              <div class="grid grid-cols-3 gap-1 text-[8px] text-center pt-0.5">
+                <span class="text-rose-600 font-bold" id="admin-flag-red">赤: --票</span>
+                <span class="text-blue-600 font-bold" id="admin-flag-blue">青: --票</span>
+                <span class="text-amber-600 font-bold" id="admin-flag-yellow">黄: --票</span>
+              </div>
+            </div>
+
+            <!-- Art Votes Summary -->
+            <div class="space-y-1.5 text-[9px] font-bold pt-2 border-t border-slate-100">
+              <div class="flex justify-between text-slate-700">
+                <span>📍 つまようじアート 部門</span>
+                <span class="text-slate-400">赤 / 青 / 黄</span>
+              </div>
+              <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden flex">
+                <div id="admin-art-red-bar" class="bg-rose-500 h-full transition-all" style="width: 33%"></div>
+                <div id="admin-art-blue-bar" class="bg-blue-500 h-full transition-all" style="width: 33%"></div>
+                <div id="admin-art-yellow-bar" class="bg-amber-400 h-full transition-all" style="width: 34%"></div>
+              </div>
+              <div class="grid grid-cols-3 gap-1 text-[8px] text-center pt-0.5">
+                <span class="text-rose-600 font-bold" id="admin-art-red">赤: --票</span>
+                <span class="text-blue-600 font-bold" id="admin-art-blue">青: --票</span>
+                <span class="text-amber-600 font-bold" id="admin-art-yellow">黄: --票</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stamp Simulation -->
+          <div class="bg-white border border-slate-200 p-2.5 rounded-xl space-y-1.5">
+            <span class="text-[9.5px] font-black text-slate-600 block"><i class="fa-solid fa-stamp text-amber-500"></i> クイズ回答の強制クリアシミュレータ</span>
+            <div class="grid grid-cols-5 gap-1 text-[8px] font-bold">
+              <button onclick="simSolveQuiz(1)" class="p-1 bg-slate-50 hover:bg-slate-100 border rounded-lg">1.校歌</button>
+              <button onclick="simSolveQuiz(2)" class="p-1 bg-slate-50 hover:bg-slate-100 border rounded-lg">2.自販機</button>
+              <button onclick="simSolveQuiz(3)" class="p-1 bg-slate-50 hover:bg-slate-100 border rounded-lg">3.校訓</button>
+              <button onclick="simSolveQuiz(4)" class="p-1 bg-slate-50 hover:bg-slate-100 border rounded-lg">4.丸房露</button>
+              <button onclick="simSolveQuiz(5)" class="p-1 bg-slate-50 hover:bg-slate-100 border rounded-lg">5.歴史</button>
+            </div>
+          </div>
+
+          <!-- Database Reset buttons -->
+          <div class="bg-white border border-slate-200 p-2.5 rounded-xl space-y-2">
+            <span class="text-[9.5px] font-black text-slate-600 block"><i class="fa-solid fa-trash-can text-rose-500"></i> データの初期化・リセット</span>
+            <div class="grid grid-cols-3 gap-1.5 text-[8.5px] font-black">
+              <button onclick="resetRally()" class="p-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-250 rounded-xl flex items-center justify-center">
+                クイズリセット
+              </button>
+              <button onclick="resetVotes()" class="p-2 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-250 rounded-xl flex items-center justify-center">
+                投票リセット
+              </button>
+              <button onclick="clearAllAppStatusData()" class="p-2 bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-250 rounded-xl flex items-center justify-center">
+                全初期化
+              </button>
+            </div>
+          </div>
+
+          <button onclick="lockStage2Admin()" class="w-full text-[9px] text-slate-400 font-bold underline text-center block pt-1">
+            本部権限のみ再施錠する
           </button>
         </div>
       </div>
@@ -1124,7 +1192,7 @@
       </div>
 
       <!-- Modal Body -->
-      <div id="news-modal-scroll-area" class="p-4 overflow-y-auto space-y-3 flex-1">
+      <div id="news-modal-scroll-area" class="p-4 overflow-y-auto space-y-3 flex-1 custom-scrollbar">
         <!-- Announcements list -->
         <div id="news-tab-content-notices" class="space-y-2.5">
           <div id="announcements-container" class="space-y-2"></div>
@@ -1171,7 +1239,7 @@
       { id: 10, class: "2-3", name: "あつシー・ランド", category: "play", location: "1棟南側 テント", desc: "【協力店舗: 遊戲】手に汗握る面白さ！ボール投げ・転がしゲーム！🎳", mascotTip: "ハイスコアを記録すると周りから拍手喝采がもらえるよ！", status: "５分" },
       { id: 11, class: "2-4", name: "プリプリームンプリプリーン　オラ プリン屋さんだゾ", category: "food", location: "同窓会館 1F", desc: "【協力店舗: イートウェル】なめらか極上でとっても濃厚な絶品プリン！一口食べればお口の中でとろけます。🍮", mascotTip: "午後にはすぐに完売してしまう幻のプリンだよ！お早めに！", status: "待ちなし" },
       { id: 12, class: "2-5", name: "志あわせラーメン", category: "food", location: "セミナーハウス〜メディアセンター間 (屋外)", desc: "【協力店舗: 麺志】久留米ラーメンの神髄！テイクアウト仕様の本格ラーメン🍜", mascotTip: "お腹がすいたら迷わず寄ってみよう！", status: "10分" },
-      { id: 13, class: "2-6", name: "パリパリ", category: "food", location: "2棟〜3棟間 通路", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品焼き菓子スイーツ！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
+      { id: 13, class: "2-6", name: "バリパリ", category: "food", location: "2棟〜3棟間 通路", desc: "【協力店舗: アベニュー】パティシエこだわりのサクサク＆パリパリ食感の絶品焼き菓子スイーツ！🍰", mascotTip: "コーヒーやお茶とも相性抜群の贅沢おやつだよ！", status: "待ちなし" },
       { id: 14, class: "2-7", name: "カワセミ養殖場", category: "food", location: "同窓会館 1F", desc: "【協力店舗: カワセミデニッシュ】バター香る何層にも重ねられたサクサクの極上洋菓子デニッシュ！🥐", mascotTip: "おしゃれなカフェ気分を味わいながらどうぞ！", status: "待ちなし" },
       { id: 15, class: "3-1", name: "元祖池田屋", category: "food", location: "2棟〜3棟間 西側", desc: "【協力店舗: 大砲ラーメン】スープから麺にまでこだわり抜いた伝統の濃厚久留米ラーメン！🍜", mascotTip: "お腹がすいたら迷わず食べにいこう！", status: "10分" },
       { id: 16, class: "3-2", name: "スパイスでナイス！！", category: "food", location: "プール北側 テント", desc: "【協力店舗: BELLE CURRY】スパイス of ライフ！じっくり煮込まれた旨辛本格カレーライス🍛", mascotTip: "スパイスのコクと程よい辛さでお腹いっぱいになれるよ！", status: "待ちなし" },
@@ -1219,6 +1287,9 @@
     let votesArtSummary = { red: 125, blue: 111, yellow: 148 };
     let userVoteFlag = null;
     let userVoteArt = null;
+
+    let isStage2Auth = false;
+    let pendingVote = null;
 
     // ----------------------------------------------------
     // 📖 ORIGINAL HAND-DRAWN PDF VIEWER ENGINE
@@ -1458,6 +1529,11 @@
           list.sort((a, b) => b.timestamp - a.timestamp);
           bulletinPosts = list;
           renderNewsTabContents();
+          if (isStage2Auth) renderAdminBulletinList();
+        } else {
+          bulletinPosts = [];
+          renderNewsTabContents();
+          if (isStage2Auth) renderAdminBulletinList();
         }
       }, (err) => console.warn("Bulletin fetch failed:", err));
 
@@ -2077,6 +2153,58 @@
       showVoteToast("クイズラリーの進行を初期化しました！");
     }
 
+    // 投票前の確認画面トリガー
+    function requestVoteConfirm(type, block) {
+      if (type === 'flag' && userVoteFlag) {
+        showVoteToast("ブロック旗には既に投票済みです！");
+        return;
+      }
+      if (type === 'art' && userVoteArt) {
+        showVoteToast("つまようじアートには既に投票済みです！");
+        return;
+      }
+
+      pendingVote = { type, block };
+
+      const badgeEl = document.getElementById('vote-confirm-category-badge');
+      const targetEl = document.getElementById('vote-confirm-target-name');
+
+      if (type === 'flag') {
+        badgeEl.innerText = "演舞部門（ブロック旗）";
+        badgeEl.className = "text-[9px] font-black px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700";
+      } else {
+        badgeEl.innerText = "シンボル（つまようじアート）";
+        badgeEl.className = "text-[9px] font-black px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700";
+      }
+
+      let blockTitle = "";
+      if (block === 'red') {
+        blockTitle = type === 'flag' ? "赤ブロック（紅炎万丈🔥）" : "赤ブロック（フクロウ🦉）";
+        targetEl.className = "text-base font-black text-rose-600 mt-1";
+      } else if (block === 'blue') {
+        blockTitle = type === 'flag' ? "青ブロック（蒼志奏藍🌊）" : "青ブロック（大谷翔平⚾）";
+        targetEl.className = "text-base font-black text-sky-600 mt-1";
+      } else {
+        blockTitle = type === 'flag' ? "黄ブロック（韻波駆虎🐯）" : "黄ブロック（猛虎🐯）";
+        targetEl.className = "text-base font-black text-amber-600 mt-1";
+      }
+      targetEl.innerText = blockTitle;
+
+      document.getElementById('modal-vote-confirm').classList.remove('hidden');
+    }
+
+    function closeVoteConfirm() {
+      pendingVote = null;
+      document.getElementById('modal-vote-confirm').classList.add('hidden');
+    }
+
+    function executeConfirmedVote() {
+      if (!pendingVote) return;
+      const { type, block } = pendingVote;
+      closeVoteConfirm();
+      castVote(type, block);
+    }
+
     function castVote(type, block) {
       if (type === 'flag') {
         if (userVoteFlag) return;
@@ -2209,17 +2337,17 @@
 
       if (isFirebaseReady) {
         db.ref('votes').set({
-          flag: { red: 142, blue: 158, yellow: 119 },
-          art: { red: 125, blue: 111, yellow: 148 }
+          flag: { red: 0, blue: 0, yellow: 0 },
+          art: { red: 0, blue: 0, yellow: 0 }
         });
       } else {
-        votesFlagSummary = { red: 142, blue: 158, yellow: 119 };
-        votesArtSummary = { red: 125, blue: 111, yellow: 148 };
+        votesFlagSummary = { red: 0, blue: 0, yellow: 0 };
+        votesArtSummary = { red: 0, blue: 0, yellow: 0 };
         renderVoteSection();
       }
       
       updateVoteNotificationBadge();
-      showVoteToast("投票データを初期状態にリセットしました！");
+      showVoteToast("投票データを0にリセットしました！");
     }
 
     function openNewsModal() {
@@ -2341,7 +2469,7 @@
             </span>
             <span class="text-[8.5px] font-mono text-slate-400 font-bold">${post.time}</span>
           </div>
-          <p class="text-[11px] text-slate-700 font-bold leading-relaxed">${post.text}</p>
+          <p class="text-[11px] text-slate-700 font-bold leading-relaxed break-words">${post.text}</p>
         `;
         bulletinContainer.appendChild(card);
       });
@@ -2393,14 +2521,14 @@
     }
 
     function verifyAdminPasscode() {
-      const input = document.getElementById('admin-passcode-input').value;
+      const input = document.getElementById('admin-passcode-input').value.trim();
       const errorMsg = document.getElementById('admin-lock-error');
       
       if (input === "2026") {
         sessionStorage.setItem('kyushofes_admin_logged_in', 'true');
         closeAdminGate();
         openAdminPanel();
-        showVoteToast("ログインしました 🔓");
+        showVoteToast("教員認証が完了しました 🔓");
       } else {
         errorMsg.innerText = "❌ パスコードが正しくありません。";
       }
@@ -2408,6 +2536,7 @@
 
     function logoutAdmin() {
       sessionStorage.removeItem('kyushofes_admin_logged_in');
+      isStage2Auth = false;
       closeAdminPanel();
       showVoteToast("ログアウトしました 🔒");
     }
@@ -2417,11 +2546,98 @@
       panel.classList.remove('hidden');
       loadSelectedShopAdminData();
       renderVoteSection();
+      updateStage2AdminUI();
     }
 
     function closeAdminPanel() {
       const panel = document.getElementById('admin-panel');
       panel.classList.add('hidden');
+    }
+
+    // 第2段階認証ロジック (本部専用: 1285)
+    function verifyStage2Admin() {
+      const pass = document.getElementById('admin-pass2-input').value.trim();
+      if (pass === '1285') {
+        isStage2Auth = true;
+        document.getElementById('admin-pass2-input').value = '';
+        updateStage2AdminUI();
+        showVoteToast("本部・管理責任者として認証しました！🔑");
+      } else {
+        showVoteToast("本部専用パスワードが違います");
+      }
+    }
+
+    function lockStage2Admin() {
+      isStage2Auth = false;
+      updateStage2AdminUI();
+      showVoteToast("本部権限を施錠しました");
+    }
+
+    function updateStage2AdminUI() {
+      const lockBox = document.getElementById('admin-stage2-lock');
+      const contentBox = document.getElementById('admin-stage2-content');
+      const badge = document.getElementById('admin-stage2-badge');
+
+      if (isStage2Auth) {
+        lockBox.classList.add('hidden');
+        contentBox.classList.remove('hidden');
+        badge.innerText = "認証済み";
+        badge.className = "text-[8px] bg-indigo-600 text-white font-black px-2 py-0.5 rounded-full";
+        renderAdminBulletinList();
+      } else {
+        lockBox.classList.remove('hidden');
+        contentBox.classList.add('hidden');
+        badge.innerText = "未認証";
+        badge.className = "text-[8px] bg-slate-200 text-slate-600 font-black px-2 py-0.5 rounded-full";
+      }
+    }
+
+    // 掲示板投稿の監視・ワンタップ削除機能 (第2段階専用)
+    function renderAdminBulletinList() {
+      const container = document.getElementById('admin-bulletin-list');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (bulletinPosts.length === 0) {
+        container.innerHTML = `<div class="text-center py-2 text-slate-400 text-[9px]">投稿はありません</div>`;
+        return;
+      }
+
+      bulletinPosts.forEach(post => {
+        const item = document.createElement('div');
+        item.className = "bg-slate-50 border border-slate-200 p-2 rounded-xl flex items-center justify-between gap-1.5";
+        item.innerHTML = `
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-1">
+              <span class="font-black text-indigo-700">[${post.sender}]</span>
+              <span class="text-slate-400 font-mono text-[8px]">${post.time || ''}</span>
+            </div>
+            <p class="text-slate-700 truncate font-bold text-[9px] mt-0.5">${post.text}</p>
+          </div>
+          <button onclick="deleteBulletinPost('${post.id}')" class="shrink-0 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 px-2.5 py-1 rounded-lg active:scale-95 text-[9px] font-black transition">
+            削除 🗑️
+          </button>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function deleteBulletinPost(postId) {
+      if (!postId) return;
+      if (isFirebaseReady) {
+        db.ref(`bulletin/${postId}`).remove().then(() => {
+          showVoteToast("掲示板から投稿を削除しました 🗑️");
+        }).catch((err) => {
+          console.error("削除エラー:", err);
+          showVoteToast("削除中にエラーが発生しました");
+        });
+      } else {
+        bulletinPosts = bulletinPosts.filter(p => p.id !== postId);
+        localStorage.setItem(LS_BULLETIN_KEY, JSON.stringify(bulletinPosts));
+        renderNewsTabContents();
+        renderAdminBulletinList();
+        showVoteToast("掲示板から投稿を削除しました 🗑️");
+      }
     }
 
     function populateAdminShopDropdown() {
@@ -2490,6 +2706,7 @@
       setTimeout(() => location.reload(), 1000);
     }
 
+    // DOM LOAD LISTENER
     window.addEventListener('DOMContentLoaded', () => {
       loadSavedStates();
       initFirebase();
@@ -2521,11 +2738,17 @@
     window.openQuizModal = openQuizModal;
     window.submitQuizAnswer = submitQuizAnswer;
     window.closeQuizModal = closeQuizModal;
+    window.requestVoteConfirm = requestVoteConfirm;
+    window.closeVoteConfirm = closeVoteConfirm;
+    window.executeConfirmedVote = executeConfirmedVote;
     window.castVote = castVote;
     window.openAdminGate = openAdminGate;
     window.closeAdminGate = closeAdminGate;
     window.verifyAdminPasscode = verifyAdminPasscode;
     window.logoutAdmin = logoutAdmin;
+    window.verifyStage2Admin = verifyStage2Admin;
+    window.lockStage2Admin = lockStage2Admin;
+    window.deleteBulletinPost = deleteBulletinPost;
     window.loadSelectedShopAdminData = loadSelectedShopAdminData;
     window.updateShopDetailsFromAdmin = updateShopDetailsFromAdmin;
     window.simSolveQuiz = simSolveQuiz;
