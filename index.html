@@ -93,7 +93,7 @@
             <h1 class="text-base font-black tracking-tight text-rose-600 flex items-center">
               久商祭デジナビ <span class="text-[10px] bg-rose-100 text-rose-700 ml-1 px-1 py-0.2 rounded font-bold">2026</span>
             </h1>
-            <p class="text-[9px] text-slate-500 font-medium">Blooming - 青春の花を咲かせよう</p>
+            <p class="text-[9px] text-slate-500 font-medium">Blooming </p>
           </div>
         </div>
         
@@ -835,8 +835,8 @@
     <!-- FOOTER -->
     <footer class="text-center pt-6 pb-4 space-y-2 border-t border-slate-200/60 mt-6">
       <p class="text-[10px] text-slate-400 font-bold">
-        福岡県立久留米商業高等学校 創立130周年記念久商祭 2026<br>
-        「Blooming - 青春の花を咲かせよう」
+        久留米市立久留米商業高等学校 創立130周年記念久商祭 2026<br>
+        「 Blooming 」
       </p>
       <div>
         <button onclick="openAdminGate()" class="text-[10px] font-black text-slate-400 hover:text-slate-600 px-3 py-1 rounded-full border border-slate-200 bg-white/60 transition">
@@ -886,7 +886,7 @@
       <div>
         <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-rose-50 text-rose-700">第1段階認証</span>
         <h3 class="text-sm font-black text-slate-800 mt-1">教員用パスコード</h3>
-        <p class="text-[10px] text-slate-500 mt-1 font-bold">待ち時間・お知らせ更新用（初期値: 2026）</p>
+        <p class="text-[10px] text-slate-500 mt-1 font-bold">待ち時間・お知らせ更新用</p>
       </div>
 
       <div class="space-y-2">
@@ -971,7 +971,7 @@
 
         <!-- 第2段階 未認証時ロック画面 -->
         <div id="admin-stage2-lock" class="space-y-2 text-center py-2 bg-white/70 rounded-xl p-3 border border-indigo-100">
-          <p class="text-[9.5px] text-slate-600 font-bold">掲示板削除・投票集計・データリセット（パスワード: 1285）</p>
+          <p class="text-[9.5px] text-slate-600 font-bold">掲示板削除・投票集計・データリセット</p>
           <div class="flex gap-1.5 max-w-[210px] mx-auto">
             <input type="password" id="admin-pass2-input" placeholder="本部専用Pass" class="text-xs font-mono font-black text-center bg-white border border-slate-300 rounded-xl px-2 py-1.5 w-full focus:outline-none focus:border-indigo-500">
             <button onclick="verifyStage2Admin()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black px-3.5 py-1.5 rounded-xl active:scale-95 transition shrink-0">解除</button>
@@ -1438,7 +1438,7 @@
         <div class="text-4xl">📄</div>
         <h4 class="text-xs font-black text-slate-800">生徒手書き原本パンフレット</h4>
         <p class="text-[10px] text-slate-500 font-bold leading-relaxed max-w-xs mx-auto">
-          上の右端のフォルダボタン（📁）を押してPDFを選択すると、全21ページを高画質で閲覧できます！
+          全21ページを高画質で閲覧できます！
         </p>
       `;
     }
@@ -1913,8 +1913,8 @@
         name: "🚧 正門前特設 総合本部・受付",
         category: "other",
         location: "入場門横 エリア",
-        desc: "クイズラリークリア記念品の引き換えを行っております！その他、落とし物やお困りごとがございましたらお気軽にお立ち寄りください。🎁",
-        mascotTip: "クイズが5問すべて正解になったら私の特製グッズが貰えるよ！楽しんでいってね！",
+        desc: "落とし物やお困りごとがございましたらお気軽にお立ち寄りください。🎁",
+        mascotTip: "楽しんでいってね！",
         status: "待ちなし"
       };
       openShopModal(hqShopObj);
@@ -2185,7 +2185,7 @@
         blockTitle = type === 'flag' ? "青ブロック（蒼志奏藍🌊）" : "青ブロック（大谷翔平⚾）";
         targetEl.className = "text-base font-black text-sky-600 mt-1";
       } else {
-        blockTitle = type === 'flag' ? "黄ブロック（韻波駆虎🐯）" : "黄ブロック（猛虎🐯）";
+        blockTitle = type === 'flag' ? "黄ブロック（韻波駆虎🐯）" : "黄ブロック（虎🐯）";
         targetEl.className = "text-base font-black text-amber-600 mt-1";
       }
       targetEl.innerText = blockTitle;
