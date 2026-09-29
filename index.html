@@ -93,7 +93,7 @@
             <h1 class="text-base font-black tracking-tight text-rose-600 flex items-center">
               久商祭デジナビ <span class="text-[10px] bg-rose-100 text-rose-700 ml-1 px-1 py-0.2 rounded font-bold">2026</span>
             </h1>
-            <p class="text-[9px] text-slate-500 font-medium">Blooming</p>
+            <p class="text-[9px] text-slate-500 font-medium">Blooming - 青春の花を咲かせよう</p>
           </div>
         </div>
         
@@ -423,10 +423,12 @@
                   <span class="w-8 h-8 rounded-full bg-emerald-100 border border-emerald-400 text-emerald-700 flex items-center justify-center text-[9px] font-bold shadow-xs shrink-0">植木</span>
                 </div>
                 
-                <!-- 筑後うどん・あつシー・池口商店 -->
+                <!-- 筑後うどん（ID:22 タップ・速報・お気に入り完全対応）・あつシー・池口商店 -->
                 <div class="flex gap-2 items-center">
-                  <div class="w-24 bg-white p-1.5 rounded-xl border-2 border-slate-700 text-center text-[9px] font-black text-slate-700 shadow-xs shrink-0">
-                    筑後うどん 🥢
+                  <div onclick="clickMapShop(22)" class="w-24 bg-white hover:bg-orange-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs shrink-0">
+                    <span class="text-[7.5px] text-orange-600 font-bold block">共同研究</span>
+                    <span class="text-[9px] font-black text-slate-800">筑後うどん🥢</span>
+                    <span class="map-fav-heart-indicator" data-shop-id="22"></span>
                   </div>
                   <div onclick="clickMapShop(10)" class="w-28 bg-white hover:bg-purple-100 p-1.5 rounded-xl border-2 border-slate-700 cursor-pointer text-center relative shadow-xs shrink-0">
                     <span class="text-[8px] text-purple-600 font-bold block">ボール遊戯</span>
@@ -1219,7 +1221,7 @@
 
   <script>
     // ----------------------------------------------------
-    // 🏠 MASTER DATABASE INITIAL DEFAULTS
+    // 🏠 MASTER DATABASE INITIAL DEFAULTS (全22模擬店+研究ブース)
     // ----------------------------------------------------
     const initialShops = [
       { id: 1, class: "1-1", name: "NTY〜あなたのとなりに〜", category: "goods", location: "1棟〜2棟間 通路", desc: "【協力店舗: Serenity】世界にひとつだけ！手作り感あふれる可愛いキーホルダーを販売します！🎒", mascotTip: "数量限定なのでお早めに寄ってみてね！", status: "待ちなし" },
@@ -1242,7 +1244,8 @@
       { id: 18, class: "3-4", name: "ISOROKU", category: "food", location: "体育館西側 飲食広場", desc: "【協力店舗: 磯六】アツアツの鉄板で焼き上げる香ばしいお好み焼き＆フライドポテト！🥢", mascotTip: "ソースとマヨネーズが焦げる匂いに誘われちゃうね！", status: "10分" },
       { id: 19, class: "3-5", name: "UDON販売作戦 〜立花のプライド〜", category: "food", location: "西側外周 テント", desc: "【協力店舗: 立花うどん】お出汁の香りがふんわり広がる！コシと喉越しにプライドをかけた究極の手打ちうどん🥢", mascotTip: "温かいおつゆが疲れた体にじんわり染み渡る極上の味！", status: "５分" },
       { id: 20, class: "3-6", name: "よしゆきッチンはっ鳥屋", category: "food", location: "メディアセンター南側 テント", desc: "【協力店舗: からあげらんぷ】秘伝ダレ仕込みでジューシー！外はサクッと、中はジュワッの大玉からあげ！🍗", mascotTip: "食べ歩きにぴったりなカップ入りだからマップを見ながらパクパクいけちゃう！", status: "待ちなし" },
-      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "プール北側 テント", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めた絶品焼き鳥串！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて並んじゃう！", status: "20分" }
+      { id: 21, class: "3-7", name: "焼鳥友子", category: "food", location: "プール北側 テント", desc: "【協力店舗: やきとり飛鳥】香ばしい炭火の匂い！特製甘辛ダレをたっぷり絡めた絶品焼き鳥串！🍡", mascotTip: "これぞお祭りの王道！香ばしい匂いにつられて並んじゃう！", status: "20分" },
+      { id: 22, class: "研究", name: "筑後うどん共同研究ブース", category: "food", location: "1棟南側 テント", desc: "【久商×九州産業大学×筑後うどん振興会】名店（徳兵衛うどん・たけ屋）提供の乾麺やおはぎ等の物品販売！ベトナム向けスタンプラリーも開催中！🥢", mascotTip: "久商伝統の共同研究プロジェクト！乾麺やおはぎをぜひチェックしてね！", status: "待ちなし" }
     ];
 
     const stageProgram = [
@@ -1647,7 +1650,7 @@
 
         const matchSearch = shop.class.toLowerCase().includes(searchVal) || 
                             shop.name.toLowerCase().includes(searchVal) || 
-                            shop.desc.toLowerCase().includes(searchVal) ||
+                            shop.desc.toLowerCase().includes(searchVal) || 
                             shop.location.toLowerCase().includes(searchVal);
         return matchSearch;
       });
@@ -2710,6 +2713,7 @@
       hqOpt.innerText = '📢【本部・実行委員会】全体へのお知らせ・連絡';
       select.appendChild(hqOpt);
 
+      // 模擬店全店（筑後うどん ID:22 を含む）を追加
       shops.forEach(shop => {
         const opt = document.createElement('option');
         opt.value = shop.id;
@@ -2737,7 +2741,7 @@
         return;
       }
 
-      // 模擬店を選択した場合
+      // 模擬店（または筑後うどん ID:22）を選択した場合
       if (statusWrapper) statusWrapper.classList.remove('hidden');
       if (announceLabel) announceLabel.innerText = "お店からのお知らせメッセージ（速報・即時配信）";
       if (announceInput) announceInput.placeholder = "例: 大好評につき残りあと少しです！";
@@ -2769,7 +2773,7 @@
         return;
       }
 
-      // 各模擬店を更新する場合
+      // 各模擬店（筑後うどん ID:22を含む）を更新する場合
       const shopId = parseInt(targetVal);
       const status = document.getElementById('admin-shop-status').value;
 
@@ -2792,7 +2796,9 @@
         updateMapHearts();
       }
 
-      showVoteToast(`「模擬店番号 ${shopId}」の情報を同期しました！📢`);
+      const currentShop = shops.find(s => s.id === shopId);
+      const shopDisplayName = currentShop ? currentShop.name : `模擬店番号 ${shopId}`;
+      showVoteToast(`「${shopDisplayName}」の情報を同期しました！📢`);
       
       if (activeShopModalId === shopId) {
         closeShopModal();
